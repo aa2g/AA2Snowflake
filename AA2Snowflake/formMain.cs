@@ -10,15 +10,17 @@ using System.Windows.Forms;
 using System.IO;
 using SB3Utility;
 using AA2Install;
-using AA2CardEditor;
+using AA2Data;
+using System.Drawing.Imaging;
+using Paloma;
 
 namespace AA2Snowflake
 {
     public partial class formMain : Form
     {
-#warning add a roster background editor
-#warning add a border editor
-#warning add eyebrows and eye settings
+#warning add a blank button for border editor
+#warning use DevIL.NET instead of this shitty tga class
+#warning add a toolbox form for editing character metadata
 #warning add support for append + custom personalities
 #warning add crash dialog and about dialog
 
@@ -39,9 +41,15 @@ namespace AA2Snowflake
 
         public void HideLoadingForm()
         {
+            Tools.RefreshPPs();
             load.Hide();
             this.Activate();
             this.Enabled = true;
+        }
+
+        private void formMain_Load(object sender, EventArgs e)
+        {
+            UpdateWindowState();
         }
         #endregion
         #region Menu Bar
@@ -151,6 +159,102 @@ namespace AA2Snowflake
             MessageBox.Show("Finished!");
         }
         #endregion
+        #region Border
+        string borderpath;
+
+        private void cmbBorder_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            borderpath = null;
+
+            using (var mem = Tools.GetStreamFromSubfile(PP.jg2e06_00_00.Subfiles.First(pp => pp.Name == "sp_04_02_0" + cmbBorder.SelectedIndex.ToString() + ".tga")))
+            {
+                if (imgBorder.Image != null)
+                    imgBorder.Image.Dispose();
+                
+                using (TargaImage t = new TargaImage(mem))
+                    imgBorder.Image = new Bitmap(t.Image);
+            }
+        }
+
+        private void btnLoadBorder_Click(object sender, EventArgs e)
+        {
+            if (cmbBorder.SelectedIndex < 0)
+                return;
+
+            using (var file = new OpenFileDialog())
+            {
+                file.Filter = "TGA image (*.tga)|*.tga";
+                file.Multiselect = false;
+
+                if (file.ShowDialog() != DialogResult.Cancel)
+                {
+                    borderpath = file.FileName;
+                    if (imgBorder.Image != null)
+                        imgBorder.Image.Dispose();
+
+                    imgBorder.Image = new TargaImage(file.FileName).Image;
+                }
+            }
+        }
+
+        private void btnSaveBorder_Click(object sender, EventArgs e)
+        {
+            if (!File.Exists(borderpath))
+                return;
+
+            var index = PP.jg2e06_00_00.Subfiles.IndexOf(PP.jg2e06_00_00.Subfiles.First(pp => pp.Name == "sp_04_02_0" + cmbBorder.SelectedIndex.ToString() + ".tga"));
+            var sub = new Subfile(borderpath);
+            sub.Name = "sp_04_02_0" + cmbBorder.SelectedIndex.ToString() + ".tga";
+            PP.jg2e06_00_00.Subfiles[index] = sub;
+            var back = PP.jg2e06_00_00.WriteArchive(PP.jg2e06_00_00.FilePath, false, "bak", true);
+            ShowLoadingForm();
+            back.RunWorkerAsync();
+            while (back.IsBusy)
+            {
+                Application.DoEvents();
+            }
+            HideLoadingForm();
+            MessageBox.Show("Finished!");
+        }
+
+        private void btnRestoreBorder_Click(object sender, EventArgs e)
+        {
+            if (cmbBorder.SelectedIndex < 0)
+                return;
+
+            var index = PP.jg2e06_00_00.Subfiles.IndexOf(PP.jg2e06_00_00.Subfiles.First(pp => pp.Name == "sp_04_02_0" + cmbBorder.SelectedIndex.ToString() + ".tga"));
+            var sub = new Subfile(Paths.BACKUP + @"\sp_04_02_0" + cmbBorder.SelectedIndex.ToString() + ".tga");
+            PP.jg2e06_00_00.Subfiles[index] = sub;
+            var back = PP.jg2e06_00_00.WriteArchive(PP.jg2e06_00_00.FilePath, false, "bak", true);
+            ShowLoadingForm();
+            back.RunWorkerAsync();
+            while (back.IsBusy)
+            {
+                Application.DoEvents();
+            }
+            HideLoadingForm();
+            MessageBox.Show("Finished!");
+        }
+
+        private void btnRestoreAllBorder_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                var index = PP.jg2e06_00_00.Subfiles.IndexOf(PP.jg2e06_00_00.Subfiles.First(pp => pp.Name == "sp_04_02_0" + i.ToString() + ".tga"));
+                var sub = new Subfile(Paths.BACKUP + @"\sp_04_02_0" + i.ToString() + ".tga");
+                PP.jg2e06_00_00.Subfiles[index] = sub;
+            }
+            var back = PP.jg2e06_00_00.WriteArchive(PP.jg2e06_00_00.FilePath, false, "bak", true);
+            ShowLoadingForm();
+            back.RunWorkerAsync();
+            while (back.IsBusy)
+            {
+                Application.DoEvents();
+            }
+            HideLoadingForm();
+            MessageBox.Show("Finished!");
+        }
+        #endregion
         #region Clothes
         string chrpath;
 
@@ -246,7 +350,7 @@ namespace AA2Snowflake
             MessageBox.Show("Finished!");
         }
         #endregion
-
+        #region Poses
         #region 3.1
         private void btnBackup31_Click(object sender, EventArgs e)
         {
@@ -311,7 +415,15 @@ namespace AA2Snowflake
         private void btnSet32_Click(object sender, EventArgs e)
         {
             var index = PP.jg2e00_00_00.Subfiles.IndexOf(PP.jg2e00_00_00.Subfiles.First(pp => pp.Name == "jg2e_00_01_00_00.lst"));
-            var sub = Tools.ManipulateLst(PP.jg2e00_00_00.Subfiles[index], 6, numPose32.Value.ToString());
+            var sub = PP.jg2e00_00_00.Subfiles[index];
+
+            if (chkPose32.Checked)
+                sub = Tools.ManipulateLst(sub, 6, numPose32.Value.ToString());
+            if (chkEyebrow32.Checked)
+                sub = Tools.ManipulateLst(sub, 7, numEyebrow32.Value.ToString());
+            if (chkEye32.Checked)
+                sub = Tools.ManipulateLst(sub, 8, numEye32.Value.ToString());
+
             sub = Tools.ManipulateLst(sub, 4, "51");
             sub.Name = "jg2e_00_01_00_00.lst";
             PP.jg2e00_00_00.Subfiles[index] = sub;
@@ -340,6 +452,21 @@ namespace AA2Snowflake
             }
             HideLoadingForm();
             MessageBox.Show("Finished!");
+        }
+
+        private void chkPose32_CheckedChanged(object sender, EventArgs e)
+        {
+            numPose32.Enabled = chkPose32.Checked;
+        }
+
+        private void chkEyebrow32_CheckedChanged(object sender, EventArgs e)
+        {
+            numEyebrow32.Enabled = chkEyebrow32.Checked;
+        }
+
+        private void chkEye32_CheckedChanged(object sender, EventArgs e)
+        {
+            numEye32.Enabled = chkEye32.Checked;
         }
         #endregion
         #region 3.3
@@ -384,10 +511,11 @@ namespace AA2Snowflake
         }
 
         #endregion
-
+        #endregion
         #region Card Face
         //I hope the AA2CardEditor anon doesn't mind that I borrowed his code
-        private AA2Card card = new AA2Card();
+        private AA2Card card;
+        private string cardpath;
         private void openToolStripButton_Click(object sender, EventArgs e)
         {
             OpenCardFile();
@@ -422,7 +550,8 @@ namespace AA2Snowflake
                 {
                     try
                     {
-                        card.ReadCardFile(file.FileName);
+                        card = new AA2Card(File.ReadAllBytes(file.FileName));
+                        cardpath = file.FileName;
                     }
                     catch (Exception)
                     {
@@ -430,86 +559,107 @@ namespace AA2Snowflake
                     }
                 }
             }
+            UpdateWindowState();
         }
 
         private void SaveCardFile()
         {
-            try
-            {
-                card.Save();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("The card file could not be saved.");
-            }
+            if (cardpath != null && card != null)
+                File.WriteAllBytes(cardpath, card.raw);
+            UpdateWindowState();
         }
 
         private void SaveAsCardFile()
         {
-            using (var file = new SaveFileDialog())
-            {
-                file.Filter = "AA2 Card files (*.png)|*.png";
-                if (file.ShowDialog() == DialogResult.OK)
+            if (cardpath != null && card != null)
+                using (var file = new SaveFileDialog())
                 {
-                    try
+                    file.Filter = "AA2 Card files (*.png)|*.png";
+                    if (file.ShowDialog() == DialogResult.OK)
                     {
-                        card.Save(file.FileName);
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("The card file could not be saved.");
+                        File.WriteAllBytes(file.FileName, card.raw);
+                        cardpath = file.FileName;
                     }
                 }
-            }
+            UpdateWindowState();
         }
 
         private void ReplaceCardFace()
         {
-            using (var file = new OpenFileDialog())
-            {
-                file.Filter = "PNG (*.png)|*.png";
-                file.Multiselect = false;
-                if (file.ShowDialog() == DialogResult.OK)
+            if (cardpath != null && card != null)
+                using (var file = new OpenFileDialog())
                 {
-                    try
+                    file.Filter = "PNG (*.png)|*.png";
+                    file.Multiselect = false;
+                    if (file.ShowDialog() == DialogResult.OK)
                     {
-                        card.ReplaceFaceImage(file.FileName);
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("The card face image could not be replaced.");
+                        var tempcard = new AA2Card(File.ReadAllBytes(file.FileName));
+                        card.Image = tempcard.Image;
                     }
                 }
-            }
+            UpdateWindowState();
         }
 
         private void UpdateWindowState()
         {
-            UpdateToolstripState();
-            UpdateCardFaceView();
-        }
-
-        private void UpdateToolstripState()
-        {
-            if (card.FileName != "")
+            if (File.Exists(cardpath))
             {
                 saveToolStripButton.Enabled = true;
                 saveAsToolStripButton.Enabled = true;
                 replaceCardFaceToolStripButton.Enabled = true;
+                replaceCardRosterToolStripButton.Enabled = true;
+                replaceCardRosterFromCardToolStripButton.Enabled = true;
             }
             else
             {
                 saveToolStripButton.Enabled = false;
                 saveAsToolStripButton.Enabled = false;
                 replaceCardFaceToolStripButton.Enabled = false;
+                replaceCardRosterToolStripButton.Enabled = false;
+                replaceCardRosterFromCardToolStripButton.Enabled = false;
             }
+            Size size;
+            if (card != null)
+            {
+                imgRoster.Image = card.RosterImage;
+                imgCard.Image = card.Image;
+                size = card.Image.Size;
+            }
+            else
+                size = new Size(0, 0);
+
+            lblDimensions.Text = "[" + size.Width + ", " + size.Height + "]";
         }
 
-        private void UpdateCardFaceView()
+        private void replaceCardRosterToolStripButton_Click(object sender, EventArgs e)
         {
-            imgCard.Image = card.FaceImage;
-            var size = card.FaceImage.Size;
-            lblDimensions.Text = "[" + size.Width + ", " + size.Height + "]";
+            if (cardpath != null && card != null)
+                using (var file = new OpenFileDialog())
+                {
+                    file.Filter = "PNG (*.png)|*.png";
+                    file.Multiselect = false;
+                    if (file.ShowDialog() == DialogResult.OK)
+                    {
+                        card.RosterImage = Image.FromFile(file.FileName);
+                    }
+                }
+            UpdateWindowState();
+        }
+
+        private void replaceCardRosterFromCardToolStripButton_Click(object sender, EventArgs e)
+        {
+            if (cardpath != null && card != null)
+                using (var file = new OpenFileDialog())
+                {
+                    file.Filter = "PNG (*.png)|*.png";
+                    file.Multiselect = false;
+                    if (file.ShowDialog() == DialogResult.OK)
+                    {
+                        var tempcard = new AA2Card(File.ReadAllBytes(file.FileName));
+                        card.RosterImage = tempcard.RosterImage;
+                    }
+                }
+            UpdateWindowState();
         }
         #endregion
     }

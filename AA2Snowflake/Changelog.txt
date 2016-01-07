@@ -1,2 +1,8 @@
-﻿v1
+﻿v1.1
++ Added a border changer (fuck TGA)
++ Added more options to the pose editor
++ Added the ability to change roster image
++ Fixed issues with the image replacer
+
+v1
 + Initial build

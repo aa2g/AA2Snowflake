@@ -31,6 +31,14 @@ namespace AA2Snowflake
             return mem;
         }
 
+        public static void RefreshPPs()
+        {
+            PP.jg2e00_00_00 = new ppParser(Paths.AA2Edit + @"\jg2e00_00_00.pp", new ppFormat_AA2());
+            PP.jg2e01_00_00 = new ppParser(Paths.AA2Edit + @"\jg2e01_00_00.pp", new ppFormat_AA2());
+            PP.jg2e06_00_00 = new ppParser(Paths.AA2Edit + @"\jg2e06_00_00.pp", new ppFormat_AA2());
+            PP.jg2p01_00_00 = new ppParser(Paths.AA2Play + @"\jg2p01_00_00.pp", new ppFormat_AA2());
+        }
+
         public static void BackupFile(string file)
         {
             string name = file.Remove(0, file.LastIndexOf('\\'));
@@ -41,11 +49,8 @@ namespace AA2Snowflake
         {
             string name = file.Remove(0, file.LastIndexOf('\\'));
             FileSystem.CopyFile(Paths.BACKUP + name, file, UIOption.AllDialogs);
-            PP.jg2e00_00_00 = new ppParser(Paths.AA2Edit + @"\jg2e00_00_00.pp", new ppFormat_AA2());
-            PP.jg2e01_00_00 = new ppParser(Paths.AA2Edit + @"\jg2e01_00_00.pp", new ppFormat_AA2());
-            PP.jg2e06_00_00 = new ppParser(Paths.AA2Edit + @"\jg2e06_00_00.pp", new ppFormat_AA2());
-            PP.jg2p01_00_00 = new ppParser(Paths.AA2Play + @"\jg2p01_00_00.pp", new ppFormat_AA2());
-    }
+            RefreshPPs();
+        }
 
         public static void DeleteBackup(string file)
         {

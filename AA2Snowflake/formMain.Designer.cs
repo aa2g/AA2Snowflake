@@ -73,6 +73,8 @@
             this.btnRestore31 = new System.Windows.Forms.Button();
             this.btnBackup31 = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.imgRoster = new System.Windows.Forms.PictureBox();
             this.imgCard = new System.Windows.Forms.PictureBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -81,6 +83,23 @@
             this.saveAsToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.replaceCardFaceToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.replaceCardRosterToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.replaceCardRosterFromCardToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.numEyebrow32 = new System.Windows.Forms.NumericUpDown();
+            this.chkPose32 = new System.Windows.Forms.CheckBox();
+            this.chkEyebrow32 = new System.Windows.Forms.CheckBox();
+            this.chkEye32 = new System.Windows.Forms.CheckBox();
+            this.numEye32 = new System.Windows.Forms.NumericUpDown();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.imgBorder = new System.Windows.Forms.PictureBox();
+            this.btnRestoreAllBorder = new System.Windows.Forms.Button();
+            this.btnRestoreBorder = new System.Windows.Forms.Button();
+            this.btnSaveBorder = new System.Windows.Forms.Button();
+            this.btnLoadBorder = new System.Windows.Forms.Button();
+            this.cmbBorder = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -103,8 +122,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.numPose32)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.Panel2.SuspendLayout();
+            this.splitContainer3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgRoster)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgCard)).BeginInit();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numEyebrow32)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEye32)).BeginInit();
+            this.tabPage5.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
+            this.splitContainer4.Panel1.SuspendLayout();
+            this.splitContainer4.Panel2.SuspendLayout();
+            this.splitContainer4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgBorder)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -129,7 +162,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -151,6 +184,7 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
@@ -421,7 +455,7 @@
             this.groupBox5.Controls.Add(this.cmbFirst33);
             this.groupBox5.Controls.Add(this.label3);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox5.Location = new System.Drawing.Point(3, 107);
+            this.groupBox5.Location = new System.Drawing.Point(3, 155);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(475, 54);
             this.groupBox5.TabIndex = 2;
@@ -538,20 +572,25 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.numEye32);
+            this.groupBox4.Controls.Add(this.chkEye32);
+            this.groupBox4.Controls.Add(this.chkEyebrow32);
+            this.groupBox4.Controls.Add(this.chkPose32);
+            this.groupBox4.Controls.Add(this.numEyebrow32);
             this.groupBox4.Controls.Add(this.btnRestore32);
             this.groupBox4.Controls.Add(this.btnSet32);
             this.groupBox4.Controls.Add(this.numPose32);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox4.Location = new System.Drawing.Point(3, 57);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(475, 50);
+            this.groupBox4.Size = new System.Drawing.Size(475, 98);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Part 3.2: Select pose";
             // 
             // btnRestore32
             // 
-            this.btnRestore32.Location = new System.Drawing.Point(168, 16);
+            this.btnRestore32.Location = new System.Drawing.Point(265, 39);
             this.btnRestore32.Name = "btnRestore32";
             this.btnRestore32.Size = new System.Drawing.Size(75, 23);
             this.btnRestore32.TabIndex = 2;
@@ -561,7 +600,7 @@
             // 
             // btnSet32
             // 
-            this.btnSet32.Location = new System.Drawing.Point(87, 16);
+            this.btnSet32.Location = new System.Drawing.Point(184, 39);
             this.btnSet32.Name = "btnSet32";
             this.btnSet32.Size = new System.Drawing.Size(75, 23);
             this.btnSet32.TabIndex = 1;
@@ -571,7 +610,8 @@
             // 
             // numPose32
             // 
-            this.numPose32.Location = new System.Drawing.Point(6, 19);
+            this.numPose32.Enabled = false;
+            this.numPose32.Location = new System.Drawing.Point(87, 19);
             this.numPose32.Maximum = new decimal(new int[] {
             187,
             0,
@@ -637,7 +677,7 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.imgCard);
+            this.tabPage4.Controls.Add(this.splitContainer3);
             this.tabPage4.Controls.Add(this.toolStrip1);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
@@ -646,15 +686,43 @@
             this.tabPage4.Text = "Card Replacer";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.Location = new System.Drawing.Point(0, 25);
+            this.splitContainer3.Name = "splitContainer3";
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.imgRoster);
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.imgCard);
+            this.splitContainer3.Size = new System.Drawing.Size(481, 268);
+            this.splitContainer3.SplitterDistance = 160;
+            this.splitContainer3.TabIndex = 1;
+            // 
+            // imgRoster
+            // 
+            this.imgRoster.BackColor = System.Drawing.Color.Black;
+            this.imgRoster.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.imgRoster.Location = new System.Drawing.Point(0, 0);
+            this.imgRoster.Name = "imgRoster";
+            this.imgRoster.Size = new System.Drawing.Size(160, 268);
+            this.imgRoster.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.imgRoster.TabIndex = 3;
+            this.imgRoster.TabStop = false;
+            // 
             // imgCard
             // 
             this.imgCard.BackColor = System.Drawing.Color.Black;
             this.imgCard.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.imgCard.Location = new System.Drawing.Point(0, 25);
+            this.imgCard.Location = new System.Drawing.Point(0, 0);
             this.imgCard.Name = "imgCard";
-            this.imgCard.Size = new System.Drawing.Size(481, 268);
+            this.imgCard.Size = new System.Drawing.Size(317, 268);
             this.imgCard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.imgCard.TabIndex = 1;
+            this.imgCard.TabIndex = 2;
             this.imgCard.TabStop = false;
             // 
             // toolStrip1
@@ -666,7 +734,9 @@
             this.saveToolStripButton,
             this.saveAsToolStripButton,
             this.toolStripSeparator1,
-            this.replaceCardFaceToolStripButton});
+            this.replaceCardFaceToolStripButton,
+            this.replaceCardRosterToolStripButton,
+            this.replaceCardRosterFromCardToolStripButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(481, 25);
@@ -725,6 +795,206 @@
             this.replaceCardFaceToolStripButton.Text = "&Replace Card Face";
             this.replaceCardFaceToolStripButton.Click += new System.EventHandler(this.replaceCardFaceToolStripButton_Click);
             // 
+            // replaceCardRosterToolStripButton
+            // 
+            this.replaceCardRosterToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.replaceCardRosterToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("replaceCardRosterToolStripButton.Image")));
+            this.replaceCardRosterToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.replaceCardRosterToolStripButton.Name = "replaceCardRosterToolStripButton";
+            this.replaceCardRosterToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.replaceCardRosterToolStripButton.Text = "Replace Roster image from PNG";
+            this.replaceCardRosterToolStripButton.Click += new System.EventHandler(this.replaceCardRosterToolStripButton_Click);
+            // 
+            // replaceCardRosterFromCardToolStripButton
+            // 
+            this.replaceCardRosterFromCardToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.replaceCardRosterFromCardToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("replaceCardRosterFromCardToolStripButton.Image")));
+            this.replaceCardRosterFromCardToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.replaceCardRosterFromCardToolStripButton.Name = "replaceCardRosterFromCardToolStripButton";
+            this.replaceCardRosterFromCardToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.replaceCardRosterFromCardToolStripButton.Text = "Replace Roster image from Card";
+            this.replaceCardRosterFromCardToolStripButton.Click += new System.EventHandler(this.replaceCardRosterFromCardToolStripButton_Click);
+            // 
+            // numEyebrow32
+            // 
+            this.numEyebrow32.Enabled = false;
+            this.numEyebrow32.Location = new System.Drawing.Point(87, 42);
+            this.numEyebrow32.Maximum = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            this.numEyebrow32.Name = "numEyebrow32";
+            this.numEyebrow32.Size = new System.Drawing.Size(75, 20);
+            this.numEyebrow32.TabIndex = 3;
+            // 
+            // chkPose32
+            // 
+            this.chkPose32.AutoSize = true;
+            this.chkPose32.Location = new System.Drawing.Point(9, 20);
+            this.chkPose32.Name = "chkPose32";
+            this.chkPose32.Size = new System.Drawing.Size(50, 17);
+            this.chkPose32.TabIndex = 4;
+            this.chkPose32.Text = "Pose";
+            this.chkPose32.UseVisualStyleBackColor = true;
+            this.chkPose32.CheckedChanged += new System.EventHandler(this.chkPose32_CheckedChanged);
+            // 
+            // chkEyebrow32
+            // 
+            this.chkEyebrow32.AutoSize = true;
+            this.chkEyebrow32.Location = new System.Drawing.Point(9, 43);
+            this.chkEyebrow32.Name = "chkEyebrow32";
+            this.chkEyebrow32.Size = new System.Drawing.Size(67, 17);
+            this.chkEyebrow32.TabIndex = 5;
+            this.chkEyebrow32.Text = "Eyebrow";
+            this.chkEyebrow32.UseVisualStyleBackColor = true;
+            this.chkEyebrow32.CheckedChanged += new System.EventHandler(this.chkEyebrow32_CheckedChanged);
+            // 
+            // chkEye32
+            // 
+            this.chkEye32.AutoSize = true;
+            this.chkEye32.Location = new System.Drawing.Point(9, 66);
+            this.chkEye32.Name = "chkEye32";
+            this.chkEye32.Size = new System.Drawing.Size(44, 17);
+            this.chkEye32.TabIndex = 6;
+            this.chkEye32.Text = "Eye";
+            this.chkEye32.UseVisualStyleBackColor = true;
+            this.chkEye32.CheckedChanged += new System.EventHandler(this.chkEye32_CheckedChanged);
+            // 
+            // numEye32
+            // 
+            this.numEye32.Enabled = false;
+            this.numEye32.Location = new System.Drawing.Point(87, 65);
+            this.numEye32.Maximum = new decimal(new int[] {
+            9,
+            0,
+            0,
+            0});
+            this.numEye32.Name = "numEye32";
+            this.numEye32.Size = new System.Drawing.Size(75, 20);
+            this.numEye32.TabIndex = 7;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.groupBox7);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(481, 293);
+            this.tabPage5.TabIndex = 5;
+            this.tabPage5.Text = "Border";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.splitContainer4);
+            this.groupBox7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox7.Location = new System.Drawing.Point(3, 3);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(475, 287);
+            this.groupBox7.TabIndex = 0;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Part 1: Custom border";
+            // 
+            // splitContainer4
+            // 
+            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer4.Location = new System.Drawing.Point(3, 16);
+            this.splitContainer4.Name = "splitContainer4";
+            // 
+            // splitContainer4.Panel1
+            // 
+            this.splitContainer4.Panel1.Controls.Add(this.imgBorder);
+            // 
+            // splitContainer4.Panel2
+            // 
+            this.splitContainer4.Panel2.Controls.Add(this.btnRestoreAllBorder);
+            this.splitContainer4.Panel2.Controls.Add(this.btnRestoreBorder);
+            this.splitContainer4.Panel2.Controls.Add(this.btnSaveBorder);
+            this.splitContainer4.Panel2.Controls.Add(this.btnLoadBorder);
+            this.splitContainer4.Panel2.Controls.Add(this.cmbBorder);
+            this.splitContainer4.Panel2.Controls.Add(this.label5);
+            this.splitContainer4.Size = new System.Drawing.Size(469, 268);
+            this.splitContainer4.SplitterDistance = 227;
+            this.splitContainer4.TabIndex = 1;
+            // 
+            // imgBorder
+            // 
+            this.imgBorder.BackColor = System.Drawing.Color.Black;
+            this.imgBorder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.imgBorder.Location = new System.Drawing.Point(0, 0);
+            this.imgBorder.Name = "imgBorder";
+            this.imgBorder.Size = new System.Drawing.Size(227, 268);
+            this.imgBorder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imgBorder.TabIndex = 0;
+            this.imgBorder.TabStop = false;
+            // 
+            // btnRestoreAllBorder
+            // 
+            this.btnRestoreAllBorder.Location = new System.Drawing.Point(6, 140);
+            this.btnRestoreAllBorder.Name = "btnRestoreAllBorder";
+            this.btnRestoreAllBorder.Size = new System.Drawing.Size(75, 23);
+            this.btnRestoreAllBorder.TabIndex = 5;
+            this.btnRestoreAllBorder.Text = "Restore All";
+            this.btnRestoreAllBorder.UseVisualStyleBackColor = true;
+            this.btnRestoreAllBorder.Click += new System.EventHandler(this.btnRestoreAllBorder_Click);
+            // 
+            // btnRestoreBorder
+            // 
+            this.btnRestoreBorder.Location = new System.Drawing.Point(6, 111);
+            this.btnRestoreBorder.Name = "btnRestoreBorder";
+            this.btnRestoreBorder.Size = new System.Drawing.Size(75, 23);
+            this.btnRestoreBorder.TabIndex = 4;
+            this.btnRestoreBorder.Text = "Restore";
+            this.btnRestoreBorder.UseVisualStyleBackColor = true;
+            this.btnRestoreBorder.Click += new System.EventHandler(this.btnRestoreBorder_Click);
+            // 
+            // btnSaveBorder
+            // 
+            this.btnSaveBorder.Location = new System.Drawing.Point(6, 82);
+            this.btnSaveBorder.Name = "btnSaveBorder";
+            this.btnSaveBorder.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveBorder.TabIndex = 3;
+            this.btnSaveBorder.Text = "Save";
+            this.btnSaveBorder.UseVisualStyleBackColor = true;
+            this.btnSaveBorder.Click += new System.EventHandler(this.btnSaveBorder_Click);
+            // 
+            // btnLoadBorder
+            // 
+            this.btnLoadBorder.Location = new System.Drawing.Point(6, 53);
+            this.btnLoadBorder.Name = "btnLoadBorder";
+            this.btnLoadBorder.Size = new System.Drawing.Size(75, 23);
+            this.btnLoadBorder.TabIndex = 2;
+            this.btnLoadBorder.Text = "Load";
+            this.btnLoadBorder.UseVisualStyleBackColor = true;
+            this.btnLoadBorder.Click += new System.EventHandler(this.btnLoadBorder_Click);
+            // 
+            // cmbBorder
+            // 
+            this.cmbBorder.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBorder.FormattingEnabled = true;
+            this.cmbBorder.Items.AddRange(new object[] {
+            "Hetero",
+            "Lean Hetero",
+            "Bisexual",
+            "Lean Homo",
+            "Homo",
+            "Rainbow"});
+            this.cmbBorder.Location = new System.Drawing.Point(6, 26);
+            this.cmbBorder.Name = "cmbBorder";
+            this.cmbBorder.Size = new System.Drawing.Size(98, 21);
+            this.cmbBorder.TabIndex = 1;
+            this.cmbBorder.SelectedIndexChanged += new System.EventHandler(this.cmbBorder_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 10);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(127, 13);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Currently selected border:";
+            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -737,6 +1007,7 @@
             this.MinimumSize = new System.Drawing.Size(505, 382);
             this.Name = "formMain";
             this.Text = "AA2Snowflake";
+            this.Load += new System.EventHandler(this.formMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -760,13 +1031,29 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numPose32)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            this.splitContainer3.Panel1.ResumeLayout(false);
+            this.splitContainer3.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.imgRoster)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgCard)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numEyebrow32)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEye32)).EndInit();
+            this.tabPage5.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.splitContainer4.Panel1.ResumeLayout(false);
+            this.splitContainer4.Panel2.ResumeLayout(false);
+            this.splitContainer4.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
+            this.splitContainer4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.imgBorder)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -817,7 +1104,6 @@
         private System.Windows.Forms.ComboBox cmbFirst33;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.PictureBox imgCard;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton openToolStripButton;
         private System.Windows.Forms.ToolStripLabel lblDimensions;
@@ -826,6 +1112,26 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton replaceCardFaceToolStripButton;
         private System.Windows.Forms.Button btnDelete31;
+        private System.Windows.Forms.SplitContainer splitContainer3;
+        private System.Windows.Forms.PictureBox imgRoster;
+        private System.Windows.Forms.PictureBox imgCard;
+        private System.Windows.Forms.ToolStripButton replaceCardRosterToolStripButton;
+        private System.Windows.Forms.ToolStripButton replaceCardRosterFromCardToolStripButton;
+        private System.Windows.Forms.NumericUpDown numEye32;
+        private System.Windows.Forms.CheckBox chkEye32;
+        private System.Windows.Forms.CheckBox chkEyebrow32;
+        private System.Windows.Forms.CheckBox chkPose32;
+        private System.Windows.Forms.NumericUpDown numEyebrow32;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.SplitContainer splitContainer4;
+        private System.Windows.Forms.PictureBox imgBorder;
+        private System.Windows.Forms.Button btnRestoreAllBorder;
+        private System.Windows.Forms.Button btnRestoreBorder;
+        private System.Windows.Forms.Button btnSaveBorder;
+        private System.Windows.Forms.Button btnLoadBorder;
+        private System.Windows.Forms.ComboBox cmbBorder;
+        private System.Windows.Forms.Label label5;
     }
 }
 
