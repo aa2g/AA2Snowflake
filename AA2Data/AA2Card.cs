@@ -39,7 +39,7 @@ namespace AA2Data
                 br.BaseStream.Seek(0, SeekOrigin.Begin);
                     
                 _image = br.ReadBytes((int)br.BaseStream.Length - offset);
-                data = br.ReadBytes(3011);
+                data.raw = br.ReadBytes(3011);
                 int length = br.ReadInt32();
                 _RosterImage = br.ReadBytes(length);
                 }
@@ -65,7 +65,7 @@ namespace AA2Data
 
             }
         }
-        public byte[] data = new byte[3011];
+        public AA2Data data = new AA2Data();
         public Int32 RosterLength => _RosterImage.Length;
 
         private byte[] _RosterImage;
@@ -87,7 +87,7 @@ namespace AA2Data
             }
         }
 
-        public Int32 Offset => data.Length + 4 + _RosterImage.Length + 4;
+        public Int32 Offset => data.dataLength + 4 + _RosterImage.Length + 4;
 
         public AA2Card(byte[] data)
         {

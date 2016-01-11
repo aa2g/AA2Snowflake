@@ -1,4 +1,12 @@
-﻿v1.1
+﻿v1.2
++ Added the ability to edit some character information in the card replacer
+++ Has double capacity of the maker and ReiEdit for the bio
++ Added an AA2Edit card resolution patcher
++ Added a roster background changer
++ Added even more options to the pose editor
++ Preliminary support for append personalities
+
+v1.1
 + Added a border changer (fuck TGA)
 + Added more options to the pose editor
 + Added the ability to change roster image

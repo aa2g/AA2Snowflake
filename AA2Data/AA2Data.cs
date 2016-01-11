@@ -6,37 +6,225 @@ using System.Threading.Tasks;
 
 namespace AA2Data
 {
-    public abstract class BaseData
+    public static partial class Tools
+    {
+        public static byte[] ResizeByteArray(byte[] array, int length)
+        {
+            byte[] b = new byte[length];
+#warning use array.copy() instead of for loops
+            for (int i = 0; i < Math.Min(array.Length, length); i++)
+                b[i] = array[i];
+            return b;
+        }
+    }
+
+    public class BaseData
     {
         public static implicit operator byte[] (BaseData x) => x.raw;
-        public abstract int dataLength { get; }
-        public abstract byte[] raw { get; set; }
+        public virtual int dataLength => -1;
+        public byte[] raw { get; set; }
+
+        public BaseData()
+        {
+            if (dataLength > 0)
+                raw = new byte[dataLength];
+        }
+
+        public BaseData(byte[] data)
+        {
+            if (dataLength > 0)
+                raw = Tools.ResizeByteArray(data, dataLength);
+            else
+                raw = data;
+        }
+
+        public void writeValue(object value, int offset, AA2DataType type)
+        {
+            switch (type)
+            {
+                case AA2DataType.Bool:
+                    if ((bool)value)
+                        raw[offset] = 1;
+                    else
+                        raw[offset] = 0;
+                    break;
+                case AA2DataType.Byte:
+                    raw[offset] = (byte)value;
+                    break;
+                case AA2DataType.String:
+                    byte[] b = Tools.ShiftJIS.GetBytes((string)value);
+                    for (int i = 0; i < b.Length; i++)
+                        raw[offset + i] = b[i];
+                    break;
+                case AA2DataType.StringEx:
+                    byte[] bx = Tools.ExTransform(Tools.ShiftJIS.GetBytes((string)value));
+                    for (int i = 0; i < bx.Length; i++)
+                        raw[offset + i] = bx[i];
+                    break;
+                case AA2DataType.DataBlock:
+                    var block = (BaseData)value;
+                    Array.Copy(block, 0, this.raw, offset, block.dataLength);
+                    break;
+                default:
+#warning finish implementation
+                    throw new NotImplementedException();
+            }
+        }
+
+        public object readValue(int offset, AA2DataType type, int length = 0)
+        {
+            switch (type)
+            {
+                case AA2DataType.Bool:
+                    if (raw[offset] == 0)
+                        return false;
+                    else
+                        return true;
+                case AA2DataType.Byte:
+                    return raw[offset];
+                case AA2DataType.String:
+                    byte[] b = new byte[length];
+                    for (int i = 0; i < length; i++)
+                        b[i] = raw[offset + i];
+                    return Tools.ShiftJIS.GetString(b);
+                case AA2DataType.StringEx:
+                    byte[] bx = new byte[length];
+                    for (int i = 0; i < length; i++)
+                        bx[i] = raw[offset + i];
+                    return Tools.ShiftJIS.GetString(Tools.ExTransform(bx));
+                case AA2DataType.DataBlock:
+                    var block = new byte[length];
+                    Array.Copy(raw, offset, block, 0, length);
+                    return new BaseData(block);
+                default:
+#warning finish implementation
+                    throw new NotImplementedException();
+            }
+        }
     }
 
     public class AA2Data : BaseData
     {
-#warning finish implementation
-        public override int dataLength
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public override int dataLength => 3011;
 
-        public override byte[] raw
+        public new byte[] raw
         {
             get
             {
-                throw new NotImplementedException();
+                writeValue(CLOTH_UNIFORM, 0xA57, AA2DataType.DataBlock);
+                writeValue(CLOTH_SPORT, 0xAB2, AA2DataType.DataBlock);
+                writeValue(CLOTH_SWIM, 0xB0D, AA2DataType.DataBlock);
+                writeValue(CLOTH_CLUB, 0xB68, AA2DataType.DataBlock);
+                return base.raw;
             }
 
             set
             {
-                throw new NotImplementedException();
+                base.raw = value;
+                CLOTH_UNIFORM = new AA2Cloth((BaseData)readValue(0xA57, AA2DataType.DataBlock));
+                CLOTH_SPORT = new AA2Cloth((BaseData)readValue(0xAB2, AA2DataType.DataBlock));
+                CLOTH_SWIM = new AA2Cloth((BaseData)readValue(0xB0D, AA2DataType.DataBlock));
+                CLOTH_CLUB = new AA2Cloth((BaseData)readValue(0xB68, AA2DataType.DataBlock));
             }
+        }
+
+        public bool RAINBOW_CARD
+        {
+            get
+            {
+                return (bool)readValue(0x6C8, AA2DataType.Bool);
+            }
+            set
+            {
+                writeValue(value, 0x6C8, AA2DataType.Bool);
+            }
+        }
+
+        public byte PROFILE_GENDER
+        {
+            get
+            {
+                return (byte)readValue(0x014, AA2DataType.Byte);
+            }
+            set
+            {
+                writeValue(value, 0x014, AA2DataType.Byte);
+            }
+        }
+
+        public byte PROFILE_PERSONALITY_ID
+        {
+            get
+            {
+                return (byte)readValue(0x41D, AA2DataType.Byte);
+            }
+            set
+            {
+                writeValue(value, 0x41D, AA2DataType.Byte);
+            }
+        }
+
+        public string PROFILE_FAMILY_NAME
+        {
+            get
+            {
+                return (string)readValue(0x015, AA2DataType.StringEx, 260);
+            }
+            set
+            {
+                writeValue(value, 0x015, AA2DataType.StringEx);
+            }
+        }
+
+        public string PROFILE_FIRST_NAME
+        {
+            get
+            {
+                return (string)readValue(0x119, AA2DataType.StringEx, 260);
+            }
+            set
+            {
+                writeValue(value, 0x119, AA2DataType.StringEx);
+            }
+        }
+
+        public string PROFILE_BIO
+        {
+            get
+            {
+                return (string)readValue(0x21D, AA2DataType.StringEx, 512);
+            }
+            set
+            {
+                writeValue(value, 0x21D, AA2DataType.StringEx);
+            }
+        }
+
+        public AA2Cloth CLOTH_UNIFORM { get; set; }
+        public AA2Cloth CLOTH_SPORT { get; set; }
+        public AA2Cloth CLOTH_SWIM { get; set; }
+        public AA2Cloth CLOTH_CLUB { get; set; }
+    }
+
+    public class AA2Cloth : BaseData
+    {
+        public override int dataLength => 92;
+#warning finish implementation
+
+        public AA2Cloth(BaseData b)
+        {
+            this.raw = b.raw;
         }
     }
 
-
+    public enum AA2DataType
+    {
+        Bool,
+        Byte,
+        Int16,
+        Int32,
+        String,
+        StringEx,
+        DataBlock
+    }
 }

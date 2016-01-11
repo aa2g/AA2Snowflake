@@ -16,21 +16,23 @@ namespace AA2Data
                 buffer[i] = (byte)((buffer[i] ^ 0xFF) & 0xFF);
             return buffer;
         }
+
+        public static Encoding ShiftJIS => Encoding.GetEncoding(932);
     }
 
-    class CardReader : IDisposable
+    class AA2Reader : IDisposable
     {
         private BinaryReader br;
 
-        public static implicit operator CardReader (byte[] x) => new CardReader(x);
-        public static implicit operator CardReader (Stream x) => new CardReader(x);
+        public static implicit operator AA2Reader (byte[] x) => new AA2Reader(x);
+        public static implicit operator AA2Reader (Stream x) => new AA2Reader(x);
 
-        public CardReader(Stream stream)
+        public AA2Reader(Stream stream)
         {
             br = new BinaryReader(stream);
         }
 
-        public CardReader(byte[] card)
+        public AA2Reader(byte[] card)
         {
             br = new BinaryReader(new MemoryStream(card));
         }
@@ -56,11 +58,9 @@ namespace AA2Data
 
         public Color ReadColor() => Color.FromArgb(br.ReadInt32());
 
-        public static Encoding ShiftJIS => Encoding.GetEncoding(932);
+        public string ReadString(int length) => Tools.ShiftJIS.GetString(br.ReadBytes(length));
 
-        public string ReadString(int length) => ShiftJIS.GetString(br.ReadBytes(length));
-
-        public string ReadStringEx(int length) => ShiftJIS.GetString(Tools.ExTransform(br.ReadBytes(length)));
+        public string ReadStringEx(int length) => Tools.ShiftJIS.GetString(Tools.ExTransform(br.ReadBytes(length)));
 
         public void Dispose()
         {
@@ -68,20 +68,20 @@ namespace AA2Data
         }
     }
 
-    class CardWriter : IDisposable
+    class AA2Writer : IDisposable
     {
         private BinaryWriter bw;
 
-        public static implicit operator byte[] (CardWriter x) => x.GetBytes();
-        public static implicit operator Stream (CardWriter x) => x.bw.BaseStream;
-        public static implicit operator CardWriter(Stream x) => new CardWriter(x);
+        public static implicit operator byte[] (AA2Writer x) => x.GetBytes();
+        public static implicit operator Stream (AA2Writer x) => x.bw.BaseStream;
+        public static implicit operator AA2Writer(Stream x) => new AA2Writer(x);
 
-        public CardWriter(Stream stream)
+        public AA2Writer(Stream stream)
         {
             bw = new BinaryWriter(stream);
         }
 
-        public CardWriter()
+        public AA2Writer()
         {
             bw = new BinaryWriter(new MemoryStream());
         }
@@ -117,12 +117,10 @@ namespace AA2Data
 
         public void WriteColor(Color value) => bw.Write(value.ToArgb());
 
-        public static Encoding ShiftJIS => Encoding.GetEncoding(932);
-
         public void WriteString(string value, int length)
         {
             byte[] buffer = new byte[length];
-            byte[] str = ShiftJIS.GetBytes(value);
+            byte[] str = Tools.ShiftJIS.GetBytes(value);
             for (int i = 0; i < str.Length; i++)
                 buffer[i] = str[i];
             bw.Write(buffer);
@@ -131,7 +129,7 @@ namespace AA2Data
         public void WriteStringEx(string value, int length)
         {
             byte[] buffer = new byte[length];
-            byte[] str = ShiftJIS.GetBytes(value);
+            byte[] str = Tools.ShiftJIS.GetBytes(value);
             for (int i = 0; i < str.Length; i++)
                 buffer[i] = str[i];
             buffer = Tools.ExTransform(buffer);

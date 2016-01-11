@@ -159,6 +159,101 @@ namespace AA2Snowflake
             MessageBox.Show("Finished!");
         }
         #endregion
+        #region Roster Backgroud
+        string rosterpath;
+
+        private void cmbRoster_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            rosterpath = null;
+
+            using (var mem = Tools.GetStreamFromSubfile(PP.jg2e06_00_00.Subfiles.First(pp => pp.Name == "sp_04_03_0" + cmbRoster.SelectedIndex.ToString() + ".bmp")))
+            {
+                if (imgRosterBackground.Image != null)
+                    imgRosterBackground.Image.Dispose();
+
+                imgRosterBackground.Image = Image.FromStream(mem);
+            }
+        }
+
+        private void btnRosterLoad_Click(object sender, EventArgs e)
+        {
+            if (cmbRoster.SelectedIndex < 0)
+                return;
+
+            using (var file = new OpenFileDialog())
+            {
+                file.Filter = "Bitmap files (*.bmp)|*.bmp";
+                file.Multiselect = false;
+
+                if (file.ShowDialog() != DialogResult.Cancel)
+                {
+                    rosterpath = file.FileName;
+                    if (imgRosterBackground.Image != null)
+                        imgRosterBackground.Image.Dispose();
+
+                    imgRosterBackground.Image = Image.FromStream(Tools.GetStreamFromFile(file.FileName));
+                }
+            }
+        }
+
+        private void btnRosterSave_Click(object sender, EventArgs e)
+        {
+            if (!File.Exists(rosterpath))
+                return;
+
+            var index = PP.jg2e06_00_00.Subfiles.IndexOf(PP.jg2e06_00_00.Subfiles.First(pp => pp.Name == "sp_04_03_0" + cmbRoster.SelectedIndex.ToString() + ".bmp"));
+            var sub = new Subfile(rosterpath);
+            sub.Name = "sp_04_03_0" + cmbRoster.SelectedIndex.ToString() + ".bmp";
+            PP.jg2e06_00_00.Subfiles[index] = sub;
+            var back = PP.jg2e06_00_00.WriteArchive(PP.jg2e06_00_00.FilePath, false, "bak", true);
+            ShowLoadingForm();
+            back.RunWorkerAsync();
+            while (back.IsBusy)
+            {
+                Application.DoEvents();
+            }
+            HideLoadingForm();
+            MessageBox.Show("Finished!");
+        }
+
+        private void btnRosterRestore_Click(object sender, EventArgs e)
+        {
+            if (cmbRoster.SelectedIndex < 0)
+                return;
+
+            var index = PP.jg2e06_00_00.Subfiles.IndexOf(PP.jg2e06_00_00.Subfiles.First(pp => pp.Name == "sp_04_03_0" + cmbRoster.SelectedIndex.ToString() + ".bmp"));
+            var sub = new Subfile(Paths.BACKUP + @"\sp_04_03_0" + cmbRoster.SelectedIndex.ToString() + ".bmp");
+            PP.jg2e06_00_00.Subfiles[index] = sub;
+            var back = PP.jg2e06_00_00.WriteArchive(PP.jg2e06_00_00.FilePath, false, "bak", true);
+            ShowLoadingForm();
+            back.RunWorkerAsync();
+            while (back.IsBusy)
+            {
+                Application.DoEvents();
+            }
+            HideLoadingForm();
+            MessageBox.Show("Finished!");
+        }
+
+        private void btnRosterRestoreAll_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                var index = PP.jg2e06_00_00.Subfiles.IndexOf(PP.jg2e06_00_00.Subfiles.First(pp => pp.Name == "sp_04_03_0" + i.ToString() + ".bmp"));
+                var sub = new Subfile(Paths.BACKUP + @"\sp_04_03_0" + i.ToString() + ".bmp");
+                PP.jg2e06_00_00.Subfiles[index] = sub;
+            }
+            var back = PP.jg2e06_00_00.WriteArchive(PP.jg2e06_00_00.FilePath, false, "bak", true);
+            ShowLoadingForm();
+            back.RunWorkerAsync();
+            while (back.IsBusy)
+            {
+                Application.DoEvents();
+            }
+            HideLoadingForm();
+            MessageBox.Show("Finished!");
+        }
+        #endregion
         #region Border
         string borderpath;
 
@@ -421,8 +516,12 @@ namespace AA2Snowflake
                 sub = Tools.ManipulateLst(sub, 6, numPose32.Value.ToString());
             if (chkEyebrow32.Checked)
                 sub = Tools.ManipulateLst(sub, 7, numEyebrow32.Value.ToString());
+            if (chkEyeOS32.Checked)
+                sub = Tools.ManipulateLst(sub, 8, numEyeOS32.Value.ToString());
             if (chkEye32.Checked)
-                sub = Tools.ManipulateLst(sub, 8, numEye32.Value.ToString());
+                sub = Tools.ManipulateLst(sub, 9, numEye32.Value.ToString());
+            if (chkMouth32.Checked)
+                sub = Tools.ManipulateLst(sub, 10, numMouth32.Value.ToString());
 
             sub = Tools.ManipulateLst(sub, 4, "51");
             sub.Name = "jg2e_00_01_00_00.lst";
@@ -464,9 +563,19 @@ namespace AA2Snowflake
             numEyebrow32.Enabled = chkEyebrow32.Checked;
         }
 
+        private void chkEyeOS32_CheckedChanged(object sender, EventArgs e)
+        {
+            numEyeOS32.Enabled = chkEyeOS32.Checked;
+        }
+
         private void chkEye32_CheckedChanged(object sender, EventArgs e)
         {
             numEye32.Enabled = chkEye32.Checked;
+        }
+
+        private void chkMouth32_CheckedChanged(object sender, EventArgs e)
+        {
+            numMouth32.Enabled = chkMouth32.Checked;
         }
         #endregion
         #region 3.3
@@ -513,8 +622,7 @@ namespace AA2Snowflake
         #endregion
         #endregion
         #region Card Face
-        //I hope the AA2CardEditor anon doesn't mind that I borrowed his code
-        private AA2Card card;
+        private formInfo info = new formInfo();
         private string cardpath;
         private void openToolStripButton_Click(object sender, EventArgs e)
         {
@@ -548,15 +656,10 @@ namespace AA2Snowflake
                 file.Multiselect = false;
                 if (file.ShowDialog() == DialogResult.OK)
                 {
-                    try
-                    {
-                        card = new AA2Card(File.ReadAllBytes(file.FileName));
-                        cardpath = file.FileName;
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("The card file could not be opened.");
-                    }
+                    info.card = new AA2Card(File.ReadAllBytes(file.FileName));
+                    info.updateInformation();
+                    info.Show();
+                    cardpath = file.FileName;
                 }
             }
             UpdateWindowState();
@@ -564,20 +667,20 @@ namespace AA2Snowflake
 
         private void SaveCardFile()
         {
-            if (cardpath != null && card != null)
-                File.WriteAllBytes(cardpath, card.raw);
+            if (cardpath != null && info.card != null)
+                File.WriteAllBytes(cardpath, info.card.raw);
             UpdateWindowState();
         }
 
         private void SaveAsCardFile()
         {
-            if (cardpath != null && card != null)
+            if (cardpath != null && info.card != null)
                 using (var file = new SaveFileDialog())
                 {
                     file.Filter = "AA2 Card files (*.png)|*.png";
                     if (file.ShowDialog() == DialogResult.OK)
                     {
-                        File.WriteAllBytes(file.FileName, card.raw);
+                        File.WriteAllBytes(file.FileName, info.card.raw);
                         cardpath = file.FileName;
                     }
                 }
@@ -586,15 +689,22 @@ namespace AA2Snowflake
 
         private void ReplaceCardFace()
         {
-            if (cardpath != null && card != null)
+            if (cardpath != null && info.card != null)
                 using (var file = new OpenFileDialog())
                 {
                     file.Filter = "PNG (*.png)|*.png";
                     file.Multiselect = false;
                     if (file.ShowDialog() == DialogResult.OK)
                     {
-                        var tempcard = new AA2Card(File.ReadAllBytes(file.FileName));
-                        card.Image = tempcard.Image;
+                        try
+                        {
+                            var tempcard = new AA2Card(File.ReadAllBytes(file.FileName));
+                            info.card.Image = tempcard.Image;
+                        }
+                        catch
+                        {
+                            info.card.Image = Image.FromFile(file.FileName);
+                        }
                     }
                 }
             UpdateWindowState();
@@ -619,11 +729,11 @@ namespace AA2Snowflake
                 replaceCardRosterFromCardToolStripButton.Enabled = false;
             }
             Size size;
-            if (card != null)
+            if (info.card != null)
             {
-                imgRoster.Image = card.RosterImage;
-                imgCard.Image = card.Image;
-                size = card.Image.Size;
+                imgRoster.Image = info.card.RosterImage;
+                imgCard.Image = info.card.Image;
+                size = info.card.Image.Size;
             }
             else
                 size = new Size(0, 0);
@@ -633,14 +743,14 @@ namespace AA2Snowflake
 
         private void replaceCardRosterToolStripButton_Click(object sender, EventArgs e)
         {
-            if (cardpath != null && card != null)
+            if (cardpath != null && info.card != null)
                 using (var file = new OpenFileDialog())
                 {
                     file.Filter = "PNG (*.png)|*.png";
                     file.Multiselect = false;
                     if (file.ShowDialog() == DialogResult.OK)
                     {
-                        card.RosterImage = Image.FromFile(file.FileName);
+                        info.card.RosterImage = Image.FromFile(file.FileName);
                     }
                 }
             UpdateWindowState();
@@ -648,7 +758,7 @@ namespace AA2Snowflake
 
         private void replaceCardRosterFromCardToolStripButton_Click(object sender, EventArgs e)
         {
-            if (cardpath != null && card != null)
+            if (cardpath != null && info.card != null)
                 using (var file = new OpenFileDialog())
                 {
                     file.Filter = "PNG (*.png)|*.png";
@@ -656,11 +766,61 @@ namespace AA2Snowflake
                     if (file.ShowDialog() == DialogResult.OK)
                     {
                         var tempcard = new AA2Card(File.ReadAllBytes(file.FileName));
-                        card.RosterImage = tempcard.RosterImage;
+                        info.card.RosterImage = tempcard.RosterImage;
                     }
                 }
             UpdateWindowState();
         }
         #endregion
+
+        #region Patcher
+        private Size cardsize = new Size(200, 300);
+        private string exefile;
+
+        private void btnPatcherLoad_Click(object sender, EventArgs e)
+        {
+            using (var file = new OpenFileDialog())
+            {
+                file.Filter = "Executable file (*.exe)|*.exe";
+                file.Multiselect = false;
+                if (file.ShowDialog() == DialogResult.OK)
+                    exefile = file.FileName;
+                else
+                    return;
+            }
+            
+            using (var exe = new FileStream(exefile, FileMode.Open))
+            {
+                lblPatcherSignature.Text = "Detected signature: " + ResPatcher.GetSignature(exe);
+                lblPatcherCompatible.Text = "Is compatible? " + (ResPatcher.IsCompatible(exe) ? "Yes" : "No");
+                var size = ResPatcher.GetCardSize(exe);
+                lblPatcherCurrentCardSize.Text = "Current card size: " + size.Width.ToString() + "x" + size.Height.ToString();
+                lblPatcherCurrentRenderMode.Text = "Current render mode: " + Enum.GetName(typeof(ResPatcher.RenderMode), ResPatcher.GetCardRenderResolution(exe)).Remove(0, 1);
+            }
+        }
+
+        private void trkCardSize_Scroll(object sender, EventArgs e)
+        {
+            cardsize = new Size(200 + (trkCardSize.Value * 60), 300 + (trkCardSize.Value * 90));
+            lblPatcherOutputSize.Text = "Output card size: " + cardsize.Width.ToString() + "x" + cardsize.Height.ToString();
+        }
+        #endregion
+
+        private void btnPatch_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(exefile))
+            {
+                using (var exe = new FileStream(exefile, FileMode.Open))
+                    if (ResPatcher.IsCompatible(exe))
+                        if (radio1x.Checked)
+                            ResPatcher.PatchResolution(exe, cardsize, ResPatcher.RenderMode.r1200x800);
+                        else if (radio2x.Checked)
+                            ResPatcher.PatchResolution(exe, cardsize, ResPatcher.RenderMode.r2400x1600);
+                        else if (radio3x.Checked)
+                            ResPatcher.PatchResolution(exe, cardsize, ResPatcher.RenderMode.r3600x2400);
+
+                MessageBox.Show("Finished!");
+            }
+        }
     }
 }

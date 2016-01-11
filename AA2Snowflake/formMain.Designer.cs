@@ -45,6 +45,26 @@
             this.btnLoadBG = new System.Windows.Forms.Button();
             this.cmbBackground = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.splitContainer5 = new System.Windows.Forms.SplitContainer();
+            this.imgRosterBackground = new System.Windows.Forms.PictureBox();
+            this.btnRosterRestoreAll = new System.Windows.Forms.Button();
+            this.btnRosterRestore = new System.Windows.Forms.Button();
+            this.btnRosterSave = new System.Windows.Forms.Button();
+            this.btnRosterLoad = new System.Windows.Forms.Button();
+            this.cmbRoster = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.imgBorder = new System.Windows.Forms.PictureBox();
+            this.btnRestoreAllBorder = new System.Windows.Forms.Button();
+            this.btnRestoreBorder = new System.Windows.Forms.Button();
+            this.btnSaveBorder = new System.Windows.Forms.Button();
+            this.btnLoadBorder = new System.Windows.Forms.Button();
+            this.cmbBorder = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -64,6 +84,15 @@
             this.cmbFirst33 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.numMouth32 = new System.Windows.Forms.NumericUpDown();
+            this.chkMouth32 = new System.Windows.Forms.CheckBox();
+            this.numEye32 = new System.Windows.Forms.NumericUpDown();
+            this.chkEye32 = new System.Windows.Forms.CheckBox();
+            this.numEyeOS32 = new System.Windows.Forms.NumericUpDown();
+            this.chkEyeOS32 = new System.Windows.Forms.CheckBox();
+            this.chkEyebrow32 = new System.Windows.Forms.CheckBox();
+            this.chkPose32 = new System.Windows.Forms.CheckBox();
+            this.numEyebrow32 = new System.Windows.Forms.NumericUpDown();
             this.btnRestore32 = new System.Windows.Forms.Button();
             this.btnSet32 = new System.Windows.Forms.Button();
             this.numPose32 = new System.Windows.Forms.NumericUpDown();
@@ -85,21 +114,20 @@
             this.replaceCardFaceToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.replaceCardRosterToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.replaceCardRosterFromCardToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.numEyebrow32 = new System.Windows.Forms.NumericUpDown();
-            this.chkPose32 = new System.Windows.Forms.CheckBox();
-            this.chkEyebrow32 = new System.Windows.Forms.CheckBox();
-            this.chkEye32 = new System.Windows.Forms.CheckBox();
-            this.numEye32 = new System.Windows.Forms.NumericUpDown();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
-            this.imgBorder = new System.Windows.Forms.PictureBox();
-            this.btnRestoreAllBorder = new System.Windows.Forms.Button();
-            this.btnRestoreBorder = new System.Windows.Forms.Button();
-            this.btnSaveBorder = new System.Windows.Forms.Button();
-            this.btnLoadBorder = new System.Windows.Forms.Button();
-            this.cmbBorder = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.btnPatch = new System.Windows.Forms.Button();
+            this.btnPatcherLoad = new System.Windows.Forms.Button();
+            this.lblPatcherCurrentRenderMode = new System.Windows.Forms.Label();
+            this.lblPatcherCurrentCardSize = new System.Windows.Forms.Label();
+            this.lblPatcherCompatible = new System.Windows.Forms.Label();
+            this.lblPatcherSignature = new System.Windows.Forms.Label();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.radio1x = new System.Windows.Forms.RadioButton();
+            this.radio3x = new System.Windows.Forms.RadioButton();
+            this.radio2x = new System.Windows.Forms.RadioButton();
+            this.lblPatcherOutputSize = new System.Windows.Forms.Label();
+            this.trkCardSize = new System.Windows.Forms.TrackBar();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -109,6 +137,20 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgBackground)).BeginInit();
+            this.tabPage7.SuspendLayout();
+            this.groupBox9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).BeginInit();
+            this.splitContainer5.Panel1.SuspendLayout();
+            this.splitContainer5.Panel2.SuspendLayout();
+            this.splitContainer5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgRosterBackground)).BeginInit();
+            this.tabPage5.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
+            this.splitContainer4.Panel1.SuspendLayout();
+            this.splitContainer4.Panel2.SuspendLayout();
+            this.splitContainer4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgBorder)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
@@ -119,6 +161,10 @@
             this.tabPage3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numMouth32)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEye32)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEyeOS32)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEyebrow32)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPose32)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -129,15 +175,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgRoster)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgCard)).BeginInit();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numEyebrow32)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numEye32)).BeginInit();
-            this.tabPage5.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
-            this.splitContainer4.Panel1.SuspendLayout();
-            this.splitContainer4.Panel2.SuspendLayout();
-            this.splitContainer4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgBorder)).BeginInit();
+            this.tabPage6.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trkCardSize)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -162,7 +203,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -184,10 +225,12 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 24);
             this.tabControl1.Name = "tabControl1";
@@ -315,6 +358,247 @@
             this.label1.Size = new System.Drawing.Size(154, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Currently selected background:";
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.Controls.Add(this.groupBox9);
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Size = new System.Drawing.Size(481, 293);
+            this.tabPage7.TabIndex = 7;
+            this.tabPage7.Text = "Roster";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.splitContainer5);
+            this.groupBox9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox9.Location = new System.Drawing.Point(3, 3);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(475, 287);
+            this.groupBox9.TabIndex = 2;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Part 1: Custom roster background";
+            // 
+            // splitContainer5
+            // 
+            this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer5.Location = new System.Drawing.Point(3, 16);
+            this.splitContainer5.Name = "splitContainer5";
+            // 
+            // splitContainer5.Panel1
+            // 
+            this.splitContainer5.Panel1.Controls.Add(this.imgRosterBackground);
+            // 
+            // splitContainer5.Panel2
+            // 
+            this.splitContainer5.Panel2.Controls.Add(this.btnRosterRestoreAll);
+            this.splitContainer5.Panel2.Controls.Add(this.btnRosterRestore);
+            this.splitContainer5.Panel2.Controls.Add(this.btnRosterSave);
+            this.splitContainer5.Panel2.Controls.Add(this.btnRosterLoad);
+            this.splitContainer5.Panel2.Controls.Add(this.cmbRoster);
+            this.splitContainer5.Panel2.Controls.Add(this.label6);
+            this.splitContainer5.Size = new System.Drawing.Size(469, 268);
+            this.splitContainer5.SplitterDistance = 227;
+            this.splitContainer5.TabIndex = 0;
+            // 
+            // imgRosterBackground
+            // 
+            this.imgRosterBackground.BackColor = System.Drawing.Color.Black;
+            this.imgRosterBackground.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.imgRosterBackground.Location = new System.Drawing.Point(0, 0);
+            this.imgRosterBackground.Name = "imgRosterBackground";
+            this.imgRosterBackground.Size = new System.Drawing.Size(227, 268);
+            this.imgRosterBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imgRosterBackground.TabIndex = 0;
+            this.imgRosterBackground.TabStop = false;
+            // 
+            // btnRosterRestoreAll
+            // 
+            this.btnRosterRestoreAll.Location = new System.Drawing.Point(6, 140);
+            this.btnRosterRestoreAll.Name = "btnRosterRestoreAll";
+            this.btnRosterRestoreAll.Size = new System.Drawing.Size(75, 23);
+            this.btnRosterRestoreAll.TabIndex = 5;
+            this.btnRosterRestoreAll.Text = "Restore All";
+            this.btnRosterRestoreAll.UseVisualStyleBackColor = true;
+            this.btnRosterRestoreAll.Click += new System.EventHandler(this.btnRosterRestoreAll_Click);
+            // 
+            // btnRosterRestore
+            // 
+            this.btnRosterRestore.Location = new System.Drawing.Point(6, 111);
+            this.btnRosterRestore.Name = "btnRosterRestore";
+            this.btnRosterRestore.Size = new System.Drawing.Size(75, 23);
+            this.btnRosterRestore.TabIndex = 4;
+            this.btnRosterRestore.Text = "Restore";
+            this.btnRosterRestore.UseVisualStyleBackColor = true;
+            this.btnRosterRestore.Click += new System.EventHandler(this.btnRosterRestore_Click);
+            // 
+            // btnRosterSave
+            // 
+            this.btnRosterSave.Location = new System.Drawing.Point(6, 82);
+            this.btnRosterSave.Name = "btnRosterSave";
+            this.btnRosterSave.Size = new System.Drawing.Size(75, 23);
+            this.btnRosterSave.TabIndex = 3;
+            this.btnRosterSave.Text = "Save";
+            this.btnRosterSave.UseVisualStyleBackColor = true;
+            this.btnRosterSave.Click += new System.EventHandler(this.btnRosterSave_Click);
+            // 
+            // btnRosterLoad
+            // 
+            this.btnRosterLoad.Location = new System.Drawing.Point(6, 53);
+            this.btnRosterLoad.Name = "btnRosterLoad";
+            this.btnRosterLoad.Size = new System.Drawing.Size(75, 23);
+            this.btnRosterLoad.TabIndex = 2;
+            this.btnRosterLoad.Text = "Load";
+            this.btnRosterLoad.UseVisualStyleBackColor = true;
+            this.btnRosterLoad.Click += new System.EventHandler(this.btnRosterLoad_Click);
+            // 
+            // cmbRoster
+            // 
+            this.cmbRoster.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbRoster.FormattingEnabled = true;
+            this.cmbRoster.Items.AddRange(new object[] {
+            "Hetero",
+            "Lean Hetero",
+            "Bisexual",
+            "Lean Homo",
+            "Homo"});
+            this.cmbRoster.Location = new System.Drawing.Point(6, 26);
+            this.cmbRoster.Name = "cmbRoster";
+            this.cmbRoster.Size = new System.Drawing.Size(98, 21);
+            this.cmbRoster.TabIndex = 1;
+            this.cmbRoster.SelectedIndexChanged += new System.EventHandler(this.cmbRoster_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 10);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(154, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Currently selected background:";
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.groupBox7);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(481, 293);
+            this.tabPage5.TabIndex = 5;
+            this.tabPage5.Text = "Border";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.splitContainer4);
+            this.groupBox7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox7.Location = new System.Drawing.Point(3, 3);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(475, 287);
+            this.groupBox7.TabIndex = 0;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Part 1: Custom border";
+            // 
+            // splitContainer4
+            // 
+            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer4.Location = new System.Drawing.Point(3, 16);
+            this.splitContainer4.Name = "splitContainer4";
+            // 
+            // splitContainer4.Panel1
+            // 
+            this.splitContainer4.Panel1.Controls.Add(this.imgBorder);
+            // 
+            // splitContainer4.Panel2
+            // 
+            this.splitContainer4.Panel2.Controls.Add(this.btnRestoreAllBorder);
+            this.splitContainer4.Panel2.Controls.Add(this.btnRestoreBorder);
+            this.splitContainer4.Panel2.Controls.Add(this.btnSaveBorder);
+            this.splitContainer4.Panel2.Controls.Add(this.btnLoadBorder);
+            this.splitContainer4.Panel2.Controls.Add(this.cmbBorder);
+            this.splitContainer4.Panel2.Controls.Add(this.label5);
+            this.splitContainer4.Size = new System.Drawing.Size(469, 268);
+            this.splitContainer4.SplitterDistance = 227;
+            this.splitContainer4.TabIndex = 1;
+            // 
+            // imgBorder
+            // 
+            this.imgBorder.BackColor = System.Drawing.Color.Black;
+            this.imgBorder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.imgBorder.Location = new System.Drawing.Point(0, 0);
+            this.imgBorder.Name = "imgBorder";
+            this.imgBorder.Size = new System.Drawing.Size(227, 268);
+            this.imgBorder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imgBorder.TabIndex = 0;
+            this.imgBorder.TabStop = false;
+            // 
+            // btnRestoreAllBorder
+            // 
+            this.btnRestoreAllBorder.Location = new System.Drawing.Point(6, 140);
+            this.btnRestoreAllBorder.Name = "btnRestoreAllBorder";
+            this.btnRestoreAllBorder.Size = new System.Drawing.Size(75, 23);
+            this.btnRestoreAllBorder.TabIndex = 5;
+            this.btnRestoreAllBorder.Text = "Restore All";
+            this.btnRestoreAllBorder.UseVisualStyleBackColor = true;
+            this.btnRestoreAllBorder.Click += new System.EventHandler(this.btnRestoreAllBorder_Click);
+            // 
+            // btnRestoreBorder
+            // 
+            this.btnRestoreBorder.Location = new System.Drawing.Point(6, 111);
+            this.btnRestoreBorder.Name = "btnRestoreBorder";
+            this.btnRestoreBorder.Size = new System.Drawing.Size(75, 23);
+            this.btnRestoreBorder.TabIndex = 4;
+            this.btnRestoreBorder.Text = "Restore";
+            this.btnRestoreBorder.UseVisualStyleBackColor = true;
+            this.btnRestoreBorder.Click += new System.EventHandler(this.btnRestoreBorder_Click);
+            // 
+            // btnSaveBorder
+            // 
+            this.btnSaveBorder.Location = new System.Drawing.Point(6, 82);
+            this.btnSaveBorder.Name = "btnSaveBorder";
+            this.btnSaveBorder.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveBorder.TabIndex = 3;
+            this.btnSaveBorder.Text = "Save";
+            this.btnSaveBorder.UseVisualStyleBackColor = true;
+            this.btnSaveBorder.Click += new System.EventHandler(this.btnSaveBorder_Click);
+            // 
+            // btnLoadBorder
+            // 
+            this.btnLoadBorder.Location = new System.Drawing.Point(6, 53);
+            this.btnLoadBorder.Name = "btnLoadBorder";
+            this.btnLoadBorder.Size = new System.Drawing.Size(75, 23);
+            this.btnLoadBorder.TabIndex = 2;
+            this.btnLoadBorder.Text = "Load";
+            this.btnLoadBorder.UseVisualStyleBackColor = true;
+            this.btnLoadBorder.Click += new System.EventHandler(this.btnLoadBorder_Click);
+            // 
+            // cmbBorder
+            // 
+            this.cmbBorder.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBorder.FormattingEnabled = true;
+            this.cmbBorder.Items.AddRange(new object[] {
+            "Hetero",
+            "Lean Hetero",
+            "Bisexual",
+            "Lean Homo",
+            "Homo",
+            "Rainbow"});
+            this.cmbBorder.Location = new System.Drawing.Point(6, 26);
+            this.cmbBorder.Name = "cmbBorder";
+            this.cmbBorder.Size = new System.Drawing.Size(98, 21);
+            this.cmbBorder.TabIndex = 1;
+            this.cmbBorder.SelectedIndexChanged += new System.EventHandler(this.cmbBorder_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 10);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(127, 13);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Currently selected border:";
             // 
             // tabPage2
             // 
@@ -455,7 +739,7 @@
             this.groupBox5.Controls.Add(this.cmbFirst33);
             this.groupBox5.Controls.Add(this.label3);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox5.Location = new System.Drawing.Point(3, 155);
+            this.groupBox5.Location = new System.Drawing.Point(3, 196);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(475, 54);
             this.groupBox5.TabIndex = 2;
@@ -572,8 +856,12 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.numMouth32);
+            this.groupBox4.Controls.Add(this.chkMouth32);
             this.groupBox4.Controls.Add(this.numEye32);
             this.groupBox4.Controls.Add(this.chkEye32);
+            this.groupBox4.Controls.Add(this.numEyeOS32);
+            this.groupBox4.Controls.Add(this.chkEyeOS32);
             this.groupBox4.Controls.Add(this.chkEyebrow32);
             this.groupBox4.Controls.Add(this.chkPose32);
             this.groupBox4.Controls.Add(this.numEyebrow32);
@@ -583,14 +871,121 @@
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox4.Location = new System.Drawing.Point(3, 57);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(475, 98);
+            this.groupBox4.Size = new System.Drawing.Size(475, 139);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Part 3.2: Select pose";
             // 
+            // numMouth32
+            // 
+            this.numMouth32.Enabled = false;
+            this.numMouth32.Location = new System.Drawing.Point(115, 111);
+            this.numMouth32.Maximum = new decimal(new int[] {
+            9,
+            0,
+            0,
+            0});
+            this.numMouth32.Name = "numMouth32";
+            this.numMouth32.Size = new System.Drawing.Size(75, 20);
+            this.numMouth32.TabIndex = 11;
+            // 
+            // chkMouth32
+            // 
+            this.chkMouth32.AutoSize = true;
+            this.chkMouth32.Location = new System.Drawing.Point(9, 112);
+            this.chkMouth32.Name = "chkMouth32";
+            this.chkMouth32.Size = new System.Drawing.Size(56, 17);
+            this.chkMouth32.TabIndex = 10;
+            this.chkMouth32.Text = "Mouth";
+            this.chkMouth32.UseVisualStyleBackColor = true;
+            this.chkMouth32.CheckedChanged += new System.EventHandler(this.chkMouth32_CheckedChanged);
+            // 
+            // numEye32
+            // 
+            this.numEye32.Enabled = false;
+            this.numEye32.Location = new System.Drawing.Point(115, 88);
+            this.numEye32.Maximum = new decimal(new int[] {
+            9,
+            0,
+            0,
+            0});
+            this.numEye32.Name = "numEye32";
+            this.numEye32.Size = new System.Drawing.Size(75, 20);
+            this.numEye32.TabIndex = 9;
+            // 
+            // chkEye32
+            // 
+            this.chkEye32.AutoSize = true;
+            this.chkEye32.Location = new System.Drawing.Point(9, 89);
+            this.chkEye32.Name = "chkEye32";
+            this.chkEye32.Size = new System.Drawing.Size(44, 17);
+            this.chkEye32.TabIndex = 8;
+            this.chkEye32.Text = "Eye";
+            this.chkEye32.UseVisualStyleBackColor = true;
+            this.chkEye32.CheckedChanged += new System.EventHandler(this.chkEye32_CheckedChanged);
+            // 
+            // numEyeOS32
+            // 
+            this.numEyeOS32.Enabled = false;
+            this.numEyeOS32.Location = new System.Drawing.Point(115, 65);
+            this.numEyeOS32.Maximum = new decimal(new int[] {
+            9,
+            0,
+            0,
+            0});
+            this.numEyeOS32.Name = "numEyeOS32";
+            this.numEyeOS32.Size = new System.Drawing.Size(75, 20);
+            this.numEyeOS32.TabIndex = 7;
+            // 
+            // chkEyeOS32
+            // 
+            this.chkEyeOS32.AutoSize = true;
+            this.chkEyeOS32.Location = new System.Drawing.Point(9, 66);
+            this.chkEyeOS32.Name = "chkEyeOS32";
+            this.chkEyeOS32.Size = new System.Drawing.Size(100, 17);
+            this.chkEyeOS32.TabIndex = 6;
+            this.chkEyeOS32.Text = "Eye Open/Shut";
+            this.chkEyeOS32.UseVisualStyleBackColor = true;
+            this.chkEyeOS32.CheckedChanged += new System.EventHandler(this.chkEyeOS32_CheckedChanged);
+            // 
+            // chkEyebrow32
+            // 
+            this.chkEyebrow32.AutoSize = true;
+            this.chkEyebrow32.Location = new System.Drawing.Point(9, 43);
+            this.chkEyebrow32.Name = "chkEyebrow32";
+            this.chkEyebrow32.Size = new System.Drawing.Size(67, 17);
+            this.chkEyebrow32.TabIndex = 5;
+            this.chkEyebrow32.Text = "Eyebrow";
+            this.chkEyebrow32.UseVisualStyleBackColor = true;
+            this.chkEyebrow32.CheckedChanged += new System.EventHandler(this.chkEyebrow32_CheckedChanged);
+            // 
+            // chkPose32
+            // 
+            this.chkPose32.AutoSize = true;
+            this.chkPose32.Location = new System.Drawing.Point(9, 20);
+            this.chkPose32.Name = "chkPose32";
+            this.chkPose32.Size = new System.Drawing.Size(50, 17);
+            this.chkPose32.TabIndex = 4;
+            this.chkPose32.Text = "Pose";
+            this.chkPose32.UseVisualStyleBackColor = true;
+            this.chkPose32.CheckedChanged += new System.EventHandler(this.chkPose32_CheckedChanged);
+            // 
+            // numEyebrow32
+            // 
+            this.numEyebrow32.Enabled = false;
+            this.numEyebrow32.Location = new System.Drawing.Point(115, 42);
+            this.numEyebrow32.Maximum = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            this.numEyebrow32.Name = "numEyebrow32";
+            this.numEyebrow32.Size = new System.Drawing.Size(75, 20);
+            this.numEyebrow32.TabIndex = 3;
+            // 
             // btnRestore32
             // 
-            this.btnRestore32.Location = new System.Drawing.Point(265, 39);
+            this.btnRestore32.Location = new System.Drawing.Point(291, 62);
             this.btnRestore32.Name = "btnRestore32";
             this.btnRestore32.Size = new System.Drawing.Size(75, 23);
             this.btnRestore32.TabIndex = 2;
@@ -600,7 +995,7 @@
             // 
             // btnSet32
             // 
-            this.btnSet32.Location = new System.Drawing.Point(184, 39);
+            this.btnSet32.Location = new System.Drawing.Point(210, 62);
             this.btnSet32.Name = "btnSet32";
             this.btnSet32.Size = new System.Drawing.Size(75, 23);
             this.btnSet32.TabIndex = 1;
@@ -611,7 +1006,7 @@
             // numPose32
             // 
             this.numPose32.Enabled = false;
-            this.numPose32.Location = new System.Drawing.Point(87, 19);
+            this.numPose32.Location = new System.Drawing.Point(115, 19);
             this.numPose32.Maximum = new decimal(new int[] {
             187,
             0,
@@ -815,185 +1210,154 @@
             this.replaceCardRosterFromCardToolStripButton.Text = "Replace Roster image from Card";
             this.replaceCardRosterFromCardToolStripButton.Click += new System.EventHandler(this.replaceCardRosterFromCardToolStripButton_Click);
             // 
-            // numEyebrow32
+            // tabPage6
             // 
-            this.numEyebrow32.Enabled = false;
-            this.numEyebrow32.Location = new System.Drawing.Point(87, 42);
-            this.numEyebrow32.Maximum = new decimal(new int[] {
-            6,
-            0,
-            0,
-            0});
-            this.numEyebrow32.Name = "numEyebrow32";
-            this.numEyebrow32.Size = new System.Drawing.Size(75, 20);
-            this.numEyebrow32.TabIndex = 3;
+            this.tabPage6.Controls.Add(this.groupBox6);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(481, 293);
+            this.tabPage6.TabIndex = 6;
+            this.tabPage6.Text = "Patcher";
+            this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // chkPose32
+            // groupBox6
             // 
-            this.chkPose32.AutoSize = true;
-            this.chkPose32.Location = new System.Drawing.Point(9, 20);
-            this.chkPose32.Name = "chkPose32";
-            this.chkPose32.Size = new System.Drawing.Size(50, 17);
-            this.chkPose32.TabIndex = 4;
-            this.chkPose32.Text = "Pose";
-            this.chkPose32.UseVisualStyleBackColor = true;
-            this.chkPose32.CheckedChanged += new System.EventHandler(this.chkPose32_CheckedChanged);
+            this.groupBox6.Controls.Add(this.btnPatch);
+            this.groupBox6.Controls.Add(this.btnPatcherLoad);
+            this.groupBox6.Controls.Add(this.lblPatcherCurrentRenderMode);
+            this.groupBox6.Controls.Add(this.lblPatcherCurrentCardSize);
+            this.groupBox6.Controls.Add(this.lblPatcherCompatible);
+            this.groupBox6.Controls.Add(this.lblPatcherSignature);
+            this.groupBox6.Controls.Add(this.groupBox8);
+            this.groupBox6.Controls.Add(this.lblPatcherOutputSize);
+            this.groupBox6.Controls.Add(this.trkCardSize);
+            this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox6.Location = new System.Drawing.Point(3, 3);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(475, 287);
+            this.groupBox6.TabIndex = 0;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "AA2Edit";
             // 
-            // chkEyebrow32
+            // btnPatch
             // 
-            this.chkEyebrow32.AutoSize = true;
-            this.chkEyebrow32.Location = new System.Drawing.Point(9, 43);
-            this.chkEyebrow32.Name = "chkEyebrow32";
-            this.chkEyebrow32.Size = new System.Drawing.Size(67, 17);
-            this.chkEyebrow32.TabIndex = 5;
-            this.chkEyebrow32.Text = "Eyebrow";
-            this.chkEyebrow32.UseVisualStyleBackColor = true;
-            this.chkEyebrow32.CheckedChanged += new System.EventHandler(this.chkEyebrow32_CheckedChanged);
+            this.btnPatch.Location = new System.Drawing.Point(15, 180);
+            this.btnPatch.Name = "btnPatch";
+            this.btnPatch.Size = new System.Drawing.Size(75, 23);
+            this.btnPatch.TabIndex = 12;
+            this.btnPatch.Text = "Patch";
+            this.btnPatch.UseVisualStyleBackColor = true;
+            this.btnPatch.Click += new System.EventHandler(this.btnPatch_Click);
             // 
-            // chkEye32
+            // btnPatcherLoad
             // 
-            this.chkEye32.AutoSize = true;
-            this.chkEye32.Location = new System.Drawing.Point(9, 66);
-            this.chkEye32.Name = "chkEye32";
-            this.chkEye32.Size = new System.Drawing.Size(44, 17);
-            this.chkEye32.TabIndex = 6;
-            this.chkEye32.Text = "Eye";
-            this.chkEye32.UseVisualStyleBackColor = true;
-            this.chkEye32.CheckedChanged += new System.EventHandler(this.chkEye32_CheckedChanged);
+            this.btnPatcherLoad.Location = new System.Drawing.Point(160, 17);
+            this.btnPatcherLoad.Name = "btnPatcherLoad";
+            this.btnPatcherLoad.Size = new System.Drawing.Size(106, 23);
+            this.btnPatcherLoad.TabIndex = 11;
+            this.btnPatcherLoad.Text = "Load";
+            this.btnPatcherLoad.UseVisualStyleBackColor = true;
+            this.btnPatcherLoad.Click += new System.EventHandler(this.btnPatcherLoad_Click);
             // 
-            // numEye32
+            // lblPatcherCurrentRenderMode
             // 
-            this.numEye32.Enabled = false;
-            this.numEye32.Location = new System.Drawing.Point(87, 65);
-            this.numEye32.Maximum = new decimal(new int[] {
-            9,
-            0,
-            0,
-            0});
-            this.numEye32.Name = "numEye32";
-            this.numEye32.Size = new System.Drawing.Size(75, 20);
-            this.numEye32.TabIndex = 7;
+            this.lblPatcherCurrentRenderMode.AutoSize = true;
+            this.lblPatcherCurrentRenderMode.Location = new System.Drawing.Point(157, 144);
+            this.lblPatcherCurrentRenderMode.Name = "lblPatcherCurrentRenderMode";
+            this.lblPatcherCurrentRenderMode.Size = new System.Drawing.Size(106, 13);
+            this.lblPatcherCurrentRenderMode.TabIndex = 10;
+            this.lblPatcherCurrentRenderMode.Text = "Current render mode:";
             // 
-            // tabPage5
+            // lblPatcherCurrentCardSize
             // 
-            this.tabPage5.Controls.Add(this.groupBox7);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(481, 293);
-            this.tabPage5.TabIndex = 5;
-            this.tabPage5.Text = "Border";
-            this.tabPage5.UseVisualStyleBackColor = true;
+            this.lblPatcherCurrentCardSize.AutoSize = true;
+            this.lblPatcherCurrentCardSize.Location = new System.Drawing.Point(157, 121);
+            this.lblPatcherCurrentCardSize.Name = "lblPatcherCurrentCardSize";
+            this.lblPatcherCurrentCardSize.Size = new System.Drawing.Size(89, 13);
+            this.lblPatcherCurrentCardSize.TabIndex = 9;
+            this.lblPatcherCurrentCardSize.Text = "Current card size:";
             // 
-            // groupBox7
+            // lblPatcherCompatible
             // 
-            this.groupBox7.Controls.Add(this.splitContainer4);
-            this.groupBox7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox7.Location = new System.Drawing.Point(3, 3);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(475, 287);
-            this.groupBox7.TabIndex = 0;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Part 1: Custom border";
+            this.lblPatcherCompatible.AutoSize = true;
+            this.lblPatcherCompatible.Location = new System.Drawing.Point(157, 80);
+            this.lblPatcherCompatible.Name = "lblPatcherCompatible";
+            this.lblPatcherCompatible.Size = new System.Drawing.Size(75, 13);
+            this.lblPatcherCompatible.TabIndex = 8;
+            this.lblPatcherCompatible.Text = "Is compatible?";
             // 
-            // splitContainer4
+            // lblPatcherSignature
             // 
-            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer4.Location = new System.Drawing.Point(3, 16);
-            this.splitContainer4.Name = "splitContainer4";
+            this.lblPatcherSignature.AutoSize = true;
+            this.lblPatcherSignature.Location = new System.Drawing.Point(157, 64);
+            this.lblPatcherSignature.Name = "lblPatcherSignature";
+            this.lblPatcherSignature.Size = new System.Drawing.Size(100, 13);
+            this.lblPatcherSignature.TabIndex = 7;
+            this.lblPatcherSignature.Text = "Detected signature:";
             // 
-            // splitContainer4.Panel1
+            // groupBox8
             // 
-            this.splitContainer4.Panel1.Controls.Add(this.imgBorder);
+            this.groupBox8.Controls.Add(this.radio1x);
+            this.groupBox8.Controls.Add(this.radio3x);
+            this.groupBox8.Controls.Add(this.radio2x);
+            this.groupBox8.Location = new System.Drawing.Point(15, 79);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(136, 95);
+            this.groupBox8.TabIndex = 6;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Render mode:";
             // 
-            // splitContainer4.Panel2
+            // radio1x
             // 
-            this.splitContainer4.Panel2.Controls.Add(this.btnRestoreAllBorder);
-            this.splitContainer4.Panel2.Controls.Add(this.btnRestoreBorder);
-            this.splitContainer4.Panel2.Controls.Add(this.btnSaveBorder);
-            this.splitContainer4.Panel2.Controls.Add(this.btnLoadBorder);
-            this.splitContainer4.Panel2.Controls.Add(this.cmbBorder);
-            this.splitContainer4.Panel2.Controls.Add(this.label5);
-            this.splitContainer4.Size = new System.Drawing.Size(469, 268);
-            this.splitContainer4.SplitterDistance = 227;
-            this.splitContainer4.TabIndex = 1;
+            this.radio1x.AutoSize = true;
+            this.radio1x.Checked = true;
+            this.radio1x.Location = new System.Drawing.Point(6, 19);
+            this.radio1x.Name = "radio1x";
+            this.radio1x.Size = new System.Drawing.Size(92, 17);
+            this.radio1x.TabIndex = 2;
+            this.radio1x.TabStop = true;
+            this.radio1x.Text = "(1x) 1200x800";
+            this.radio1x.UseVisualStyleBackColor = true;
             // 
-            // imgBorder
+            // radio3x
             // 
-            this.imgBorder.BackColor = System.Drawing.Color.Black;
-            this.imgBorder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.imgBorder.Location = new System.Drawing.Point(0, 0);
-            this.imgBorder.Name = "imgBorder";
-            this.imgBorder.Size = new System.Drawing.Size(227, 268);
-            this.imgBorder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.imgBorder.TabIndex = 0;
-            this.imgBorder.TabStop = false;
+            this.radio3x.AutoSize = true;
+            this.radio3x.Enabled = false;
+            this.radio3x.Location = new System.Drawing.Point(6, 65);
+            this.radio3x.Name = "radio3x";
+            this.radio3x.Size = new System.Drawing.Size(98, 17);
+            this.radio3x.TabIndex = 5;
+            this.radio3x.Text = "(3x) 3600x2400";
+            this.radio3x.UseVisualStyleBackColor = true;
             // 
-            // btnRestoreAllBorder
+            // radio2x
             // 
-            this.btnRestoreAllBorder.Location = new System.Drawing.Point(6, 140);
-            this.btnRestoreAllBorder.Name = "btnRestoreAllBorder";
-            this.btnRestoreAllBorder.Size = new System.Drawing.Size(75, 23);
-            this.btnRestoreAllBorder.TabIndex = 5;
-            this.btnRestoreAllBorder.Text = "Restore All";
-            this.btnRestoreAllBorder.UseVisualStyleBackColor = true;
-            this.btnRestoreAllBorder.Click += new System.EventHandler(this.btnRestoreAllBorder_Click);
+            this.radio2x.AutoSize = true;
+            this.radio2x.Location = new System.Drawing.Point(6, 42);
+            this.radio2x.Name = "radio2x";
+            this.radio2x.Size = new System.Drawing.Size(98, 17);
+            this.radio2x.TabIndex = 4;
+            this.radio2x.Text = "(2x) 2400x1600";
+            this.radio2x.UseVisualStyleBackColor = true;
             // 
-            // btnRestoreBorder
+            // lblPatcherOutputSize
             // 
-            this.btnRestoreBorder.Location = new System.Drawing.Point(6, 111);
-            this.btnRestoreBorder.Name = "btnRestoreBorder";
-            this.btnRestoreBorder.Size = new System.Drawing.Size(75, 23);
-            this.btnRestoreBorder.TabIndex = 4;
-            this.btnRestoreBorder.Text = "Restore";
-            this.btnRestoreBorder.UseVisualStyleBackColor = true;
-            this.btnRestoreBorder.Click += new System.EventHandler(this.btnRestoreBorder_Click);
+            this.lblPatcherOutputSize.AutoSize = true;
+            this.lblPatcherOutputSize.Location = new System.Drawing.Point(12, 22);
+            this.lblPatcherOutputSize.Name = "lblPatcherOutputSize";
+            this.lblPatcherOutputSize.Size = new System.Drawing.Size(131, 13);
+            this.lblPatcherOutputSize.TabIndex = 1;
+            this.lblPatcherOutputSize.Text = "Output card size: 200x300";
             // 
-            // btnSaveBorder
+            // trkCardSize
             // 
-            this.btnSaveBorder.Location = new System.Drawing.Point(6, 82);
-            this.btnSaveBorder.Name = "btnSaveBorder";
-            this.btnSaveBorder.Size = new System.Drawing.Size(75, 23);
-            this.btnSaveBorder.TabIndex = 3;
-            this.btnSaveBorder.Text = "Save";
-            this.btnSaveBorder.UseVisualStyleBackColor = true;
-            this.btnSaveBorder.Click += new System.EventHandler(this.btnSaveBorder_Click);
-            // 
-            // btnLoadBorder
-            // 
-            this.btnLoadBorder.Location = new System.Drawing.Point(6, 53);
-            this.btnLoadBorder.Name = "btnLoadBorder";
-            this.btnLoadBorder.Size = new System.Drawing.Size(75, 23);
-            this.btnLoadBorder.TabIndex = 2;
-            this.btnLoadBorder.Text = "Load";
-            this.btnLoadBorder.UseVisualStyleBackColor = true;
-            this.btnLoadBorder.Click += new System.EventHandler(this.btnLoadBorder_Click);
-            // 
-            // cmbBorder
-            // 
-            this.cmbBorder.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbBorder.FormattingEnabled = true;
-            this.cmbBorder.Items.AddRange(new object[] {
-            "Hetero",
-            "Lean Hetero",
-            "Bisexual",
-            "Lean Homo",
-            "Homo",
-            "Rainbow"});
-            this.cmbBorder.Location = new System.Drawing.Point(6, 26);
-            this.cmbBorder.Name = "cmbBorder";
-            this.cmbBorder.Size = new System.Drawing.Size(98, 21);
-            this.cmbBorder.TabIndex = 1;
-            this.cmbBorder.SelectedIndexChanged += new System.EventHandler(this.cmbBorder_SelectedIndexChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 10);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(127, 13);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Currently selected border:";
+            this.trkCardSize.BackColor = System.Drawing.Color.White;
+            this.trkCardSize.Location = new System.Drawing.Point(6, 38);
+            this.trkCardSize.Name = "trkCardSize";
+            this.trkCardSize.Size = new System.Drawing.Size(145, 45);
+            this.trkCardSize.TabIndex = 0;
+            this.trkCardSize.Scroll += new System.EventHandler(this.trkCardSize_Scroll);
             // 
             // formMain
             // 
@@ -1019,6 +1383,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgBackground)).EndInit();
+            this.tabPage7.ResumeLayout(false);
+            this.groupBox9.ResumeLayout(false);
+            this.splitContainer5.Panel1.ResumeLayout(false);
+            this.splitContainer5.Panel2.ResumeLayout(false);
+            this.splitContainer5.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
+            this.splitContainer5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.imgRosterBackground)).EndInit();
+            this.tabPage5.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.splitContainer4.Panel1.ResumeLayout(false);
+            this.splitContainer4.Panel2.ResumeLayout(false);
+            this.splitContainer4.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
+            this.splitContainer4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.imgBorder)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
@@ -1032,6 +1412,10 @@
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numMouth32)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEye32)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEyeOS32)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEyebrow32)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPose32)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
@@ -1044,16 +1428,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgCard)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numEyebrow32)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numEye32)).EndInit();
-            this.tabPage5.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
-            this.splitContainer4.Panel1.ResumeLayout(false);
-            this.splitContainer4.Panel2.ResumeLayout(false);
-            this.splitContainer4.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
-            this.splitContainer4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.imgBorder)).EndInit();
+            this.tabPage6.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trkCardSize)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1117,8 +1497,8 @@
         private System.Windows.Forms.PictureBox imgCard;
         private System.Windows.Forms.ToolStripButton replaceCardRosterToolStripButton;
         private System.Windows.Forms.ToolStripButton replaceCardRosterFromCardToolStripButton;
-        private System.Windows.Forms.NumericUpDown numEye32;
-        private System.Windows.Forms.CheckBox chkEye32;
+        private System.Windows.Forms.NumericUpDown numEyeOS32;
+        private System.Windows.Forms.CheckBox chkEyeOS32;
         private System.Windows.Forms.CheckBox chkEyebrow32;
         private System.Windows.Forms.CheckBox chkPose32;
         private System.Windows.Forms.NumericUpDown numEyebrow32;
@@ -1132,6 +1512,34 @@
         private System.Windows.Forms.Button btnLoadBorder;
         private System.Windows.Forms.ComboBox cmbBorder;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.RadioButton radio1x;
+        private System.Windows.Forms.Label lblPatcherOutputSize;
+        private System.Windows.Forms.TrackBar trkCardSize;
+        private System.Windows.Forms.RadioButton radio3x;
+        private System.Windows.Forms.RadioButton radio2x;
+        private System.Windows.Forms.Label lblPatcherSignature;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Label lblPatcherCompatible;
+        private System.Windows.Forms.Label lblPatcherCurrentRenderMode;
+        private System.Windows.Forms.Label lblPatcherCurrentCardSize;
+        private System.Windows.Forms.Button btnPatch;
+        private System.Windows.Forms.Button btnPatcherLoad;
+        private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.SplitContainer splitContainer5;
+        private System.Windows.Forms.PictureBox imgRosterBackground;
+        private System.Windows.Forms.Button btnRosterRestoreAll;
+        private System.Windows.Forms.Button btnRosterRestore;
+        private System.Windows.Forms.Button btnRosterSave;
+        private System.Windows.Forms.Button btnRosterLoad;
+        private System.Windows.Forms.ComboBox cmbRoster;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.NumericUpDown numMouth32;
+        private System.Windows.Forms.CheckBox chkMouth32;
+        private System.Windows.Forms.NumericUpDown numEye32;
+        private System.Windows.Forms.CheckBox chkEye32;
     }
 }
 
