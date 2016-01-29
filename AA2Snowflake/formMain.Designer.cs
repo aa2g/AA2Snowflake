@@ -1008,7 +1008,7 @@
             this.numPose32.Enabled = false;
             this.numPose32.Location = new System.Drawing.Point(115, 19);
             this.numPose32.Maximum = new decimal(new int[] {
-            187,
+            255,
             0,
             0,
             0});
