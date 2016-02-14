@@ -1,5 +1,6 @@
 ﻿v2.0
 + Image previews now reload when saving/restoring
++ Can now set blank borders
 
 v1.2
 + Added the ability to edit some character information in the card replacer

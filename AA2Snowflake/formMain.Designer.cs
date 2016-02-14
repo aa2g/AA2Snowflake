@@ -128,6 +128,7 @@
             this.radio2x = new System.Windows.Forms.RadioButton();
             this.lblPatcherOutputSize = new System.Windows.Forms.Label();
             this.trkCardSize = new System.Windows.Forms.TrackBar();
+            this.btnSetBorderBlank = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -513,6 +514,7 @@
             // 
             // splitContainer4.Panel2
             // 
+            this.splitContainer4.Panel2.Controls.Add(this.btnSetBorderBlank);
             this.splitContainer4.Panel2.Controls.Add(this.btnRestoreAllBorder);
             this.splitContainer4.Panel2.Controls.Add(this.btnRestoreBorder);
             this.splitContainer4.Panel2.Controls.Add(this.btnSaveBorder);
@@ -1076,7 +1078,7 @@
             this.tabPage4.Controls.Add(this.toolStrip1);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(481, 293);
+            this.tabPage4.Size = new System.Drawing.Size(481, 297);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Card Replacer";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1094,7 +1096,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.imgCard);
-            this.splitContainer3.Size = new System.Drawing.Size(481, 268);
+            this.splitContainer3.Size = new System.Drawing.Size(481, 272);
             this.splitContainer3.SplitterDistance = 160;
             this.splitContainer3.TabIndex = 1;
             // 
@@ -1104,7 +1106,7 @@
             this.imgRoster.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgRoster.Location = new System.Drawing.Point(0, 0);
             this.imgRoster.Name = "imgRoster";
-            this.imgRoster.Size = new System.Drawing.Size(160, 268);
+            this.imgRoster.Size = new System.Drawing.Size(160, 272);
             this.imgRoster.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.imgRoster.TabIndex = 3;
             this.imgRoster.TabStop = false;
@@ -1115,7 +1117,7 @@
             this.imgCard.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgCard.Location = new System.Drawing.Point(0, 0);
             this.imgCard.Name = "imgCard";
-            this.imgCard.Size = new System.Drawing.Size(317, 268);
+            this.imgCard.Size = new System.Drawing.Size(317, 272);
             this.imgCard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgCard.TabIndex = 2;
             this.imgCard.TabStop = false;
@@ -1216,7 +1218,7 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(481, 293);
+            this.tabPage6.Size = new System.Drawing.Size(481, 297);
             this.tabPage6.TabIndex = 6;
             this.tabPage6.Text = "Patcher";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -1235,7 +1237,7 @@
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox6.Location = new System.Drawing.Point(3, 3);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(475, 287);
+            this.groupBox6.Size = new System.Drawing.Size(475, 291);
             this.groupBox6.TabIndex = 0;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "AA2Edit";
@@ -1358,6 +1360,16 @@
             this.trkCardSize.Size = new System.Drawing.Size(145, 45);
             this.trkCardSize.TabIndex = 0;
             this.trkCardSize.Scroll += new System.EventHandler(this.trkCardSize_Scroll);
+            // 
+            // btnSetBorderBlank
+            // 
+            this.btnSetBorderBlank.Location = new System.Drawing.Point(87, 53);
+            this.btnSetBorderBlank.Name = "btnSetBorderBlank";
+            this.btnSetBorderBlank.Size = new System.Drawing.Size(75, 23);
+            this.btnSetBorderBlank.TabIndex = 6;
+            this.btnSetBorderBlank.Text = "Set Blank";
+            this.btnSetBorderBlank.UseVisualStyleBackColor = true;
+            this.btnSetBorderBlank.Click += new System.EventHandler(this.btnSetBorderBlank_Click);
             // 
             // formMain
             // 
@@ -1540,6 +1552,7 @@
         private System.Windows.Forms.CheckBox chkMouth32;
         private System.Windows.Forms.NumericUpDown numEye32;
         private System.Windows.Forms.CheckBox chkEye32;
+        private System.Windows.Forms.Button btnSetBorderBlank;
     }
 }
 

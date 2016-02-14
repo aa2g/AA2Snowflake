@@ -302,6 +302,15 @@ namespace AA2Snowflake
             }
         }
 
+        private void btnSetBorderBlank_Click(object sender, EventArgs e)
+        {
+            borderpath = Paths.BACKUP + @"\border_blank.tga";
+            if (imgBorder.Image != null)
+                imgBorder.Image.Dispose();
+
+            imgBorder.Image = new TargaImage(borderpath).Image;
+        }
+
         private void btnSaveBorder_Click(object sender, EventArgs e)
         {
             if (!File.Exists(borderpath))
