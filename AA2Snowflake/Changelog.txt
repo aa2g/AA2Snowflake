@@ -1,4 +1,7 @@
-﻿v1.2
+﻿v2.0
++ Image previews now reload when saving/restoring
+
+v1.2
 + Added the ability to edit some character information in the card replacer
 ++ Has double capacity of the maker and ReiEdit for the bio
 + Added an AA2Edit card resolution patcher

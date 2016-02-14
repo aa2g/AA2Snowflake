@@ -49,6 +49,10 @@ namespace AA2Snowflake
 
         private void formMain_Load(object sender, EventArgs e)
         {
+            cmbBackground.SelectedIndex = 0;
+            cmbBorder.SelectedIndex = 0;
+            cmbCharacter.SelectedIndex = 0;
+            cmbRoster.SelectedIndex = 0;
             UpdateWindowState();
         }
         #endregion
@@ -119,6 +123,7 @@ namespace AA2Snowflake
             }
             HideLoadingForm();
             MessageBox.Show("Finished!");
+            cmbBackground_SelectedIndexChanged(null, null);
         }
 
         private void btnRestoreBG_Click(object sender, EventArgs e)
@@ -138,6 +143,7 @@ namespace AA2Snowflake
             }
             HideLoadingForm();
             MessageBox.Show("Finished!");
+            cmbBackground_SelectedIndexChanged(null, null);
         }
 
         private void btnRestoreAllBG_Click(object sender, EventArgs e)
@@ -157,6 +163,7 @@ namespace AA2Snowflake
             }
             HideLoadingForm();
             MessageBox.Show("Finished!");
+            cmbBackground_SelectedIndexChanged(null, null);
         }
         #endregion
         #region Roster Backgroud
@@ -214,6 +221,7 @@ namespace AA2Snowflake
             }
             HideLoadingForm();
             MessageBox.Show("Finished!");
+            cmbRoster_SelectedIndexChanged(null, null);
         }
 
         private void btnRosterRestore_Click(object sender, EventArgs e)
@@ -233,6 +241,7 @@ namespace AA2Snowflake
             }
             HideLoadingForm();
             MessageBox.Show("Finished!");
+            cmbRoster_SelectedIndexChanged(null, null);
         }
 
         private void btnRosterRestoreAll_Click(object sender, EventArgs e)
@@ -252,6 +261,7 @@ namespace AA2Snowflake
             }
             HideLoadingForm();
             MessageBox.Show("Finished!");
+            cmbRoster_SelectedIndexChanged(null, null);
         }
         #endregion
         #region Border
@@ -310,6 +320,7 @@ namespace AA2Snowflake
             }
             HideLoadingForm();
             MessageBox.Show("Finished!");
+            cmbBorder_SelectedIndexChanged(null, null);
         }
 
         private void btnRestoreBorder_Click(object sender, EventArgs e)
@@ -329,6 +340,7 @@ namespace AA2Snowflake
             }
             HideLoadingForm();
             MessageBox.Show("Finished!");
+            cmbBorder_SelectedIndexChanged(null, null);
         }
 
         private void btnRestoreAllBorder_Click(object sender, EventArgs e)
@@ -348,6 +360,7 @@ namespace AA2Snowflake
             }
             HideLoadingForm();
             MessageBox.Show("Finished!");
+            cmbBorder_SelectedIndexChanged(null, null);
         }
         #endregion
         #region Clothes
@@ -405,6 +418,7 @@ namespace AA2Snowflake
             }
             HideLoadingForm();
             MessageBox.Show("Finished!");
+            cmbCharacter_SelectedIndexChanged(null, null);
         }
 
         private void btnRestoreCHR_Click(object sender, EventArgs e)
@@ -424,6 +438,7 @@ namespace AA2Snowflake
             }
             HideLoadingForm();
             MessageBox.Show("Finished!");
+            cmbCharacter_SelectedIndexChanged(null, null);
         }
 
         private void btnRestoreAllCHR_Click(object sender, EventArgs e)
@@ -443,6 +458,7 @@ namespace AA2Snowflake
             }
             HideLoadingForm();
             MessageBox.Show("Finished!");
+            cmbCharacter_SelectedIndexChanged(null, null);
         }
         #endregion
         #region Poses
