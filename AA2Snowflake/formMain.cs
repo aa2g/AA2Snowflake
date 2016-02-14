@@ -824,5 +824,42 @@ namespace AA2Snowflake
         {
             LoadICF();
         }
+
+        private void btnSet33_Click(object sender, EventArgs e)
+        {
+            string name = "e0" + cmbMode33.SelectedIndex.ToString() + "_" + cmbPersonality33.SelectedIndex.ToString("00") + "_0" + cmbHeight33.SelectedIndex.ToString() + ".ICF";
+            var index = PP.jg2e01_00_00.Subfiles.IndexOf(PP.jg2e01_00_00.Subfiles.First(pp => pp.Name == name.ToLower()));
+
+            var icf = new ICF();
+
+            try
+            {
+                icf.Rotation.X = float.Parse(txtRotX.Text);
+                icf.Rotation.Y = float.Parse(txtRotY.Text);
+                icf.Rotation.Z = float.Parse(txtRotZ.Text);
+                icf.Zoom1 = float.Parse(txtZoom1.Text);
+                icf.Zoom2 = float.Parse(txtZoom2.Text);
+                icf.Position.X = float.Parse(txtPosX.Text);
+                icf.Position.Y = float.Parse(txtPosY.Text);
+                icf.Position.Z = float.Parse(txtPosZ.Text);
+            }
+            catch (Exception ex) when (ex is FormatException || ex is ArgumentNullException)
+            {
+                MessageBox.Show("Error: One or more of the values are not valid number(s).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            var sub = new MemSubfile(new MemoryStream(icf.Export()), name);
+            PP.jg2e01_00_00.Subfiles[index] = sub;
+            var back = PP.jg2e01_00_00.WriteArchive(PP.jg2e01_00_00.FilePath, false, "bak", true);
+            ShowLoadingForm();
+            back.RunWorkerAsync();
+            while (back.IsBusy)
+            {
+                Application.DoEvents();
+            }
+            HideLoadingForm();
+            MessageBox.Show("Finished!");
+#warning add restore capability
+        }
     }
 }

@@ -811,6 +811,7 @@
             this.chkEye32.Text = "Eye";
             this.chkEye32.UseVisualStyleBackColor = true;
             this.chkEye32.CheckedChanged += new System.EventHandler(this.chkEye32_CheckedChanged);
+            this.btnSet33.Click += new System.EventHandler(this.btnSet33_Click);
             // 
             // numEyeOS32
             // 
