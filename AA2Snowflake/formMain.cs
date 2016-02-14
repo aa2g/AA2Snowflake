@@ -67,6 +67,11 @@ namespace AA2Snowflake
         {
             System.Diagnostics.Process.Start("https://github.com/aa2g/AA2Snowflake/wiki/Snowflake-Guide-v3");
         }
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (formAbout about = new formAbout())
+                about.ShowDialog();
+        }
         #endregion
 
         #region Background
@@ -604,7 +609,76 @@ namespace AA2Snowflake
         }
         #endregion
         #region 3.3
+        public void LoadICF()
+        {
+            if (cmbHeight33.SelectedIndex < 0 || cmbMode33.SelectedIndex < 0 || cmbPersonality33.SelectedIndex < 0)
+                return;
 
+            string name = "e0" + cmbMode33.SelectedIndex.ToString() + "_" + cmbPersonality33.SelectedIndex.ToString("00") + "_0" + cmbHeight33.SelectedIndex.ToString() + ".ICF";
+            var sub = PP.jg2e01_00_00.Subfiles.First(pp => pp.Name == name.ToLower());
+            var icf = new ICF(Tools.GetStreamFromSubfile(sub));
+
+            txtRotX.Text = icf.Rotation.X.ToString();
+            txtRotY.Text = icf.Rotation.Y.ToString();
+            txtRotZ.Text = icf.Rotation.Z.ToString();
+            txtZoom1.Text = icf.Zoom1.ToString();
+            txtZoom2.Text = icf.Zoom2.ToString();
+            txtPosX.Text = icf.Position.X.ToString();
+            txtPosY.Text = icf.Position.Y.ToString();
+            txtPosZ.Text = icf.Position.Z.ToString();
+        }
+
+        private void cmbPersonality33_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadICF();
+        }
+
+        private void cmbHeight33_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadICF();
+        }
+
+        private void cmbMode33_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadICF();
+        }
+
+        private void btnSet33_Click(object sender, EventArgs e)
+        {
+            string name = "e0" + cmbMode33.SelectedIndex.ToString() + "_" + cmbPersonality33.SelectedIndex.ToString("00") + "_0" + cmbHeight33.SelectedIndex.ToString() + ".ICF";
+            var index = PP.jg2e01_00_00.Subfiles.IndexOf(PP.jg2e01_00_00.Subfiles.First(pp => pp.Name == name.ToLower()));
+
+            var icf = new ICF();
+
+            try
+            {
+                icf.Rotation.X = float.Parse(txtRotX.Text);
+                icf.Rotation.Y = float.Parse(txtRotY.Text);
+                icf.Rotation.Z = float.Parse(txtRotZ.Text);
+                icf.Zoom1 = float.Parse(txtZoom1.Text);
+                icf.Zoom2 = float.Parse(txtZoom2.Text);
+                icf.Position.X = float.Parse(txtPosX.Text);
+                icf.Position.Y = float.Parse(txtPosY.Text);
+                icf.Position.Z = float.Parse(txtPosZ.Text);
+            }
+            catch (Exception ex) when (ex is FormatException || ex is ArgumentNullException)
+            {
+                MessageBox.Show("Error: One or more of the values are not valid number(s).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            var sub = new MemSubfile(new MemoryStream(icf.Export()), name);
+            PP.jg2e01_00_00.Subfiles[index] = sub;
+            var back = PP.jg2e01_00_00.WriteArchive(PP.jg2e01_00_00.FilePath, false, "bak", true);
+            ShowLoadingForm();
+            back.RunWorkerAsync();
+            while (back.IsBusy)
+            {
+                Application.DoEvents();
+            }
+            HideLoadingForm();
+            MessageBox.Show("Finished!");
+#warning add restore capability
+        }
         #endregion
         #endregion
         #region Card Face
@@ -784,82 +858,5 @@ namespace AA2Snowflake
             }
         }
         #endregion
-
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            using (formAbout about = new formAbout())
-                about.ShowDialog();
-        }
-
-        public void LoadICF()
-        {
-            if (cmbHeight33.SelectedIndex < 0 || cmbMode33.SelectedIndex < 0 || cmbPersonality33.SelectedIndex < 0)
-                return;
-
-            string name = "e0" + cmbMode33.SelectedIndex.ToString() + "_" + cmbPersonality33.SelectedIndex.ToString("00") + "_0" + cmbHeight33.SelectedIndex.ToString() + ".ICF";
-            var sub = PP.jg2e01_00_00.Subfiles.First(pp => pp.Name == name.ToLower());
-            var icf = new ICF(Tools.GetStreamFromSubfile(sub));
-
-            txtRotX.Text = icf.Rotation.X.ToString();
-            txtRotY.Text = icf.Rotation.Y.ToString();
-            txtRotZ.Text = icf.Rotation.Z.ToString();
-            txtZoom1.Text = icf.Zoom1.ToString();
-            txtZoom2.Text = icf.Zoom2.ToString();
-            txtPosX.Text = icf.Position.X.ToString();
-            txtPosY.Text = icf.Position.Y.ToString();
-            txtPosZ.Text = icf.Position.Z.ToString();
-        }
-
-        private void cmbPersonality33_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            LoadICF();
-        }
-
-        private void cmbHeight33_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            LoadICF();
-        }
-
-        private void cmbMode33_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            LoadICF();
-        }
-
-        private void btnSet33_Click(object sender, EventArgs e)
-        {
-            string name = "e0" + cmbMode33.SelectedIndex.ToString() + "_" + cmbPersonality33.SelectedIndex.ToString("00") + "_0" + cmbHeight33.SelectedIndex.ToString() + ".ICF";
-            var index = PP.jg2e01_00_00.Subfiles.IndexOf(PP.jg2e01_00_00.Subfiles.First(pp => pp.Name == name.ToLower()));
-
-            var icf = new ICF();
-
-            try
-            {
-                icf.Rotation.X = float.Parse(txtRotX.Text);
-                icf.Rotation.Y = float.Parse(txtRotY.Text);
-                icf.Rotation.Z = float.Parse(txtRotZ.Text);
-                icf.Zoom1 = float.Parse(txtZoom1.Text);
-                icf.Zoom2 = float.Parse(txtZoom2.Text);
-                icf.Position.X = float.Parse(txtPosX.Text);
-                icf.Position.Y = float.Parse(txtPosY.Text);
-                icf.Position.Z = float.Parse(txtPosZ.Text);
-            }
-            catch (Exception ex) when (ex is FormatException || ex is ArgumentNullException)
-            {
-                MessageBox.Show("Error: One or more of the values are not valid number(s).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            var sub = new MemSubfile(new MemoryStream(icf.Export()), name);
-            PP.jg2e01_00_00.Subfiles[index] = sub;
-            var back = PP.jg2e01_00_00.WriteArchive(PP.jg2e01_00_00.FilePath, false, "bak", true);
-            ShowLoadingForm();
-            back.RunWorkerAsync();
-            while (back.IsBusy)
-            {
-                Application.DoEvents();
-            }
-            HideLoadingForm();
-            MessageBox.Show("Finished!");
-#warning add restore capability
-        }
     }
 }
