@@ -73,5 +73,19 @@ namespace AA2Snowflake
             if (card != null)
                 card.data.RAINBOW_CARD = chkRainbow.Checked;
         }
+
+        private void btnCloth_Click(object sender, EventArgs e)
+        {
+            using (var file = new OpenFileDialog())
+            {
+                file.Filter = "Cloth file (*.cloth)|*.cloth";
+                file.Multiselect = false;
+                if (file.ShowDialog() == DialogResult.OK)
+                {
+                    card.data.CLOTH_UNIFORM = new AA2Cloth(System.IO.File.ReadAllBytes(file.FileName));
+                    MessageBox.Show("Loaded successfully!");
+                }
+            }
+        }
     }
 }

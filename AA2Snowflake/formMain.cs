@@ -19,9 +19,7 @@ namespace AA2Snowflake
     public partial class formMain : Form
     {
 #warning use DevIL.NET instead of this shitty tga class
-#warning add a toolbox form for editing character metadata
 #warning add support for append + custom personalities
-#warning add crash dialog and about dialog
 #warning load .cloth files
 
         #region Form
@@ -650,30 +648,6 @@ namespace AA2Snowflake
         private string cardpath;
         private void openToolStripButton_Click(object sender, EventArgs e)
         {
-            OpenCardFile();
-            UpdateWindowState();
-        }
-
-        private void saveToolStripButton_Click(object sender, EventArgs e)
-        {
-            SaveCardFile();
-            UpdateWindowState();
-        }
-
-        private void saveAsToolStripButton_Click(object sender, EventArgs e)
-        {
-            SaveAsCardFile();
-            UpdateWindowState();
-        }
-
-        private void replaceCardFaceToolStripButton_Click(object sender, EventArgs e)
-        {
-            ReplaceCardFace();
-            UpdateWindowState();
-        }
-
-        private void OpenCardFile()
-        {
             using (var file = new OpenFileDialog())
             {
                 file.Filter = "AA2 Card files (*.png)|*.png";
@@ -689,14 +663,14 @@ namespace AA2Snowflake
             UpdateWindowState();
         }
 
-        private void SaveCardFile()
+        private void saveToolStripButton_Click(object sender, EventArgs e)
         {
             if (cardpath != null && info.card != null)
                 File.WriteAllBytes(cardpath, info.card.raw);
             UpdateWindowState();
         }
 
-        private void SaveAsCardFile()
+        private void saveAsToolStripButton_Click(object sender, EventArgs e)
         {
             if (cardpath != null && info.card != null)
                 using (var file = new SaveFileDialog())
@@ -711,7 +685,7 @@ namespace AA2Snowflake
             UpdateWindowState();
         }
 
-        private void ReplaceCardFace()
+        private void replaceCardFaceToolStripButton_Click(object sender, EventArgs e)
         {
             if (cardpath != null && info.card != null)
                 using (var file = new OpenFileDialog())

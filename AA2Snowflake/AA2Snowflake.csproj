@@ -72,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CRC32.cs" />
+    <Compile Include="CustomDictionary.cs" />
     <Compile Include="formAbout.cs">
       <SubType>Form</SubType>
     </Compile>

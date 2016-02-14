@@ -11,9 +11,7 @@ namespace AA2Data
         public static byte[] ResizeByteArray(byte[] array, int length)
         {
             byte[] b = new byte[length];
-#warning use array.copy() instead of for loops
-            for (int i = 0; i < Math.Min(array.Length, length); i++)
-                b[i] = array[i];
+            Array.Copy(array, b, length);
             return b;
         }
     }
@@ -208,12 +206,17 @@ namespace AA2Data
 
     public class AA2Cloth : BaseData
     {
-        public override int dataLength => 92;
-#warning finish implementation
+        public override int dataLength => 91;
 
         public AA2Cloth(BaseData b)
         {
-            this.raw = b.raw;
+            raw = b.raw;
+        }
+
+        public AA2Cloth(byte[] data)
+        {
+            raw = new byte[dataLength];
+            Array.Copy(data, 1, raw, 0, 91);
         }
     }
 
@@ -221,7 +224,6 @@ namespace AA2Data
     {
         Bool,
         Byte,
-        Int16,
         Int32,
         String,
         StringEx,

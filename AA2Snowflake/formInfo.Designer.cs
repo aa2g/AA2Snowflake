@@ -40,6 +40,7 @@
             this.chkRainbow = new System.Windows.Forms.CheckBox();
             this.lblBio = new System.Windows.Forms.Label();
             this.txtBio = new System.Windows.Forms.TextBox();
+            this.btnCloth = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -183,11 +184,22 @@
             this.txtBio.TabIndex = 10;
             this.txtBio.TextChanged += new System.EventHandler(this.txtBio_TextChanged);
             // 
+            // btnCloth
+            // 
+            this.btnCloth.Location = new System.Drawing.Point(197, 85);
+            this.btnCloth.Name = "btnCloth";
+            this.btnCloth.Size = new System.Drawing.Size(75, 23);
+            this.btnCloth.TabIndex = 11;
+            this.btnCloth.Text = "Load .cloth";
+            this.btnCloth.UseVisualStyleBackColor = true;
+            this.btnCloth.Click += new System.EventHandler(this.btnCloth_Click);
+            // 
             // formInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.btnCloth);
             this.Controls.Add(this.txtBio);
             this.Controls.Add(this.lblBio);
             this.Controls.Add(this.chkRainbow);
@@ -221,5 +233,6 @@
         public System.Windows.Forms.ComboBox cmbPersonality;
         public System.Windows.Forms.CheckBox chkRainbow;
         public System.Windows.Forms.TextBox txtBio;
+        private System.Windows.Forms.Button btnCloth;
     }
 }
