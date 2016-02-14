@@ -62,6 +62,8 @@
     <Compile Include="AA2Card.cs" />
     <Compile Include="AA2Data.cs" />
     <Compile Include="CardReader.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="ICF.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

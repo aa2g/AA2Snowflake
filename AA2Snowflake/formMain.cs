@@ -20,7 +20,7 @@ namespace AA2Snowflake
     {
 #warning use DevIL.NET instead of this shitty tga class
 #warning add support for append + custom personalities
-#warning load .cloth files
+#warning add blush values
 
         #region Form
         public formLoad load = new formLoad();
@@ -51,6 +51,9 @@ namespace AA2Snowflake
             cmbBorder.SelectedIndex = 0;
             cmbCharacter.SelectedIndex = 0;
             cmbRoster.SelectedIndex = 0;
+            cmbPersonality33.SelectedIndex = 0;
+            cmbHeight33.SelectedIndex = 0;
+            cmbMode33.SelectedIndex = 0;
             UpdateWindowState();
         }
         #endregion
@@ -601,45 +604,6 @@ namespace AA2Snowflake
         }
         #endregion
         #region 3.3
-        private void btnSet33_Click(object sender, EventArgs e)
-        {
-            if (cmbFirst33.SelectedIndex < 0 ||
-                cmbSecond33.SelectedIndex < 0)
-                return;
-
-            var index = PP.jg2e06_00_00.Subfiles.IndexOf(PP.jg2e06_00_00.Subfiles.First(pp => pp.Name == "sp_04_00_" + cmbSecond33.SelectedIndex.ToString().PadLeft(2, '0') + ".tga"));
-            var sub = new Subfile(Paths.Nature + @"\sp_04_00_" + cmbFirst33.SelectedIndex.ToString().PadLeft(2, '0') + ".tga");
-            sub.Name = "sp_04_00_" + cmbSecond33.SelectedIndex.ToString().PadLeft(2, '0') + ".tga";
-            PP.jg2e06_00_00.Subfiles[index] = sub;
-            var back = PP.jg2e06_00_00.WriteArchive(PP.jg2e06_00_00.FilePath, false, "bak", true);
-            ShowLoadingForm();
-            back.RunWorkerAsync();
-            while (back.IsBusy)
-            {
-                Application.DoEvents();
-            }
-            HideLoadingForm();
-            MessageBox.Show("Finished!");
-        }
-
-        private void btnRestoreAll33_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < 25; i++)
-            {
-                var index = PP.jg2e06_00_00.Subfiles.IndexOf(PP.jg2e06_00_00.Subfiles.First(pp => pp.Name == "sp_04_00_" + i.ToString().PadLeft(2, '0') + ".tga"));
-                var sub = new Subfile(Paths.Nature + @"\sp_04_00_" + i.ToString().PadLeft(2, '0') + ".tga");
-                PP.jg2e06_00_00.Subfiles[index] = sub;
-            }
-            var back = PP.jg2e06_00_00.WriteArchive(PP.jg2e06_00_00.FilePath, false, "bak", true);
-            ShowLoadingForm();
-            back.RunWorkerAsync();
-            while (back.IsBusy)
-            {
-                Application.DoEvents();
-            }
-            HideLoadingForm();
-            MessageBox.Show("Finished!");
-        }
 
         #endregion
         #endregion
@@ -825,6 +789,40 @@ namespace AA2Snowflake
         {
             using (formAbout about = new formAbout())
                 about.ShowDialog();
+        }
+
+        public void LoadICF()
+        {
+            if (cmbHeight33.SelectedIndex < 0 || cmbMode33.SelectedIndex < 0 || cmbPersonality33.SelectedIndex < 0)
+                return;
+
+            string name = "e0" + cmbMode33.SelectedIndex.ToString() + "_" + cmbPersonality33.SelectedIndex.ToString("00") + "_0" + cmbHeight33.SelectedIndex.ToString() + ".ICF";
+            var sub = PP.jg2e01_00_00.Subfiles.First(pp => pp.Name == name.ToLower());
+            var icf = new ICF(Tools.GetStreamFromSubfile(sub));
+
+            txtRotX.Text = icf.Rotation.X.ToString();
+            txtRotY.Text = icf.Rotation.Y.ToString();
+            txtRotZ.Text = icf.Rotation.Z.ToString();
+            txtZoom1.Text = icf.Zoom1.ToString();
+            txtZoom2.Text = icf.Zoom2.ToString();
+            txtPosX.Text = icf.Position.X.ToString();
+            txtPosY.Text = icf.Position.Y.ToString();
+            txtPosZ.Text = icf.Position.Z.ToString();
+        }
+
+        private void cmbPersonality33_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadICF();
+        }
+
+        private void cmbHeight33_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadICF();
+        }
+
+        private void cmbMode33_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadICF();
         }
     }
 }

@@ -74,12 +74,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.btnRestoreAll33 = new System.Windows.Forms.Button();
-            this.btnSet33 = new System.Windows.Forms.Button();
-            this.cmbSecond33 = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cmbFirst33 = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.numMouth32 = new System.Windows.Forms.NumericUpDown();
             this.chkMouth32 = new System.Windows.Forms.CheckBox();
@@ -117,6 +111,8 @@
             this.radio2x = new System.Windows.Forms.RadioButton();
             this.lblPatcherOutputSize = new System.Windows.Forms.Label();
             this.trkCardSize = new System.Windows.Forms.TrackBar();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.imgBackground = new System.Windows.Forms.PictureBox();
             this.imgRosterBackground = new System.Windows.Forms.PictureBox();
             this.imgBorder = new System.Windows.Forms.PictureBox();
@@ -129,8 +125,29 @@
             this.replaceCardFaceToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.replaceCardRosterToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.replaceCardRosterFromCardToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.cmbPersonality33 = new System.Windows.Forms.ComboBox();
+            this.cmbHeight33 = new System.Windows.Forms.ComboBox();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtRotX = new System.Windows.Forms.TextBox();
+            this.txtRotY = new System.Windows.Forms.TextBox();
+            this.txtRotZ = new System.Windows.Forms.TextBox();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.txtPosZ = new System.Windows.Forms.TextBox();
+            this.txtPosY = new System.Windows.Forms.TextBox();
+            this.txtPosX = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtZoom1 = new System.Windows.Forms.TextBox();
+            this.txtZoom2 = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.btnRestore33 = new System.Windows.Forms.Button();
+            this.btnSet33 = new System.Windows.Forms.Button();
+            this.cmbMode33 = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -182,6 +199,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgCharacter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgRoster)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgCard)).BeginInit();
+            this.groupBox10.SuspendLayout();
+            this.groupBox11.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -206,7 +225,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -240,7 +259,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 24);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(489, 319);
+            this.tabControl1.Size = new System.Drawing.Size(489, 433);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -249,7 +268,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(481, 293);
+            this.tabPage1.Size = new System.Drawing.Size(481, 407);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Background";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -260,7 +279,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(475, 287);
+            this.groupBox1.Size = new System.Drawing.Size(475, 401);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Part 1: Custom background";
@@ -283,7 +302,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.btnLoadBG);
             this.splitContainer1.Panel2.Controls.Add(this.cmbBackground);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
-            this.splitContainer1.Size = new System.Drawing.Size(469, 268);
+            this.splitContainer1.Size = new System.Drawing.Size(469, 382);
             this.splitContainer1.SplitterDistance = 227;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -359,7 +378,7 @@
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(481, 293);
+            this.tabPage7.Size = new System.Drawing.Size(481, 407);
             this.tabPage7.TabIndex = 7;
             this.tabPage7.Text = "Roster";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -370,7 +389,7 @@
             this.groupBox9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox9.Location = new System.Drawing.Point(3, 3);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(475, 287);
+            this.groupBox9.Size = new System.Drawing.Size(475, 401);
             this.groupBox9.TabIndex = 2;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Part 1: Custom roster background";
@@ -393,7 +412,7 @@
             this.splitContainer5.Panel2.Controls.Add(this.btnRosterLoad);
             this.splitContainer5.Panel2.Controls.Add(this.cmbRoster);
             this.splitContainer5.Panel2.Controls.Add(this.label6);
-            this.splitContainer5.Size = new System.Drawing.Size(469, 268);
+            this.splitContainer5.Size = new System.Drawing.Size(469, 382);
             this.splitContainer5.SplitterDistance = 227;
             this.splitContainer5.TabIndex = 0;
             // 
@@ -468,7 +487,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(481, 293);
+            this.tabPage5.Size = new System.Drawing.Size(481, 407);
             this.tabPage5.TabIndex = 5;
             this.tabPage5.Text = "Border";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -479,7 +498,7 @@
             this.groupBox7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox7.Location = new System.Drawing.Point(3, 3);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(475, 287);
+            this.groupBox7.Size = new System.Drawing.Size(475, 401);
             this.groupBox7.TabIndex = 0;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Part 1: Custom border";
@@ -503,7 +522,7 @@
             this.splitContainer4.Panel2.Controls.Add(this.btnLoadBorder);
             this.splitContainer4.Panel2.Controls.Add(this.cmbBorder);
             this.splitContainer4.Panel2.Controls.Add(this.label5);
-            this.splitContainer4.Size = new System.Drawing.Size(469, 268);
+            this.splitContainer4.Size = new System.Drawing.Size(469, 382);
             this.splitContainer4.SplitterDistance = 227;
             this.splitContainer4.TabIndex = 1;
             // 
@@ -589,7 +608,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(481, 293);
+            this.tabPage2.Size = new System.Drawing.Size(481, 407);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Clothes";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -600,7 +619,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(475, 287);
+            this.groupBox2.Size = new System.Drawing.Size(475, 401);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Part 2: Assigning clothes";
@@ -623,7 +642,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.btnLoadCHR);
             this.splitContainer2.Panel2.Controls.Add(this.cmbCharacter);
             this.splitContainer2.Panel2.Controls.Add(this.label2);
-            this.splitContainer2.Size = new System.Drawing.Size(469, 268);
+            this.splitContainer2.Size = new System.Drawing.Size(469, 382);
             this.splitContainer2.SplitterDistance = 227;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -697,134 +716,31 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(481, 293);
+            this.tabPage3.Size = new System.Drawing.Size(481, 407);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Poses";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.btnRestoreAll33);
+            this.groupBox5.Controls.Add(this.cmbMode33);
+            this.groupBox5.Controls.Add(this.btnRestore33);
+            this.groupBox5.Controls.Add(this.txtZoom2);
             this.groupBox5.Controls.Add(this.btnSet33);
-            this.groupBox5.Controls.Add(this.cmbSecond33);
-            this.groupBox5.Controls.Add(this.label4);
-            this.groupBox5.Controls.Add(this.cmbFirst33);
-            this.groupBox5.Controls.Add(this.label3);
+            this.groupBox5.Controls.Add(this.label12);
+            this.groupBox5.Controls.Add(this.txtZoom1);
+            this.groupBox5.Controls.Add(this.label11);
+            this.groupBox5.Controls.Add(this.groupBox11);
+            this.groupBox5.Controls.Add(this.groupBox10);
+            this.groupBox5.Controls.Add(this.cmbHeight33);
+            this.groupBox5.Controls.Add(this.cmbPersonality33);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox5.Location = new System.Drawing.Point(3, 196);
+            this.groupBox5.Location = new System.Drawing.Point(3, 199);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(475, 54);
+            this.groupBox5.Size = new System.Drawing.Size(475, 208);
             this.groupBox5.TabIndex = 2;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Part 3.3: Change displayed personality";
-            // 
-            // btnRestoreAll33
-            // 
-            this.btnRestoreAll33.Location = new System.Drawing.Point(331, 18);
-            this.btnRestoreAll33.Name = "btnRestoreAll33";
-            this.btnRestoreAll33.Size = new System.Drawing.Size(75, 23);
-            this.btnRestoreAll33.TabIndex = 3;
-            this.btnRestoreAll33.Text = "Restore All";
-            this.btnRestoreAll33.UseVisualStyleBackColor = true;
-            this.btnRestoreAll33.Click += new System.EventHandler(this.btnRestoreAll33_Click);
-            // 
-            // btnSet33
-            // 
-            this.btnSet33.Location = new System.Drawing.Point(250, 18);
-            this.btnSet33.Name = "btnSet33";
-            this.btnSet33.Size = new System.Drawing.Size(75, 23);
-            this.btnSet33.TabIndex = 4;
-            this.btnSet33.Text = "Set";
-            this.btnSet33.UseVisualStyleBackColor = true;
-            this.btnSet33.Click += new System.EventHandler(this.btnSet33_Click);
-            // 
-            // cmbSecond33
-            // 
-            this.cmbSecond33.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSecond33.FormattingEnabled = true;
-            this.cmbSecond33.Items.AddRange(new object[] {
-            "(00) Lively",
-            "(01) Delicate",
-            "(02) Cheerful",
-            "(03) Quiet",
-            "(04) Playful",
-            "(05) Frisky",
-            "(06) Kind",
-            "(07) Joyful",
-            "(08) Ordinary",
-            "(09) Irritated",
-            "(10) Harsh",
-            "(11) Sweet",
-            "(12) Creepy",
-            "(13) Reserved",
-            "(14) Dignified",
-            "(15) Aloof",
-            "(16) Smart",
-            "(17) Genuine",
-            "(18) Mature",
-            "(19) Lazy",
-            "(20) Manly",
-            "(21) Gentle",
-            "(22) Positive",
-            "(23) Otaku",
-            "(24) Savage"});
-            this.cmbSecond33.Location = new System.Drawing.Point(159, 19);
-            this.cmbSecond33.Name = "cmbSecond33";
-            this.cmbSecond33.Size = new System.Drawing.Size(85, 21);
-            this.cmbSecond33.TabIndex = 3;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(135, 22);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(18, 13);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "as";
-            // 
-            // cmbFirst33
-            // 
-            this.cmbFirst33.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbFirst33.FormattingEnabled = true;
-            this.cmbFirst33.Items.AddRange(new object[] {
-            "(00) Lively",
-            "(01) Delicate",
-            "(02) Cheerful",
-            "(03) Quiet",
-            "(04) Playful",
-            "(05) Frisky",
-            "(06) Kind",
-            "(07) Joyful",
-            "(08) Ordinary",
-            "(09) Irritated",
-            "(10) Harsh",
-            "(11) Sweet",
-            "(12) Creepy",
-            "(13) Reserved",
-            "(14) Dignified",
-            "(15) Aloof",
-            "(16) Smart",
-            "(17) Genuine",
-            "(18) Mature",
-            "(19) Lazy",
-            "(20) Manly",
-            "(21) Gentle",
-            "(22) Positive",
-            "(23) Otaku",
-            "(24) Savage"});
-            this.cmbFirst33.Location = new System.Drawing.Point(44, 19);
-            this.cmbFirst33.Name = "cmbFirst33";
-            this.cmbFirst33.Size = new System.Drawing.Size(85, 21);
-            this.cmbFirst33.TabIndex = 1;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 22);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Save";
+            this.groupBox5.Text = "Part 3.3: Change camera position";
             // 
             // groupBox4
             // 
@@ -843,7 +759,7 @@
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox4.Location = new System.Drawing.Point(3, 57);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(475, 139);
+            this.groupBox4.Size = new System.Drawing.Size(475, 142);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Part 3.2: Select pose";
@@ -1048,7 +964,7 @@
             this.tabPage4.Controls.Add(this.toolStrip1);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(481, 293);
+            this.tabPage4.Size = new System.Drawing.Size(481, 407);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Card Replacer";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1066,7 +982,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.imgCard);
-            this.splitContainer3.Size = new System.Drawing.Size(481, 268);
+            this.splitContainer3.Size = new System.Drawing.Size(481, 382);
             this.splitContainer3.SplitterDistance = 160;
             this.splitContainer3.TabIndex = 1;
             // 
@@ -1106,7 +1022,7 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(481, 293);
+            this.tabPage6.Size = new System.Drawing.Size(481, 407);
             this.tabPage6.TabIndex = 6;
             this.tabPage6.Text = "Patcher";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -1125,7 +1041,7 @@
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox6.Location = new System.Drawing.Point(3, 3);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(475, 287);
+            this.groupBox6.Size = new System.Drawing.Size(475, 401);
             this.groupBox6.TabIndex = 0;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "AA2Edit";
@@ -1249,13 +1165,25 @@
             this.trkCardSize.TabIndex = 0;
             this.trkCardSize.Scroll += new System.EventHandler(this.trkCardSize_Scroll);
             // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(159, 6);
+            // 
             // imgBackground
             // 
             this.imgBackground.BackColor = System.Drawing.Color.Black;
             this.imgBackground.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgBackground.Location = new System.Drawing.Point(0, 0);
             this.imgBackground.Name = "imgBackground";
-            this.imgBackground.Size = new System.Drawing.Size(227, 268);
+            this.imgBackground.Size = new System.Drawing.Size(227, 382);
             this.imgBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgBackground.TabIndex = 0;
             this.imgBackground.TabStop = false;
@@ -1266,7 +1194,7 @@
             this.imgRosterBackground.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgRosterBackground.Location = new System.Drawing.Point(0, 0);
             this.imgRosterBackground.Name = "imgRosterBackground";
-            this.imgRosterBackground.Size = new System.Drawing.Size(227, 268);
+            this.imgRosterBackground.Size = new System.Drawing.Size(227, 382);
             this.imgRosterBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgRosterBackground.TabIndex = 0;
             this.imgRosterBackground.TabStop = false;
@@ -1277,7 +1205,7 @@
             this.imgBorder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgBorder.Location = new System.Drawing.Point(0, 0);
             this.imgBorder.Name = "imgBorder";
-            this.imgBorder.Size = new System.Drawing.Size(227, 268);
+            this.imgBorder.Size = new System.Drawing.Size(227, 382);
             this.imgBorder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgBorder.TabIndex = 0;
             this.imgBorder.TabStop = false;
@@ -1288,7 +1216,7 @@
             this.imgCharacter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgCharacter.Location = new System.Drawing.Point(0, 0);
             this.imgCharacter.Name = "imgCharacter";
-            this.imgCharacter.Size = new System.Drawing.Size(227, 268);
+            this.imgCharacter.Size = new System.Drawing.Size(227, 382);
             this.imgCharacter.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgCharacter.TabIndex = 0;
             this.imgCharacter.TabStop = false;
@@ -1299,7 +1227,7 @@
             this.imgRoster.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgRoster.Location = new System.Drawing.Point(0, 0);
             this.imgRoster.Name = "imgRoster";
-            this.imgRoster.Size = new System.Drawing.Size(160, 268);
+            this.imgRoster.Size = new System.Drawing.Size(160, 382);
             this.imgRoster.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.imgRoster.TabIndex = 3;
             this.imgRoster.TabStop = false;
@@ -1310,7 +1238,7 @@
             this.imgCard.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgCard.Location = new System.Drawing.Point(0, 0);
             this.imgCard.Name = "imgCard";
-            this.imgCard.Size = new System.Drawing.Size(317, 268);
+            this.imgCard.Size = new System.Drawing.Size(317, 382);
             this.imgCard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgCard.TabIndex = 2;
             this.imgCard.TabStop = false;
@@ -1375,28 +1303,260 @@
             this.replaceCardRosterFromCardToolStripButton.Text = "Replace Roster image from Card";
             this.replaceCardRosterFromCardToolStripButton.Click += new System.EventHandler(this.replaceCardRosterFromCardToolStripButton_Click);
             // 
-            // aboutToolStripMenuItem
+            // cmbPersonality33
             // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.aboutToolStripMenuItem.Text = "About";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            this.cmbPersonality33.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPersonality33.FormattingEnabled = true;
+            this.cmbPersonality33.Items.AddRange(new object[] {
+            "(00) Lively",
+            "(01) Delicate",
+            "(02) Cheerful",
+            "(03) Quiet",
+            "(04) Playful",
+            "(05) Frisky",
+            "(06) Kind",
+            "(07) Joyful",
+            "(08) Ordinary",
+            "(09) Irritated",
+            "(10) Harsh",
+            "(11) Sweet",
+            "(12) Creepy",
+            "(13) Reserved",
+            "(14) Dignified",
+            "(15) Aloof",
+            "(16) Smart",
+            "(17) Genuine",
+            "(18) Mature",
+            "(19) Lazy",
+            "(20) Manly",
+            "(21) Gentle",
+            "(22) Positive",
+            "(23) Otaku",
+            "(24) Savage",
+            "(25) Cadet",
+            "(26) Caring",
+            "(27) Schemer",
+            "(28) Carefree",
+            "(29) Warm"});
+            this.cmbPersonality33.Location = new System.Drawing.Point(11, 19);
+            this.cmbPersonality33.Name = "cmbPersonality33";
+            this.cmbPersonality33.Size = new System.Drawing.Size(125, 21);
+            this.cmbPersonality33.TabIndex = 8;
+            this.cmbPersonality33.SelectedIndexChanged += new System.EventHandler(this.cmbPersonality33_SelectedIndexChanged);
             // 
-            // toolStripSeparator2
+            // cmbHeight33
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(159, 6);
+            this.cmbHeight33.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbHeight33.FormattingEnabled = true;
+            this.cmbHeight33.Items.AddRange(new object[] {
+            "(00) Short",
+            "(01) Normal",
+            "(02) Tall"});
+            this.cmbHeight33.Location = new System.Drawing.Point(142, 19);
+            this.cmbHeight33.Name = "cmbHeight33";
+            this.cmbHeight33.Size = new System.Drawing.Size(121, 21);
+            this.cmbHeight33.TabIndex = 9;
+            this.cmbHeight33.SelectedIndexChanged += new System.EventHandler(this.cmbHeight33_SelectedIndexChanged);
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.txtRotZ);
+            this.groupBox10.Controls.Add(this.txtRotY);
+            this.groupBox10.Controls.Add(this.txtRotX);
+            this.groupBox10.Controls.Add(this.label7);
+            this.groupBox10.Controls.Add(this.label4);
+            this.groupBox10.Controls.Add(this.label3);
+            this.groupBox10.Location = new System.Drawing.Point(11, 46);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(191, 100);
+            this.groupBox10.TabIndex = 10;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Rotation";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 22);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(14, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "X";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(10, 48);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(14, 13);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Y";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(10, 74);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(14, 13);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Z";
+            // 
+            // txtRotX
+            // 
+            this.txtRotX.Location = new System.Drawing.Point(30, 19);
+            this.txtRotX.Name = "txtRotX";
+            this.txtRotX.Size = new System.Drawing.Size(149, 20);
+            this.txtRotX.TabIndex = 3;
+            // 
+            // txtRotY
+            // 
+            this.txtRotY.Location = new System.Drawing.Point(30, 45);
+            this.txtRotY.Name = "txtRotY";
+            this.txtRotY.Size = new System.Drawing.Size(149, 20);
+            this.txtRotY.TabIndex = 4;
+            // 
+            // txtRotZ
+            // 
+            this.txtRotZ.Location = new System.Drawing.Point(30, 71);
+            this.txtRotZ.Name = "txtRotZ";
+            this.txtRotZ.Size = new System.Drawing.Size(149, 20);
+            this.txtRotZ.TabIndex = 5;
+            // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.txtPosZ);
+            this.groupBox11.Controls.Add(this.txtPosY);
+            this.groupBox11.Controls.Add(this.txtPosX);
+            this.groupBox11.Controls.Add(this.label8);
+            this.groupBox11.Controls.Add(this.label9);
+            this.groupBox11.Controls.Add(this.label10);
+            this.groupBox11.Location = new System.Drawing.Point(210, 46);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(191, 100);
+            this.groupBox11.TabIndex = 11;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Position";
+            // 
+            // txtPosZ
+            // 
+            this.txtPosZ.Location = new System.Drawing.Point(30, 71);
+            this.txtPosZ.Name = "txtPosZ";
+            this.txtPosZ.Size = new System.Drawing.Size(149, 20);
+            this.txtPosZ.TabIndex = 5;
+            // 
+            // txtPosY
+            // 
+            this.txtPosY.Location = new System.Drawing.Point(30, 45);
+            this.txtPosY.Name = "txtPosY";
+            this.txtPosY.Size = new System.Drawing.Size(149, 20);
+            this.txtPosY.TabIndex = 4;
+            // 
+            // txtPosX
+            // 
+            this.txtPosX.Location = new System.Drawing.Point(30, 19);
+            this.txtPosX.Name = "txtPosX";
+            this.txtPosX.Size = new System.Drawing.Size(149, 20);
+            this.txtPosX.TabIndex = 3;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(10, 74);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(14, 13);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "Z";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(10, 48);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(14, 13);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "Y";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(10, 22);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(14, 13);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "X";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(13, 155);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(46, 13);
+            this.label11.TabIndex = 6;
+            this.label11.Text = "Zoom 1:";
+            // 
+            // txtZoom1
+            // 
+            this.txtZoom1.Location = new System.Drawing.Point(65, 152);
+            this.txtZoom1.Name = "txtZoom1";
+            this.txtZoom1.Size = new System.Drawing.Size(149, 20);
+            this.txtZoom1.TabIndex = 6;
+            // 
+            // txtZoom2
+            // 
+            this.txtZoom2.Location = new System.Drawing.Point(65, 178);
+            this.txtZoom2.Name = "txtZoom2";
+            this.txtZoom2.Size = new System.Drawing.Size(149, 20);
+            this.txtZoom2.TabIndex = 12;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(13, 181);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(46, 13);
+            this.label12.TabIndex = 13;
+            this.label12.Text = "Zoom 2:";
+            // 
+            // btnRestore33
+            // 
+            this.btnRestore33.Location = new System.Drawing.Point(318, 164);
+            this.btnRestore33.Name = "btnRestore33";
+            this.btnRestore33.Size = new System.Drawing.Size(75, 23);
+            this.btnRestore33.TabIndex = 13;
+            this.btnRestore33.Text = "Restore";
+            this.btnRestore33.UseVisualStyleBackColor = true;
+            // 
+            // btnSet33
+            // 
+            this.btnSet33.Location = new System.Drawing.Point(237, 164);
+            this.btnSet33.Name = "btnSet33";
+            this.btnSet33.Size = new System.Drawing.Size(75, 23);
+            this.btnSet33.TabIndex = 12;
+            this.btnSet33.Text = "Set";
+            this.btnSet33.UseVisualStyleBackColor = true;
+            // 
+            // cmbMode33
+            // 
+            this.cmbMode33.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMode33.FormattingEnabled = true;
+            this.cmbMode33.Items.AddRange(new object[] {
+            "(00) Main Card",
+            "(01) Class Portrait"});
+            this.cmbMode33.Location = new System.Drawing.Point(269, 19);
+            this.cmbMode33.Name = "cmbMode33";
+            this.cmbMode33.Size = new System.Drawing.Size(121, 21);
+            this.cmbMode33.TabIndex = 14;
+            this.cmbMode33.SelectedIndexChanged += new System.EventHandler(this.cmbMode33_SelectedIndexChanged);
             // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(489, 343);
+            this.ClientSize = new System.Drawing.Size(489, 457);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(505, 382);
+            this.MinimumSize = new System.Drawing.Size(505, 496);
             this.Name = "formMain";
             this.Text = "AA2Snowflake";
             this.Load += new System.EventHandler(this.formMain_Load);
@@ -1462,6 +1622,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgCharacter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgRoster)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgCard)).EndInit();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1505,12 +1669,6 @@
         private System.Windows.Forms.Button btnSet32;
         private System.Windows.Forms.NumericUpDown numPose32;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button btnRestoreAll33;
-        private System.Windows.Forms.Button btnSet33;
-        private System.Windows.Forms.ComboBox cmbSecond33;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cmbFirst33;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton openToolStripButton;
@@ -1571,6 +1729,29 @@
         private System.Windows.Forms.Button btnSetBorderBlank;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        public System.Windows.Forms.ComboBox cmbPersonality33;
+        private System.Windows.Forms.ComboBox cmbHeight33;
+        private System.Windows.Forms.Button btnRestore33;
+        private System.Windows.Forms.TextBox txtZoom2;
+        private System.Windows.Forms.Button btnSet33;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtZoom1;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.TextBox txtPosZ;
+        private System.Windows.Forms.TextBox txtPosY;
+        private System.Windows.Forms.TextBox txtPosX;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.TextBox txtRotZ;
+        private System.Windows.Forms.TextBox txtRotY;
+        private System.Windows.Forms.TextBox txtRotX;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cmbMode33;
     }
 }
 
