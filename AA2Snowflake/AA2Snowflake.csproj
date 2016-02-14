@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AA2Snowflake</RootNamespace>
     <AssemblyName>AA2Snowflake</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
@@ -72,6 +72,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CRC32.cs" />
+    <Compile Include="formAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formAbout.Designer.cs">
+      <DependentUpon>formAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formCrash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formCrash.Designer.cs">
+      <DependentUpon>formCrash.cs</DependentUpon>
+    </Compile>
     <Compile Include="formInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +108,12 @@
     <Compile Include="ResPatcher.cs" />
     <Compile Include="TGAFormat.cs" />
     <Compile Include="Tools.cs" />
+    <EmbeddedResource Include="formAbout.resx">
+      <DependentUpon>formAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formCrash.resx">
+      <DependentUpon>formCrash.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formInfo.resx">
       <DependentUpon>formInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -192,7 +210,8 @@
     <Content Include="backup\sp_04_03_04.bmp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Changelog.txt" />
+    <None Include="Resources\burn.png" />
+    <EmbeddedResource Include="Changelog.txt" />
     <Content Include="nature\sp_04_00_00.tga">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -281,6 +300,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\aa2snowflake.ico" />
+    <None Include="Resources\snowflake.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AA2Data\AA2Data.csproj">

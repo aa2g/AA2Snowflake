@@ -7,6 +7,8 @@ using System.IO;
 using SB3Utility;
 using AA2Install;
 using Microsoft.VisualBasic.FileIO;
+using System.Drawing;
+using Paloma;
 
 namespace AA2Snowflake
 {
@@ -87,6 +89,26 @@ namespace AA2Snowflake
             }
 
             return new MemSubfile(new MemoryStream(ShiftJIS.GetBytes(str.ToString())), lst.Name);
+        }
+
+        public static Bitmap LoadTGA(Stream stream)
+        {
+            Bitmap bit;
+            using (TargaImage t = new TargaImage(stream))
+            using (Bitmap b = t.Image)
+                bit = (Bitmap)t.Image.Clone();
+
+            return bit;
+        }
+
+        public static Bitmap LoadTGA(string filename)
+        {
+            Bitmap bit;
+            using (TargaImage t = new TargaImage(filename))
+            using (Bitmap b = t.Image)
+                bit = (Bitmap)t.Image.Clone();
+
+            return bit;
         }
     }
 

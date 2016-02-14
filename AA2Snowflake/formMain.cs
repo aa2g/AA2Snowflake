@@ -18,11 +18,11 @@ namespace AA2Snowflake
 {
     public partial class formMain : Form
     {
-#warning add a blank button for border editor
 #warning use DevIL.NET instead of this shitty tga class
 #warning add a toolbox form for editing character metadata
 #warning add support for append + custom personalities
 #warning add crash dialog and about dialog
+#warning load .cloth files
 
         #region Form
         public formLoad load = new formLoad();
@@ -166,7 +166,7 @@ namespace AA2Snowflake
             cmbBackground_SelectedIndexChanged(null, null);
         }
         #endregion
-        #region Roster Backgroud
+        #region Roster Background
         string rosterpath;
 
         private void cmbRoster_SelectedIndexChanged(object sender, EventArgs e)
@@ -275,9 +275,8 @@ namespace AA2Snowflake
             {
                 if (imgBorder.Image != null)
                     imgBorder.Image.Dispose();
-                
-                using (TargaImage t = new TargaImage(mem))
-                    imgBorder.Image = new Bitmap(t.Image);
+
+                imgBorder.Image = Tools.LoadTGA(mem);
             }
         }
 
@@ -297,7 +296,7 @@ namespace AA2Snowflake
                     if (imgBorder.Image != null)
                         imgBorder.Image.Dispose();
 
-                    imgBorder.Image = new TargaImage(file.FileName).Image;
+                    imgBorder.Image = Tools.LoadTGA(file.FileName);
                 }
             }
         }
@@ -308,7 +307,7 @@ namespace AA2Snowflake
             if (imgBorder.Image != null)
                 imgBorder.Image.Dispose();
 
-            imgBorder.Image = new TargaImage(borderpath).Image;
+            imgBorder.Image = Tools.LoadTGA(borderpath);
         }
 
         private void btnSaveBorder_Click(object sender, EventArgs e)
@@ -829,7 +828,6 @@ namespace AA2Snowflake
             cardsize = new Size(200 + (trkCardSize.Value * 60), 300 + (trkCardSize.Value * 90));
             lblPatcherOutputSize.Text = "Output card size: " + cardsize.Width.ToString() + "x" + cardsize.Height.ToString();
         }
-        #endregion
 
         private void btnPatch_Click(object sender, EventArgs e)
         {
@@ -846,6 +844,13 @@ namespace AA2Snowflake
 
                 MessageBox.Show("Finished!");
             }
+        }
+        #endregion
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (formAbout about = new formAbout())
+                about.ShowDialog();
         }
     }
 }

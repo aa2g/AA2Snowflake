@@ -38,7 +38,6 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.imgBackground = new System.Windows.Forms.PictureBox();
             this.btnRestoreAllBG = new System.Windows.Forms.Button();
             this.btnRestoreBG = new System.Windows.Forms.Button();
             this.btnSaveBG = new System.Windows.Forms.Button();
@@ -48,7 +47,6 @@
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
-            this.imgRosterBackground = new System.Windows.Forms.PictureBox();
             this.btnRosterRestoreAll = new System.Windows.Forms.Button();
             this.btnRosterRestore = new System.Windows.Forms.Button();
             this.btnRosterSave = new System.Windows.Forms.Button();
@@ -58,7 +56,7 @@
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
-            this.imgBorder = new System.Windows.Forms.PictureBox();
+            this.btnSetBorderBlank = new System.Windows.Forms.Button();
             this.btnRestoreAllBorder = new System.Windows.Forms.Button();
             this.btnRestoreBorder = new System.Windows.Forms.Button();
             this.btnSaveBorder = new System.Windows.Forms.Button();
@@ -68,7 +66,6 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.imgCharacter = new System.Windows.Forms.PictureBox();
             this.btnRestoreAllCHR = new System.Windows.Forms.Button();
             this.btnRestoreCHR = new System.Windows.Forms.Button();
             this.btnSaveCHR = new System.Windows.Forms.Button();
@@ -103,17 +100,9 @@
             this.btnBackup31 = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.imgRoster = new System.Windows.Forms.PictureBox();
-            this.imgCard = new System.Windows.Forms.PictureBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.lblDimensions = new System.Windows.Forms.ToolStripLabel();
-            this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.saveAsToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.replaceCardFaceToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.replaceCardRosterToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.replaceCardRosterFromCardToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btnPatch = new System.Windows.Forms.Button();
@@ -128,7 +117,20 @@
             this.radio2x = new System.Windows.Forms.RadioButton();
             this.lblPatcherOutputSize = new System.Windows.Forms.Label();
             this.trkCardSize = new System.Windows.Forms.TrackBar();
-            this.btnSetBorderBlank = new System.Windows.Forms.Button();
+            this.imgBackground = new System.Windows.Forms.PictureBox();
+            this.imgRosterBackground = new System.Windows.Forms.PictureBox();
+            this.imgBorder = new System.Windows.Forms.PictureBox();
+            this.imgCharacter = new System.Windows.Forms.PictureBox();
+            this.imgRoster = new System.Windows.Forms.PictureBox();
+            this.imgCard = new System.Windows.Forms.PictureBox();
+            this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.saveAsToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.replaceCardFaceToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.replaceCardRosterToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.replaceCardRosterFromCardToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -137,28 +139,24 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgBackground)).BeginInit();
             this.tabPage7.SuspendLayout();
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).BeginInit();
             this.splitContainer5.Panel1.SuspendLayout();
             this.splitContainer5.Panel2.SuspendLayout();
             this.splitContainer5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgRosterBackground)).BeginInit();
             this.tabPage5.SuspendLayout();
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
             this.splitContainer4.Panel1.SuspendLayout();
             this.splitContainer4.Panel2.SuspendLayout();
             this.splitContainer4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgBorder)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgCharacter)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -173,13 +171,17 @@
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgRoster)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgCard)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trkCardSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgBackground)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgRosterBackground)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgBorder)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgCharacter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgRoster)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgCard)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -204,13 +206,15 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem,
+            this.toolStripSeparator2,
             this.snowflakeGuideToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
@@ -282,17 +286,6 @@
             this.splitContainer1.Size = new System.Drawing.Size(469, 268);
             this.splitContainer1.SplitterDistance = 227;
             this.splitContainer1.TabIndex = 0;
-            // 
-            // imgBackground
-            // 
-            this.imgBackground.BackColor = System.Drawing.Color.Black;
-            this.imgBackground.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.imgBackground.Location = new System.Drawing.Point(0, 0);
-            this.imgBackground.Name = "imgBackground";
-            this.imgBackground.Size = new System.Drawing.Size(227, 268);
-            this.imgBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.imgBackground.TabIndex = 0;
-            this.imgBackground.TabStop = false;
             // 
             // btnRestoreAllBG
             // 
@@ -404,17 +397,6 @@
             this.splitContainer5.SplitterDistance = 227;
             this.splitContainer5.TabIndex = 0;
             // 
-            // imgRosterBackground
-            // 
-            this.imgRosterBackground.BackColor = System.Drawing.Color.Black;
-            this.imgRosterBackground.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.imgRosterBackground.Location = new System.Drawing.Point(0, 0);
-            this.imgRosterBackground.Name = "imgRosterBackground";
-            this.imgRosterBackground.Size = new System.Drawing.Size(227, 268);
-            this.imgRosterBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.imgRosterBackground.TabIndex = 0;
-            this.imgRosterBackground.TabStop = false;
-            // 
             // btnRosterRestoreAll
             // 
             this.btnRosterRestoreAll.Location = new System.Drawing.Point(6, 140);
@@ -525,16 +507,15 @@
             this.splitContainer4.SplitterDistance = 227;
             this.splitContainer4.TabIndex = 1;
             // 
-            // imgBorder
+            // btnSetBorderBlank
             // 
-            this.imgBorder.BackColor = System.Drawing.Color.Black;
-            this.imgBorder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.imgBorder.Location = new System.Drawing.Point(0, 0);
-            this.imgBorder.Name = "imgBorder";
-            this.imgBorder.Size = new System.Drawing.Size(227, 268);
-            this.imgBorder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.imgBorder.TabIndex = 0;
-            this.imgBorder.TabStop = false;
+            this.btnSetBorderBlank.Location = new System.Drawing.Point(87, 53);
+            this.btnSetBorderBlank.Name = "btnSetBorderBlank";
+            this.btnSetBorderBlank.Size = new System.Drawing.Size(75, 23);
+            this.btnSetBorderBlank.TabIndex = 6;
+            this.btnSetBorderBlank.Text = "Set Blank";
+            this.btnSetBorderBlank.UseVisualStyleBackColor = true;
+            this.btnSetBorderBlank.Click += new System.EventHandler(this.btnSetBorderBlank_Click);
             // 
             // btnRestoreAllBorder
             // 
@@ -645,17 +626,6 @@
             this.splitContainer2.Size = new System.Drawing.Size(469, 268);
             this.splitContainer2.SplitterDistance = 227;
             this.splitContainer2.TabIndex = 0;
-            // 
-            // imgCharacter
-            // 
-            this.imgCharacter.BackColor = System.Drawing.Color.Black;
-            this.imgCharacter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.imgCharacter.Location = new System.Drawing.Point(0, 0);
-            this.imgCharacter.Name = "imgCharacter";
-            this.imgCharacter.Size = new System.Drawing.Size(227, 268);
-            this.imgCharacter.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.imgCharacter.TabIndex = 0;
-            this.imgCharacter.TabStop = false;
             // 
             // btnRestoreAllCHR
             // 
@@ -1078,7 +1048,7 @@
             this.tabPage4.Controls.Add(this.toolStrip1);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(481, 297);
+            this.tabPage4.Size = new System.Drawing.Size(481, 293);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Card Replacer";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1096,31 +1066,9 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.imgCard);
-            this.splitContainer3.Size = new System.Drawing.Size(481, 272);
+            this.splitContainer3.Size = new System.Drawing.Size(481, 268);
             this.splitContainer3.SplitterDistance = 160;
             this.splitContainer3.TabIndex = 1;
-            // 
-            // imgRoster
-            // 
-            this.imgRoster.BackColor = System.Drawing.Color.Black;
-            this.imgRoster.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.imgRoster.Location = new System.Drawing.Point(0, 0);
-            this.imgRoster.Name = "imgRoster";
-            this.imgRoster.Size = new System.Drawing.Size(160, 272);
-            this.imgRoster.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.imgRoster.TabIndex = 3;
-            this.imgRoster.TabStop = false;
-            // 
-            // imgCard
-            // 
-            this.imgCard.BackColor = System.Drawing.Color.Black;
-            this.imgCard.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.imgCard.Location = new System.Drawing.Point(0, 0);
-            this.imgCard.Name = "imgCard";
-            this.imgCard.Size = new System.Drawing.Size(317, 272);
-            this.imgCard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.imgCard.TabIndex = 2;
-            this.imgCard.TabStop = false;
             // 
             // toolStrip1
             // 
@@ -1140,16 +1088,6 @@
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // openToolStripButton
-            // 
-            this.openToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.openToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("openToolStripButton.Image")));
-            this.openToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.openToolStripButton.Name = "openToolStripButton";
-            this.openToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.openToolStripButton.Text = "&Open";
-            this.openToolStripButton.Click += new System.EventHandler(this.openToolStripButton_Click);
-            // 
             // lblDimensions
             // 
             this.lblDimensions.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -1157,60 +1095,10 @@
             this.lblDimensions.Size = new System.Drawing.Size(33, 22);
             this.lblDimensions.Text = "[0, 0]";
             // 
-            // saveToolStripButton
-            // 
-            this.saveToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.saveToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripButton.Image")));
-            this.saveToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.saveToolStripButton.Name = "saveToolStripButton";
-            this.saveToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.saveToolStripButton.Text = "&Save";
-            this.saveToolStripButton.Click += new System.EventHandler(this.saveToolStripButton_Click);
-            // 
-            // saveAsToolStripButton
-            // 
-            this.saveAsToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.saveAsToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("saveAsToolStripButton.Image")));
-            this.saveAsToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.saveAsToolStripButton.Name = "saveAsToolStripButton";
-            this.saveAsToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.saveAsToolStripButton.Text = "Save &As";
-            this.saveAsToolStripButton.Click += new System.EventHandler(this.saveAsToolStripButton_Click);
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // replaceCardFaceToolStripButton
-            // 
-            this.replaceCardFaceToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.replaceCardFaceToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("replaceCardFaceToolStripButton.Image")));
-            this.replaceCardFaceToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.replaceCardFaceToolStripButton.Name = "replaceCardFaceToolStripButton";
-            this.replaceCardFaceToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.replaceCardFaceToolStripButton.Text = "&Replace Card Face";
-            this.replaceCardFaceToolStripButton.Click += new System.EventHandler(this.replaceCardFaceToolStripButton_Click);
-            // 
-            // replaceCardRosterToolStripButton
-            // 
-            this.replaceCardRosterToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.replaceCardRosterToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("replaceCardRosterToolStripButton.Image")));
-            this.replaceCardRosterToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.replaceCardRosterToolStripButton.Name = "replaceCardRosterToolStripButton";
-            this.replaceCardRosterToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.replaceCardRosterToolStripButton.Text = "Replace Roster image from PNG";
-            this.replaceCardRosterToolStripButton.Click += new System.EventHandler(this.replaceCardRosterToolStripButton_Click);
-            // 
-            // replaceCardRosterFromCardToolStripButton
-            // 
-            this.replaceCardRosterFromCardToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.replaceCardRosterFromCardToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("replaceCardRosterFromCardToolStripButton.Image")));
-            this.replaceCardRosterFromCardToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.replaceCardRosterFromCardToolStripButton.Name = "replaceCardRosterFromCardToolStripButton";
-            this.replaceCardRosterFromCardToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.replaceCardRosterFromCardToolStripButton.Text = "Replace Roster image from Card";
-            this.replaceCardRosterFromCardToolStripButton.Click += new System.EventHandler(this.replaceCardRosterFromCardToolStripButton_Click);
             // 
             // tabPage6
             // 
@@ -1218,7 +1106,7 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(481, 297);
+            this.tabPage6.Size = new System.Drawing.Size(481, 293);
             this.tabPage6.TabIndex = 6;
             this.tabPage6.Text = "Patcher";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -1237,7 +1125,7 @@
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox6.Location = new System.Drawing.Point(3, 3);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(475, 291);
+            this.groupBox6.Size = new System.Drawing.Size(475, 287);
             this.groupBox6.TabIndex = 0;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "AA2Edit";
@@ -1361,15 +1249,143 @@
             this.trkCardSize.TabIndex = 0;
             this.trkCardSize.Scroll += new System.EventHandler(this.trkCardSize_Scroll);
             // 
-            // btnSetBorderBlank
+            // imgBackground
             // 
-            this.btnSetBorderBlank.Location = new System.Drawing.Point(87, 53);
-            this.btnSetBorderBlank.Name = "btnSetBorderBlank";
-            this.btnSetBorderBlank.Size = new System.Drawing.Size(75, 23);
-            this.btnSetBorderBlank.TabIndex = 6;
-            this.btnSetBorderBlank.Text = "Set Blank";
-            this.btnSetBorderBlank.UseVisualStyleBackColor = true;
-            this.btnSetBorderBlank.Click += new System.EventHandler(this.btnSetBorderBlank_Click);
+            this.imgBackground.BackColor = System.Drawing.Color.Black;
+            this.imgBackground.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.imgBackground.Location = new System.Drawing.Point(0, 0);
+            this.imgBackground.Name = "imgBackground";
+            this.imgBackground.Size = new System.Drawing.Size(227, 268);
+            this.imgBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imgBackground.TabIndex = 0;
+            this.imgBackground.TabStop = false;
+            // 
+            // imgRosterBackground
+            // 
+            this.imgRosterBackground.BackColor = System.Drawing.Color.Black;
+            this.imgRosterBackground.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.imgRosterBackground.Location = new System.Drawing.Point(0, 0);
+            this.imgRosterBackground.Name = "imgRosterBackground";
+            this.imgRosterBackground.Size = new System.Drawing.Size(227, 268);
+            this.imgRosterBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imgRosterBackground.TabIndex = 0;
+            this.imgRosterBackground.TabStop = false;
+            // 
+            // imgBorder
+            // 
+            this.imgBorder.BackColor = System.Drawing.Color.Black;
+            this.imgBorder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.imgBorder.Location = new System.Drawing.Point(0, 0);
+            this.imgBorder.Name = "imgBorder";
+            this.imgBorder.Size = new System.Drawing.Size(227, 268);
+            this.imgBorder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imgBorder.TabIndex = 0;
+            this.imgBorder.TabStop = false;
+            // 
+            // imgCharacter
+            // 
+            this.imgCharacter.BackColor = System.Drawing.Color.Black;
+            this.imgCharacter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.imgCharacter.Location = new System.Drawing.Point(0, 0);
+            this.imgCharacter.Name = "imgCharacter";
+            this.imgCharacter.Size = new System.Drawing.Size(227, 268);
+            this.imgCharacter.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imgCharacter.TabIndex = 0;
+            this.imgCharacter.TabStop = false;
+            // 
+            // imgRoster
+            // 
+            this.imgRoster.BackColor = System.Drawing.Color.Black;
+            this.imgRoster.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.imgRoster.Location = new System.Drawing.Point(0, 0);
+            this.imgRoster.Name = "imgRoster";
+            this.imgRoster.Size = new System.Drawing.Size(160, 268);
+            this.imgRoster.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.imgRoster.TabIndex = 3;
+            this.imgRoster.TabStop = false;
+            // 
+            // imgCard
+            // 
+            this.imgCard.BackColor = System.Drawing.Color.Black;
+            this.imgCard.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.imgCard.Location = new System.Drawing.Point(0, 0);
+            this.imgCard.Name = "imgCard";
+            this.imgCard.Size = new System.Drawing.Size(317, 268);
+            this.imgCard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imgCard.TabIndex = 2;
+            this.imgCard.TabStop = false;
+            // 
+            // openToolStripButton
+            // 
+            this.openToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.openToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("openToolStripButton.Image")));
+            this.openToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.openToolStripButton.Name = "openToolStripButton";
+            this.openToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.openToolStripButton.Text = "&Open";
+            this.openToolStripButton.Click += new System.EventHandler(this.openToolStripButton_Click);
+            // 
+            // saveToolStripButton
+            // 
+            this.saveToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.saveToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripButton.Image")));
+            this.saveToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.saveToolStripButton.Name = "saveToolStripButton";
+            this.saveToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.saveToolStripButton.Text = "&Save";
+            this.saveToolStripButton.Click += new System.EventHandler(this.saveToolStripButton_Click);
+            // 
+            // saveAsToolStripButton
+            // 
+            this.saveAsToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.saveAsToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("saveAsToolStripButton.Image")));
+            this.saveAsToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.saveAsToolStripButton.Name = "saveAsToolStripButton";
+            this.saveAsToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.saveAsToolStripButton.Text = "Save &As";
+            this.saveAsToolStripButton.Click += new System.EventHandler(this.saveAsToolStripButton_Click);
+            // 
+            // replaceCardFaceToolStripButton
+            // 
+            this.replaceCardFaceToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.replaceCardFaceToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("replaceCardFaceToolStripButton.Image")));
+            this.replaceCardFaceToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.replaceCardFaceToolStripButton.Name = "replaceCardFaceToolStripButton";
+            this.replaceCardFaceToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.replaceCardFaceToolStripButton.Text = "&Replace Card Face";
+            this.replaceCardFaceToolStripButton.Click += new System.EventHandler(this.replaceCardFaceToolStripButton_Click);
+            // 
+            // replaceCardRosterToolStripButton
+            // 
+            this.replaceCardRosterToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.replaceCardRosterToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("replaceCardRosterToolStripButton.Image")));
+            this.replaceCardRosterToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.replaceCardRosterToolStripButton.Name = "replaceCardRosterToolStripButton";
+            this.replaceCardRosterToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.replaceCardRosterToolStripButton.Text = "Replace Roster image from PNG";
+            this.replaceCardRosterToolStripButton.Click += new System.EventHandler(this.replaceCardRosterToolStripButton_Click);
+            // 
+            // replaceCardRosterFromCardToolStripButton
+            // 
+            this.replaceCardRosterFromCardToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.replaceCardRosterFromCardToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("replaceCardRosterFromCardToolStripButton.Image")));
+            this.replaceCardRosterFromCardToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.replaceCardRosterFromCardToolStripButton.Name = "replaceCardRosterFromCardToolStripButton";
+            this.replaceCardRosterFromCardToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.replaceCardRosterFromCardToolStripButton.Text = "Replace Roster image from Card";
+            this.replaceCardRosterFromCardToolStripButton.Click += new System.EventHandler(this.replaceCardRosterFromCardToolStripButton_Click);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(159, 6);
             // 
             // formMain
             // 
@@ -1394,7 +1410,6 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.imgBackground)).EndInit();
             this.tabPage7.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             this.splitContainer5.Panel1.ResumeLayout(false);
@@ -1402,7 +1417,6 @@
             this.splitContainer5.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
             this.splitContainer5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.imgRosterBackground)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.splitContainer4.Panel1.ResumeLayout(false);
@@ -1410,7 +1424,6 @@
             this.splitContainer4.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.imgBorder)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
@@ -1418,7 +1431,6 @@
             this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.imgCharacter)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
@@ -1436,8 +1448,6 @@
             this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.imgRoster)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgCard)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.tabPage6.ResumeLayout(false);
@@ -1446,6 +1456,12 @@
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trkCardSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgBackground)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgRosterBackground)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgBorder)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgCharacter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgRoster)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgCard)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1553,6 +1569,8 @@
         private System.Windows.Forms.NumericUpDown numEye32;
         private System.Windows.Forms.CheckBox chkEye32;
         private System.Windows.Forms.Button btnSetBorderBlank;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }
 
