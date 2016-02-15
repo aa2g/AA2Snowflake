@@ -609,14 +609,33 @@ namespace AA2Snowflake
         }
         #endregion
         #region 3.3
+        public ICF[,,] ICFBackup;
+        public static ICF[,,] GenerateICFBackup()
+        {
+#warning implement append/custom personalities and fix these static values
+            ICF[,,] output = new ICF[25, 3, 2];
+            for (int personality = 0; personality < 25; personality++)
+                for (int height = 0; height < 3; height++)
+                    for (int mode = 0; mode < 2; mode++)
+                    {
+                        string name = "e" + mode.ToString("00") + "_" + personality.ToString("00") + "_" + height.ToString("00") + ".ICF";
+                        var sub = PP.jg2e01_00_00.Subfiles.First(pp => pp.Name == name.ToLower());
+                        using (MemoryStream mem = Tools.GetStreamFromSubfile(sub))
+                            output[personality, height, mode] = new ICF(mem);
+                    }
+            return output;
+        }
+
         public void LoadICF()
         {
             if (cmbHeight33.SelectedIndex < 0 || cmbMode33.SelectedIndex < 0 || cmbPersonality33.SelectedIndex < 0)
                 return;
 
-            string name = "e0" + cmbMode33.SelectedIndex.ToString() + "_" + cmbPersonality33.SelectedIndex.ToString("00") + "_0" + cmbHeight33.SelectedIndex.ToString() + ".ICF";
+            string name = "e" + cmbMode33.SelectedIndex.ToString("00") + "_" + cmbPersonality33.SelectedIndex.ToString("00") + "_" + cmbHeight33.SelectedIndex.ToString("00") + ".ICF";
             var sub = PP.jg2e01_00_00.Subfiles.First(pp => pp.Name == name.ToLower());
-            var icf = new ICF(Tools.GetStreamFromSubfile(sub));
+            ICF icf;
+            using (MemoryStream mem = Tools.GetStreamFromSubfile(sub))
+                icf = new ICF(mem);
 
             txtRotX.Text = icf.Rotation.X.ToString();
             txtRotY.Text = icf.Rotation.Y.ToString();
