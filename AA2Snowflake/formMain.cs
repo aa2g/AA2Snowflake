@@ -664,7 +664,8 @@ namespace AA2Snowflake
 
         private void btnSet33_Click(object sender, EventArgs e)
         {
-            string name = "e0" + cmbMode33.SelectedIndex.ToString() + "_" + cmbPersonality33.SelectedIndex.ToString("00") + "_0" + cmbHeight33.SelectedIndex.ToString() + ".ICF";
+#warning properly test if this works
+            string name = "e" + cmbMode33.SelectedIndex.ToString("00") + "_" + cmbPersonality33.SelectedIndex.ToString("00") + "_" + cmbHeight33.SelectedIndex.ToString("00") + ".ICF";
             var index = PP.jg2e01_00_00.Subfiles.IndexOf(PP.jg2e01_00_00.Subfiles.First(pp => pp.Name == name.ToLower()));
 
             var icf = new ICF();
