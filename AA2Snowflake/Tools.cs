@@ -91,6 +91,19 @@ namespace AA2Snowflake
             return new MemSubfile(new MemoryStream(ShiftJIS.GetBytes(str.ToString())), lst.Name);
         }
 
+#warning i really should merge lst reading/manipulation with aa2data
+        public static string GetLstValue(IWriteFile lst, int column)
+        {
+            byte[] buffer;
+            using (MemoryStream mem = GetStreamFromSubfile(lst))
+                buffer = GetBytesFromStream(mem);
+
+            string slst = ShiftJIS.GetString(buffer);
+            string line = slst.Split(new string[] { "\r\n" }, StringSplitOptions.None)[0];
+            string[] set = line.Split('\t');
+            return set[column - 1];
+        }
+
         public static Bitmap LoadTGA(Stream stream)
         {
             Bitmap bit;

@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SB3Utility;
 
 namespace AA2Snowflake.Personalities
 {
-    public enum Gender
+    public enum Gender: byte
     {
-        Female,
-        Male
+        Female = 1,
+        Male = 0
     }
-    interface IPersonality
+    public interface IPersonality
     {
         string Name { get; }
         byte Slot { get; }
+        bool Custom { get; } //custom/dlc personalities have a different .lst format
         string ID { get; } // example: a01 or s34, usually same as slot with a or s at the start
         Gender Gender { get; } // you should be able to determine if it's male or female by looking at if the ID starts with an a or s but i'm not building a dynamic system
         string ICFLocation { get; } //.pp where the icfs are stored
@@ -32,6 +34,65 @@ namespace AA2Snowflake.Personalities
         */
     }
 
+    public class CustomPersonality : IPersonality
+    {
+        private Gender _gender;
+        public Gender Gender => _gender;
+
+        private string _icflocation;
+        public string ICFLocation => _icflocation;
+
+        private string _id;
+        public string ID => _id;
+
+        private string _lstlocation;
+        public string LSTLocation => _lstlocation;
+
+        private string _name;
+        public string Name => _name;
+
+        private byte _slot;
+        public byte Slot => _slot;
+
+        private bool _custom;
+        public bool Custom => _custom;
+
+        public CustomPersonality(Gender gender, string icflocation, string id, string lstlocation, string name, byte slot, bool custom)
+        {
+            _gender = gender;
+            _icflocation = icflocation;
+            _id = id;
+            _lstlocation = lstlocation;
+            _name = name;
+            _slot = slot;
+            _custom = custom;
+        }
+    }
+
+    public static class PersonalityFactory
+    {
+        public static CustomPersonality LoadPersonality(ppParser pp)
+        {
+#warning extensively test this
+            if (!pp.Subfiles.Select(iw => iw.Name).Any(n => n.EndsWith(".icf")) || //check if it's a valid personality .pp which contains everything we need
+                !pp.Subfiles.Select(iw => iw.Name).Any(n => n.EndsWith(".lst")))
+                return null;
+
+            string filename = pp.FilePath.Remove(0, pp.FilePath.LastIndexOf('\\') + 1);
+            IWriteFile lst = pp.Subfiles.First(iw => iw.Name.EndsWith(".lst"));
+
+            byte slot = byte.Parse(Tools.GetLstValue(lst, 2));
+
+            Gender gender = (Gender)byte.Parse(Tools.GetLstValue(lst, 6)); //not sure if more accurate than grabbing ID letter, this column is set to 1 for female and 0 for male
+
+            string ID = Tools.GetLstValue(lst, 7);
+
+            string Name = Tools.GetLstValue(lst, 8);
+
+            return new CustomPersonality(gender, filename, ID, filename + "/" + lst.Name, Name, slot, true);
+        }
+    }
+
     #region Base Personalities
 
     public abstract class BasePersonality : IPersonality //because I can't be fucked writing the same thing over and over again
@@ -42,6 +103,7 @@ namespace AA2Snowflake.Personalities
         public abstract Gender Gender { get; }
         public string ICFLocation => "jg2e01_00_00.pp";
         public string LSTLocation => "jg2e00_00_00.pp/jg2e_00_01_00_00.lst";
+        public bool Custom => false;
     }
 
     public class Lively : BasePersonality
