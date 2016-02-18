@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SB3Utility;
+using System.Diagnostics;
+using AA2Install;
+using System.IO;
+using System.Text.RegularExpressions;
 
 namespace AA2Snowflake.Personalities
 {
@@ -25,7 +29,7 @@ namespace AA2Snowflake.Personalities
         /*
         if you wish to build a dynamic system that loads personalities on a per .pp basis the approximate regex for each .pp is:
 
-        jg2p05_([as]\d+)_0[01].pp
+        jg2p05_([as]\d+)_0[01]\.pp
 
         the ID is captured, and you can find out the slot and name by examining the only .lst inside the .pp
         column 2 is the slot, column 7 is ID (if you didn't want to capture it in the regex) and column 8 is the name
@@ -34,6 +38,7 @@ namespace AA2Snowflake.Personalities
         */
     }
 
+    [DebuggerDisplay("{Name}: {ID}")]
     public class CustomPersonality : IPersonality
     {
         private Gender _gender;
@@ -73,13 +78,12 @@ namespace AA2Snowflake.Personalities
     {
         public static CustomPersonality LoadPersonality(ppParser pp)
         {
-#warning extensively test this
             if (!pp.Subfiles.Select(iw => iw.Name).Any(n => n.EndsWith(".icf")) || //check if it's a valid personality .pp which contains everything we need
-                !pp.Subfiles.Select(iw => iw.Name).Any(n => n.EndsWith(".lst")))
+                !pp.Subfiles.Select(iw => iw.Name).Any(n => n.EndsWith(".lst") && n.StartsWith("jg2p")))
                 return null;
 
             string filename = pp.FilePath.Remove(0, pp.FilePath.LastIndexOf('\\') + 1);
-            IWriteFile lst = pp.Subfiles.First(iw => iw.Name.EndsWith(".lst"));
+            IWriteFile lst = pp.Subfiles.First(iw => iw.Name.EndsWith(".lst") && iw.Name.StartsWith("jg2p")); //you can thank a certain person for making this difficult (http://pastebin.com/3zkjpM7e)
 
             byte slot = byte.Parse(Tools.GetLstValue(lst, 2));
 
@@ -91,10 +95,63 @@ namespace AA2Snowflake.Personalities
 
             return new CustomPersonality(gender, filename, ID, filename + "/" + lst.Name, Name, slot, true);
         }
+
+        public static BasePersonality[] BasePersonalities
+        {
+            get
+            {
+                return new BasePersonality[] {
+                    new Lively(),
+                    new Delicate(),
+                    new Cheerful(),
+                    new Quiet(),
+                    new Playful(),
+                    new Frisky(),
+                    new Kind(),
+                    new Joyful(),
+                    new Ordinary(),
+                    new Irritated(),
+                    new Harsh(),
+                    new Sweet(),
+                    new Creepy(),
+                    new Reserved(),
+                    new Dignified(),
+                    new Aloof(),
+                    new Smart(),
+                    new Genuine(),
+                    new Mature(),
+                    new Lazy(),
+                    new Manly(),
+                    new Gentle(),
+                    new Positive(),
+                    new Otaku(),
+                    new Savage(),
+                };
+            }
+        }
+
+        public static Dictionary<int, IPersonality> GetAllPersonalities()
+        {
+            Dictionary<int, IPersonality> pers = new Dictionary<int, IPersonality>();
+            foreach (BasePersonality bp in BasePersonalities)
+                pers.Add(bp.Slot, bp);
+
+            Regex regex = new Regex(@"jg2p05_([as]\d+)_0[01]\.pp");
+            foreach (string path in Directory.EnumerateFiles(Paths.AA2Edit))
+                if (regex.IsMatch(path))
+                {
+                    CustomPersonality cp = LoadPersonality(new ppParser(path, new ppFormat_AA2()));
+                    if (!ReferenceEquals(cp, null)) //is there a better way to check null?
+                        pers.Add(cp.Slot, cp);
+                }
+
+            return pers;
+        }
     }
 
     #region Base Personalities
 
+    [DebuggerDisplay("{Name}: {ID}")]
     public abstract class BasePersonality : IPersonality //because I can't be fucked writing the same thing over and over again
     {
         public abstract string Name { get; }

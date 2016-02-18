@@ -13,6 +13,7 @@ using AA2Install;
 using AA2Data;
 using System.Drawing.Imaging;
 using Paloma;
+using AA2Snowflake.Personalities;
 
 namespace AA2Snowflake
 {
@@ -22,6 +23,7 @@ namespace AA2Snowflake
 #warning add support for append + custom personalities
 #warning add blush values
 
+        Dictionary<int, IPersonality> Personalities = PersonalityFactory.GetAllPersonalities();
         #region Form
         public formLoad load = new formLoad();
         public formMain()
@@ -54,6 +56,15 @@ namespace AA2Snowflake
             cmbPersonality33.SelectedIndex = 0;
             cmbHeight33.SelectedIndex = 0;
             cmbMode33.SelectedIndex = 0;
+
+#warning fix this up
+            cmbPersonality33.Items.Clear();
+            foreach (IPersonality p in Personalities.Values.OrderBy(per => per.Slot))
+            {
+                cmbPersonality33.Items.Add("(" + p.Slot.ToString("00") + ") " + p.Name);
+            }
+            cmbPersonality33.SelectedIndex = 0;
+
             UpdateWindowState();
         }
         #endregion
