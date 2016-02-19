@@ -123,6 +123,16 @@ namespace AA2Snowflake
 
             return bit;
         }
+
+        public static string GetFilename(this string path, char seperator = '\\')
+        {
+            return path.Remove(0, path.LastIndexOf(seperator) + 1);
+        }
+
+        public static string RemoveFilename(this string path, char seperator = '\\')
+        {
+            return path.Remove(path.LastIndexOf(seperator));
+        }
     }
 
     public static class PP

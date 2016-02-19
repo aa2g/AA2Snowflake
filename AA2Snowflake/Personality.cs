@@ -58,11 +58,10 @@ namespace AA2Snowflake.Personalities
 
         private byte _slot;
         public byte Slot => _slot;
+        
+        public bool Custom => true;
 
-        private bool _custom;
-        public bool Custom => _custom;
-
-        public CustomPersonality(Gender gender, string icflocation, string id, string lstlocation, string name, byte slot, bool custom)
+        public CustomPersonality(Gender gender, string icflocation, string id, string lstlocation, string name, byte slot)
         {
             _gender = gender;
             _icflocation = icflocation;
@@ -70,7 +69,6 @@ namespace AA2Snowflake.Personalities
             _lstlocation = lstlocation;
             _name = name;
             _slot = slot;
-            _custom = custom;
         }
     }
 
@@ -93,7 +91,7 @@ namespace AA2Snowflake.Personalities
 
             string Name = Tools.GetLstValue(lst, 8);
 
-            return new CustomPersonality(gender, filename, ID, filename + "/" + lst.Name, Name, slot, true);
+            return new CustomPersonality(gender, filename, ID, filename + "/" + lst.Name, Name, slot);
         }
 
         public static BasePersonality[] BasePersonalities
@@ -137,7 +135,7 @@ namespace AA2Snowflake.Personalities
                 pers.Add(bp.Slot, bp);
 
             Regex regex = new Regex(@"jg2p05_([as]\d+)_0[01]\.pp");
-            foreach (string path in Directory.EnumerateFiles(Paths.AA2Edit))
+            foreach (string path in Directory.EnumerateFiles(Paths.AA2Play))
                 if (regex.IsMatch(path))
                 {
                     CustomPersonality cp = LoadPersonality(new ppParser(path, new ppFormat_AA2()));
@@ -146,6 +144,24 @@ namespace AA2Snowflake.Personalities
                 }
 
             return pers;
+        }
+
+        public static ppParser GetLstPP(this IPersonality personality)
+        {
+            string path = Paths.AA2Play + "\\" + personality.LSTLocation.RemoveFilename('/');
+            return new ppParser(path, new ppFormat_AA2());
+        }
+
+        public static IWriteFile GetLstFromPP(this ppParser pp, IPersonality personality)
+        {
+            string file = personality.LSTLocation.GetFilename('/');
+            return pp.Subfiles.First(iw => iw.Name == file);
+        }
+
+        public static ppParser GetIcfPP(this IPersonality personality)
+        {
+            string path = Paths.AA2Play + "\\" + personality.ICFLocation;
+            return new ppParser(path, new ppFormat_AA2());
         }
     }
 

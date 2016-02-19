@@ -23,7 +23,7 @@ namespace AA2Snowflake
 #warning add support for append + custom personalities
 #warning add blush values
 
-        Dictionary<int, IPersonality> Personalities = PersonalityFactory.GetAllPersonalities();
+        SortedDictionary<int, IPersonality> Personalities = new SortedDictionary<int, IPersonality>(PersonalityFactory.GetAllPersonalities());
         #region Form
         public formLoad load = new formLoad();
         public formMain()
@@ -59,7 +59,7 @@ namespace AA2Snowflake
 
 #warning fix this up
             cmbPersonality33.Items.Clear();
-            foreach (IPersonality p in Personalities.Values.OrderBy(per => per.Slot))
+            foreach (IPersonality p in Personalities.Values)
             {
                 cmbPersonality33.Items.Add("(" + p.Slot.ToString("00") + ") " + p.Name);
             }
@@ -642,8 +642,10 @@ namespace AA2Snowflake
             if (cmbHeight33.SelectedIndex < 0 || cmbMode33.SelectedIndex < 0 || cmbPersonality33.SelectedIndex < 0)
                 return;
 
-            string name = "e" + cmbMode33.SelectedIndex.ToString("00") + "_" + cmbPersonality33.SelectedIndex.ToString("00") + "_" + cmbHeight33.SelectedIndex.ToString("00") + ".ICF";
-            var sub = PP.jg2e01_00_00.Subfiles.First(pp => pp.Name == name.ToLower());
+            IPersonality personality = Personalities.ElementAt(cmbPersonality33.SelectedIndex).Value;
+            string name = "e" + cmbMode33.SelectedIndex.ToString("00") + "_" + personality.Slot.ToString("00") + "_" + cmbHeight33.SelectedIndex.ToString("00") + ".ICF";
+            ppParser pp = personality.GetIcfPP();
+            IWriteFile sub = pp.Subfiles.First(iw => iw.Name.ToLower() == name.ToLower());
             ICF icf;
             using (MemoryStream mem = Tools.GetStreamFromSubfile(sub))
                 icf = new ICF(mem);
