@@ -74,6 +74,14 @@ namespace AA2Snowflake.Personalities
 
     public static class PersonalityFactory
     {
+        private static Dictionary<string, string> AppendTranslation = new Dictionary<string, string> {
+            { "曹", "Cadet" },
+            { "慈", "Caring" },
+            { "策", "Schemer" },
+            { "軽", "Carefree" },
+            { "温", "Warm" },
+        };
+
         public static CustomPersonality LoadPersonality(ppParser pp)
         {
             if (!pp.Subfiles.Select(iw => iw.Name).Any(n => n.EndsWith(".icf")) || //check if it's a valid personality .pp which contains everything we need
@@ -90,6 +98,7 @@ namespace AA2Snowflake.Personalities
             string ID = Tools.GetLstValue(lst, 7);
 
             string Name = Tools.GetLstValue(lst, 8);
+            Name = AppendTranslation.GetValueOrDefault(Name, Name);
 
             return new CustomPersonality(gender, filename, ID, filename + "/" + lst.Name, Name, slot);
         }
