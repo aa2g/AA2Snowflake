@@ -53,7 +53,6 @@ namespace AA2Snowflake
             cmbBorder.SelectedIndex = 0;
             cmbCharacter.SelectedIndex = 0;
             cmbRoster.SelectedIndex = 0;
-            cmbPersonality33.SelectedIndex = 0;
             cmbHeight33.SelectedIndex = 0;
             cmbMode33.SelectedIndex = 0;
 

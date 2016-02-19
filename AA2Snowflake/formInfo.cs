@@ -8,12 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AA2Data;
+using AA2Snowflake.Personalities;
 
 namespace AA2Snowflake
 {
     public partial class formInfo : Form
     {
         public AA2Card card;
+        SortedDictionary<int, IPersonality> Personalities = new SortedDictionary<int, IPersonality>(PersonalityFactory.GetAllPersonalities());
 
         public formInfo()
         {
@@ -64,8 +66,9 @@ namespace AA2Snowflake
 
         private void cmbPersonality_SelectedIndexChanged(object sender, EventArgs e)
         {
+            IPersonality personality = Personalities.ElementAt(cmbPersonality.SelectedIndex).Value;
             if (card != null)
-                card.data.PROFILE_PERSONALITY_ID = (byte)cmbPersonality.SelectedIndex;
+                card.data.PROFILE_PERSONALITY_ID = personality.Slot;
         }
 
         private void chkRainbow_CheckedChanged(object sender, EventArgs e)
@@ -76,6 +79,7 @@ namespace AA2Snowflake
 
         private void btnCloth_Click(object sender, EventArgs e)
         {
+#warning test this
             using (var file = new OpenFileDialog())
             {
                 file.Filter = "Cloth file (*.cloth)|*.cloth";
@@ -86,6 +90,16 @@ namespace AA2Snowflake
                     MessageBox.Show("Loaded successfully!");
                 }
             }
+        }
+
+        private void formInfo_Load(object sender, EventArgs e)
+        {
+            cmbPersonality.Items.Clear();
+            foreach (IPersonality p in Personalities.Values)
+            {
+                cmbPersonality.Items.Add("(" + p.Slot.ToString("00") + ") " + p.Name);
+            }
+            cmbPersonality.SelectedIndex = 0;
         }
     }
 }
