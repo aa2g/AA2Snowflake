@@ -758,6 +758,26 @@ namespace AA2Snowflake
             HideLoadingForm();
             MessageBox.Show("Finished!");
         }
+
+        private void btnBackupAll33_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to do this? You may be overwriting an already existing backup.", "AA2Snowflake", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                return;
+
+            BackgroundWorker back = new BackgroundWorker();
+            back.DoWork += (o, ev) =>
+            {
+                GenerateICFBackups();
+            };
+            ShowLoadingForm();
+            back.RunWorkerAsync();
+            while (back.IsBusy)
+            {
+                Application.DoEvents();
+            }
+            HideLoadingForm();
+            MessageBox.Show("Finished!");
+        }
         #endregion
         #endregion
         #region Card Face

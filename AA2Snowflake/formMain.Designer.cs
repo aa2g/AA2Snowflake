@@ -150,6 +150,7 @@
             this.lblPatcherOutputSize = new System.Windows.Forms.Label();
             this.trkCardSize = new System.Windows.Forms.TrackBar();
             this.btnBackupAll32 = new System.Windows.Forms.Button();
+            this.btnBackupAll33 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -781,6 +782,7 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.btnBackupAll33);
             this.groupBox5.Controls.Add(this.cmbMode33);
             this.groupBox5.Controls.Add(this.btnRestore33);
             this.groupBox5.Controls.Add(this.txtZoom2);
@@ -815,7 +817,7 @@
             // 
             // btnRestore33
             // 
-            this.btnRestore33.Location = new System.Drawing.Point(318, 164);
+            this.btnRestore33.Location = new System.Drawing.Point(289, 179);
             this.btnRestore33.Name = "btnRestore33";
             this.btnRestore33.Size = new System.Drawing.Size(75, 23);
             this.btnRestore33.TabIndex = 13;
@@ -832,7 +834,7 @@
             // 
             // btnSet33
             // 
-            this.btnSet33.Location = new System.Drawing.Point(237, 164);
+            this.btnSet33.Location = new System.Drawing.Point(245, 152);
             this.btnSet33.Name = "btnSet33";
             this.btnSet33.Size = new System.Drawing.Size(75, 23);
             this.btnSet33.TabIndex = 12;
@@ -1603,6 +1605,16 @@
             this.btnBackupAll32.UseVisualStyleBackColor = true;
             this.btnBackupAll32.Click += new System.EventHandler(this.btnBackupAll32_Click);
             // 
+            // btnBackupAll33
+            // 
+            this.btnBackupAll33.Location = new System.Drawing.Point(326, 152);
+            this.btnBackupAll33.Name = "btnBackupAll33";
+            this.btnBackupAll33.Size = new System.Drawing.Size(75, 23);
+            this.btnBackupAll33.TabIndex = 15;
+            this.btnBackupAll33.Text = "Backup All";
+            this.btnBackupAll33.UseVisualStyleBackColor = true;
+            this.btnBackupAll33.Click += new System.EventHandler(this.btnBackupAll33_Click);
+            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1810,6 +1822,7 @@
         private System.Windows.Forms.ComboBox cmbMode33;
         public System.Windows.Forms.ComboBox cmbPersonality32;
         private System.Windows.Forms.Button btnBackupAll32;
+        private System.Windows.Forms.Button btnBackupAll33;
     }
 }
 

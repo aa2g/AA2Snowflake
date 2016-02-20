@@ -4,6 +4,8 @@
 + Added an about and crash dialog
 + Can now load .cloth files instead of requiring ReiEdit/batch snowflaking
 + Can change camera angles when saving cards
++ Append/DLC/Custom personalities are fully supported
++ Custom personality support uses a dynamic loading system which doesn't require .XML files like ReiEdit
 
 v1.2
 + Added the ability to edit some character information in the card replacer
