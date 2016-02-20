@@ -821,6 +821,7 @@
             this.btnRestore33.TabIndex = 13;
             this.btnRestore33.Text = "Restore";
             this.btnRestore33.UseVisualStyleBackColor = true;
+            this.btnRestore33.Click += new System.EventHandler(this.btnRestore33_Click);
             // 
             // txtZoom2
             // 

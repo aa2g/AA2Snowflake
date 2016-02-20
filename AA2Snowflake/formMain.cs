@@ -704,11 +704,13 @@ namespace AA2Snowflake
         private void btnSet33_Click(object sender, EventArgs e)
         {
 #warning properly test if this works
-            string name = "e" + cmbMode33.SelectedIndex.ToString("00") + "_" + cmbPersonality33.SelectedIndex.ToString("00") + "_" + cmbHeight33.SelectedIndex.ToString("00") + ".ICF";
-            var index = PP.jg2e01_00_00.Subfiles.IndexOf(PP.jg2e01_00_00.Subfiles.First(pp => pp.Name == name.ToLower()));
+            IPersonality personality = Personalities.ElementAt(cmbPersonality33.SelectedIndex).Value;
+            string name = "e" + cmbMode33.SelectedIndex.ToString("00") + "_" + personality.Slot.ToString("00") + "_" + cmbHeight33.SelectedIndex.ToString("00") + ".ICF";
+            ppParser pp = personality.GetIcfPP();
+            IWriteFile sub = pp.Subfiles.First(iw => iw.Name.ToLower() == name.ToLower());
+            int index = pp.Subfiles.IndexOf(sub);
 
             var icf = new ICF();
-
             try
             {
                 icf.Rotation.X = float.Parse(txtRotX.Text);
@@ -725,9 +727,9 @@ namespace AA2Snowflake
                 MessageBox.Show("Error: One or more of the values are not valid number(s).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            var sub = new MemSubfile(new MemoryStream(icf.Export()), name);
-            PP.jg2e01_00_00.Subfiles[index] = sub;
-            var back = PP.jg2e01_00_00.WriteArchive(PP.jg2e01_00_00.FilePath, false, "bak", true);
+            sub = new MemSubfile(new MemoryStream(icf.Export()), sub.Name);
+            pp.Subfiles[index] = sub;
+            var back = pp.WriteArchive(pp.FilePath, false, "bak", true);
             ShowLoadingForm();
             back.RunWorkerAsync();
             while (back.IsBusy)
@@ -736,7 +738,25 @@ namespace AA2Snowflake
             }
             HideLoadingForm();
             MessageBox.Show("Finished!");
-#warning add restore capability
+        }
+
+        private void btnRestore33_Click(object sender, EventArgs e)
+        {
+            IPersonality personality = Personalities.ElementAt(cmbPersonality32.SelectedIndex).Value;
+            ppParser pp = personality.GetLstPP();
+            string name = "e" + cmbMode33.SelectedIndex.ToString("00") + "_" + personality.Slot.ToString("00") + "_" + cmbHeight33.SelectedIndex.ToString("00") + ".ICF";
+            var index = pp.Subfiles.IndexOf(pp.Subfiles.First(iw => iw.Name.ToLower() == name));
+            var sub = new Subfile(Paths.BACKUP + "\\" + name, name);
+            pp.Subfiles[index] = sub;
+            var back = pp.WriteArchive(pp.FilePath, false, "bak", true);
+            ShowLoadingForm();
+            back.RunWorkerAsync();
+            while (back.IsBusy)
+            {
+                Application.DoEvents();
+            }
+            HideLoadingForm();
+            MessageBox.Show("Finished!");
         }
         #endregion
         #endregion
