@@ -14,6 +14,7 @@ using AA2Data;
 using System.Drawing.Imaging;
 using Paloma;
 using AA2Snowflake.Personalities;
+using System.Text.RegularExpressions;
 
 namespace AA2Snowflake
 {
@@ -657,10 +658,12 @@ namespace AA2Snowflake
         #region 3.3
         public void GenerateICFBackups()
         {
+            Regex regex = new Regex(@"e\d{2}_\d{2}_\d{2}\.icf");
             foreach (IPersonality personality in Personalities.Values)
                 foreach (IWriteFile icf in personality.GetIcfPP().Subfiles.Where(iw => iw.Name.EndsWith(".icf")))
-                    using (FileStream fs = new FileStream(Paths.BACKUP + "\\" + icf.Name, FileMode.Create))
-                        icf.WriteTo(fs);
+                    if (regex.IsMatch(icf.Name))
+                        using (FileStream fs = new FileStream(Paths.BACKUP + "\\" + icf.Name, FileMode.Create))
+                            icf.WriteTo(fs);
         }
 
         public void LoadICF()
@@ -742,11 +745,12 @@ namespace AA2Snowflake
 
         private void btnRestore33_Click(object sender, EventArgs e)
         {
-            IPersonality personality = Personalities.ElementAt(cmbPersonality32.SelectedIndex).Value;
-            ppParser pp = personality.GetLstPP();
+            IPersonality personality = Personalities.ElementAt(cmbPersonality33.SelectedIndex).Value;
+            ppParser pp = personality.GetIcfPP();
             string name = "e" + cmbMode33.SelectedIndex.ToString("00") + "_" + personality.Slot.ToString("00") + "_" + cmbHeight33.SelectedIndex.ToString("00") + ".ICF";
-            var index = pp.Subfiles.IndexOf(pp.Subfiles.First(iw => iw.Name.ToLower() == name));
-            var sub = new Subfile(Paths.BACKUP + "\\" + name, name);
+            var sub = pp.Subfiles.First(iw => iw.Name.ToLower() == name.ToLower());
+            var index = pp.Subfiles.IndexOf(pp.Subfiles.First(iw => iw.Name.ToLower() == name.ToLower()));
+            sub = new Subfile(Paths.BACKUP + "\\" + name, sub.Name);
             pp.Subfiles[index] = sub;
             var back = pp.WriteArchive(pp.FilePath, false, "bak", true);
             ShowLoadingForm();
@@ -757,6 +761,7 @@ namespace AA2Snowflake
             }
             HideLoadingForm();
             MessageBox.Show("Finished!");
+            LoadICF();
         }
 
         private void btnBackupAll33_Click(object sender, EventArgs e)
