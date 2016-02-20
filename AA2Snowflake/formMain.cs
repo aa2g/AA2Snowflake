@@ -58,11 +58,14 @@ namespace AA2Snowflake
 
 #warning fix this up
             cmbPersonality33.Items.Clear();
+            cmbPersonality32.Items.Clear();
             foreach (IPersonality p in Personalities.Values)
             {
                 cmbPersonality33.Items.Add("(" + p.Slot.ToString("00") + ") " + p.Name);
+                cmbPersonality32.Items.Add("(" + p.Slot.ToString("00") + ") " + p.Name);
             }
             cmbPersonality33.SelectedIndex = 0;
+            cmbPersonality32.SelectedIndex = 0;
 
             UpdateWindowState();
         }
@@ -547,10 +550,20 @@ namespace AA2Snowflake
         }
         #endregion
         #region 3.2
+        public void GenerateLSTBackups()
+        {
+            foreach (IPersonality personality in Personalities.Values)
+                foreach (IWriteFile lst in personality.GetIcfPP().Subfiles.Where(iw => iw.Name == personality.LSTLocation.GetFilename('/')))
+                    using (FileStream fs = new FileStream(Paths.BACKUP + "\\" + personality.LSTLocation.Replace('/', ';'), FileMode.Create))
+                        lst.WriteTo(fs);
+        }
+
         private void btnSet32_Click(object sender, EventArgs e)
         {
-            var index = PP.jg2e00_00_00.Subfiles.IndexOf(PP.jg2e00_00_00.Subfiles.First(pp => pp.Name == "jg2e_00_01_00_00.lst"));
-            var sub = PP.jg2e00_00_00.Subfiles[index];
+            IPersonality personality = Personalities.ElementAt(cmbPersonality32.SelectedIndex).Value; //i've rewritten this to change only 1 personality since you don't want to rewrite 5gb of files everytime you change poses
+            ppParser pp = personality.GetLstPP();
+            IWriteFile sub = pp.GetLstFromPP(personality);
+            int index = pp.Subfiles.IndexOf(sub);
 
             if (chkPose32.Checked)
                 sub = Tools.ManipulateLst(sub, 6, numPose32.Value.ToString());
@@ -564,9 +577,29 @@ namespace AA2Snowflake
                 sub = Tools.ManipulateLst(sub, 10, numMouth32.Value.ToString());
 
             sub = Tools.ManipulateLst(sub, 4, "51");
-            sub.Name = "jg2e_00_01_00_00.lst";
-            PP.jg2e00_00_00.Subfiles[index] = sub;
-            var back = PP.jg2e00_00_00.WriteArchive(PP.jg2e00_00_00.FilePath, false, "bak", true);
+            //sub.Name = "jg2e_00_01_00_00.lst";
+            pp.Subfiles[index] = sub;
+            var back = pp.WriteArchive(pp.FilePath, false, "bak", true);
+            ShowLoadingForm();
+            back.RunWorkerAsync();
+            while (back.IsBusy)
+            {
+                Application.DoEvents();
+            }
+            HideLoadingForm();
+            MessageBox.Show("Finished!");
+        }
+
+        private void btnBackupAll32_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to do this? You may be overwriting an already existing backup.", "AA2Snowflake", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                return;
+
+            BackgroundWorker back = new BackgroundWorker();
+            back.DoWork += (o, ev) =>
+            {
+                GenerateLSTBackups();
+            };
             ShowLoadingForm();
             back.RunWorkerAsync();
             while (back.IsBusy)
@@ -579,10 +612,13 @@ namespace AA2Snowflake
 
         private void btnRestore32_Click(object sender, EventArgs e)
         {
-            var index = PP.jg2e00_00_00.Subfiles.IndexOf(PP.jg2e00_00_00.Subfiles.First(pp => pp.Name == "jg2e_00_01_00_00.lst"));
-            var sub = new Subfile(Paths.BACKUP + @"\jg2e_00_01_00_00.lst");
-            PP.jg2e00_00_00.Subfiles[index] = sub;
-            var back = PP.jg2e00_00_00.WriteArchive(PP.jg2e00_00_00.FilePath, false, "bak", true);
+            IPersonality personality = Personalities.ElementAt(cmbPersonality32.SelectedIndex).Value;
+            ppParser pp = personality.GetLstPP();
+            IWriteFile sub = pp.GetLstFromPP(personality);
+            var index = pp.Subfiles.IndexOf(pp.Subfiles.First(iw => iw.Name == sub.Name));
+            sub = new Subfile(Paths.BACKUP + "\\" + personality.LSTLocation.Replace('/', ';'), sub.Name);
+            pp.Subfiles[index] = sub;
+            var back = pp.WriteArchive(pp.FilePath, false, "bak", true);
             ShowLoadingForm();
             back.RunWorkerAsync();
             while (back.IsBusy)
@@ -619,21 +655,12 @@ namespace AA2Snowflake
         }
         #endregion
         #region 3.3
-        public ICF[,,] ICFBackup;
-        public static ICF[,,] GenerateICFBackup()
+        public void GenerateICFBackups()
         {
-#warning implement append/custom personalities and fix these static values
-            ICF[,,] output = new ICF[25, 3, 2];
-            for (int personality = 0; personality < 25; personality++)
-                for (int height = 0; height < 3; height++)
-                    for (int mode = 0; mode < 2; mode++)
-                    {
-                        string name = "e" + mode.ToString("00") + "_" + personality.ToString("00") + "_" + height.ToString("00") + ".ICF";
-                        var sub = PP.jg2e01_00_00.Subfiles.First(pp => pp.Name == name.ToLower());
-                        using (MemoryStream mem = Tools.GetStreamFromSubfile(sub))
-                            output[personality, height, mode] = new ICF(mem);
-                    }
-            return output;
+            foreach (IPersonality personality in Personalities.Values)
+                foreach (IWriteFile icf in personality.GetIcfPP().Subfiles.Where(iw => iw.Name.EndsWith(".icf")))
+                    using (FileStream fs = new FileStream(Paths.BACKUP + "\\" + icf.Name, FileMode.Create))
+                        icf.WriteTo(fs);
         }
 
         public void LoadICF()

@@ -26,6 +26,7 @@ namespace AA2Snowflake
         {
             InitializeComponent();
             card = c;
+            formInfo_Load(null, null);
             updateInformation();
         }
 
@@ -35,7 +36,7 @@ namespace AA2Snowflake
             txtFirstName.Text = card.data.PROFILE_FIRST_NAME;
             chkRainbow.Checked = card.data.RAINBOW_CARD;
             cmbGender.SelectedIndex = card.data.PROFILE_GENDER;
-            cmbPersonality.SelectedIndex = card.data.PROFILE_PERSONALITY_ID;
+            cmbPersonality.SelectedIndex = Personalities.IndexOfKey(card.data.PROFILE_PERSONALITY_ID);
             txtBio.Text = card.data.PROFILE_BIO;
         }
 

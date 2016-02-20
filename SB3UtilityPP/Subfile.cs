@@ -16,6 +16,11 @@ namespace SB3Utility
             path = filepath;
             Name = path.Remove(0, path.LastIndexOf('\\')+1);
         }
+        public Subfile(string filepath, string name)
+        {
+            path = filepath;
+            Name = name;
+        }
 
         public void WriteTo(Stream stream)
         {
