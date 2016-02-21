@@ -158,6 +158,8 @@ namespace AA2Snowflake.Personalities
         public static ppParser GetLstPP(this IPersonality personality)
         {
             string path = Paths.AA2Play + "\\" + personality.LSTLocation.RemoveFilename('/');
+            if (!File.Exists(path))
+                path = Paths.AA2Edit + "\\" + personality.LSTLocation.RemoveFilename('/');
             return new ppParser(path, new ppFormat_AA2());
         }
 
@@ -170,6 +172,8 @@ namespace AA2Snowflake.Personalities
         public static ppParser GetIcfPP(this IPersonality personality)
         {
             string path = Paths.AA2Play + "\\" + personality.ICFLocation;
+            if (!File.Exists(path))
+                path = Paths.AA2Edit + "\\" + personality.ICFLocation;
             return new ppParser(path, new ppFormat_AA2());
         }
     }
