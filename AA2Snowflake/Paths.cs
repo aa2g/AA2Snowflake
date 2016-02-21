@@ -39,7 +39,7 @@ namespace AA2Install
                 else 
                 {*/
                     object dir = Microsoft.Win32.Registry.GetValue(@"HKEY_CURRENT_USER\Software\illusion\AA2Play", "INSTALLDIR", "NULL");
-                    return dir + @"data";
+                    return dir + @"\data";
                 //}
             }
         }
@@ -57,7 +57,7 @@ namespace AA2Install
                 else 
                 {*/
                     object dir = Microsoft.Win32.Registry.GetValue(@"HKEY_CURRENT_USER\Software\illusion\AA2Edit", "INSTALLDIR", "NULL");
-                    return dir + @"data";
+                    return dir + @"\data";
                 //}
             }
         }
