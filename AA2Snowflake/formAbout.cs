@@ -108,9 +108,9 @@ namespace AA2Snowflake
         }
         #endregion
 
-        private void formAbout_Load(object sender, EventArgs e)
+        private void logoPictureBox_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Irritated a best");
         }
     }
 }

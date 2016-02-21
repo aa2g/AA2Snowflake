@@ -26,7 +26,11 @@ namespace AA2Snowflake
         {
             InitializeComponent();
             card = c;
-            formInfo_Load(null, null);
+            cmbPersonality.Items.Clear();
+            foreach (IPersonality p in Personalities.Values)
+            {
+                cmbPersonality.Items.Add("(" + p.Slot.ToString("00") + ") " + p.Name);
+            }
             updateInformation();
         }
 
@@ -91,16 +95,6 @@ namespace AA2Snowflake
                     MessageBox.Show("Loaded successfully!");
                 }
             }
-        }
-
-        private void formInfo_Load(object sender, EventArgs e)
-        {
-            cmbPersonality.Items.Clear();
-            foreach (IPersonality p in Personalities.Values)
-            {
-                cmbPersonality.Items.Add("(" + p.Slot.ToString("00") + ") " + p.Name);
-            }
-            cmbPersonality.SelectedIndex = 0;
         }
     }
 }

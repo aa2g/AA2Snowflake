@@ -215,7 +215,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "formInfo";
             this.Text = "Character Information";
-            this.Load += new System.EventHandler(this.formInfo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

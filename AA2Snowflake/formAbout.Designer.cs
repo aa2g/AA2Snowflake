@@ -143,10 +143,11 @@
             this.logoPictureBox.Image = global::AA2Snowflake.Properties.Resources.snowflake;
             this.logoPictureBox.Location = new System.Drawing.Point(350, 9);
             this.logoPictureBox.Name = "logoPictureBox";
-            this.logoPictureBox.Size = new System.Drawing.Size(115, 104);
+            this.logoPictureBox.Size = new System.Drawing.Size(115, 95);
             this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.logoPictureBox.TabIndex = 14;
             this.logoPictureBox.TabStop = false;
+            this.logoPictureBox.Click += new System.EventHandler(this.logoPictureBox_Click);
             // 
             // formAbout
             // 
@@ -160,7 +161,6 @@
             this.MaximizeBox = false;
             this.Name = "formAbout";
             this.Text = "AA2Snowflake vX.X.X.X";
-            this.Load += new System.EventHandler(this.formAbout_Load);
             this.tableLayoutPanel.ResumeLayout(false);
             this.tableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
