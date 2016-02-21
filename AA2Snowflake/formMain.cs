@@ -21,7 +21,6 @@ namespace AA2Snowflake
     public partial class formMain : Form
     {
 #warning use DevIL.NET instead of this shitty tga class
-#warning add support for append + custom personalities
 #warning add blush values
 
         SortedDictionary<int, IPersonality> Personalities = new SortedDictionary<int, IPersonality>(PersonalityFactory.GetAllPersonalities());
@@ -56,17 +55,16 @@ namespace AA2Snowflake
             cmbRoster.SelectedIndex = 0;
             cmbHeight33.SelectedIndex = 0;
             cmbMode33.SelectedIndex = 0;
-
-#warning fix this up
-            cmbPersonality33.Items.Clear();
+            
             cmbPersonality32.Items.Clear();
+            cmbPersonality33.Items.Clear();
             foreach (IPersonality p in Personalities.Values)
             {
-                cmbPersonality33.Items.Add("(" + p.Slot.ToString("00") + ") " + p.Name);
                 cmbPersonality32.Items.Add("(" + p.Slot.ToString("00") + ") " + p.Name);
+                cmbPersonality33.Items.Add("(" + p.Slot.ToString("00") + ") " + p.Name);
             }
-            cmbPersonality33.SelectedIndex = 0;
             cmbPersonality32.SelectedIndex = 0;
+            cmbPersonality33.SelectedIndex = 0;
 
             UpdateWindowState();
         }
@@ -672,7 +670,8 @@ namespace AA2Snowflake
                 return;
 
             IPersonality personality = Personalities.ElementAt(cmbPersonality33.SelectedIndex).Value;
-            string name = "e" + cmbMode33.SelectedIndex.ToString("00") + "_" + personality.Slot.ToString("00") + "_" + cmbHeight33.SelectedIndex.ToString("00") + ".ICF";
+            int height = personality.Gender == Gender.Female ? cmbHeight33.SelectedIndex : cmbHeight33.SelectedIndex + 1;
+            string name = "e" + cmbMode33.SelectedIndex.ToString("00") + "_" + personality.Slot.ToString("00") + "_" + height.ToString("00") + ".ICF";
             ppParser pp = personality.GetIcfPP();
             IWriteFile sub = pp.Subfiles.First(iw => iw.Name.ToLower() == name.ToLower());
             ICF icf;
@@ -691,6 +690,21 @@ namespace AA2Snowflake
 
         private void cmbPersonality33_SelectedIndexChanged(object sender, EventArgs e)
         {
+            IPersonality personality = Personalities.ElementAt(cmbPersonality33.SelectedIndex).Value;
+            cmbHeight33.Items.Clear();
+            if (personality.Gender == Gender.Female)
+            {
+                cmbHeight33.Items.Add("(00) Short");
+                cmbHeight33.Items.Add("(01) Normal");
+                cmbHeight33.Items.Add("(02) Tall");
+                cmbHeight33.SelectedIndex = 0;
+            }
+            else
+            {
+                cmbHeight33.Items.Add("(01) Delicate/Standard");
+                cmbHeight33.Items.Add("(02) Tall/Fat");
+                cmbHeight33.SelectedIndex = 1;
+            }
             LoadICF();
         }
 
