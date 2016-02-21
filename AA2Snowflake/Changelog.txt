@@ -6,6 +6,7 @@
 + Can change camera angles when saving cards
 + Append/DLC/Custom personalities are fully supported
 + Custom personality support uses a dynamic loading system which doesn't require .XML files like ReiEdit
++ Patcher now can patch browser-related bug for AA2Edit
 
 v1.2
 + Added the ability to edit some character information in the card replacer

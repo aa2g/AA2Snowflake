@@ -159,6 +159,24 @@ namespace AA2Snowflake
         {
             return (float)(degrees / radian);
         }
+
+        public static IEnumerable<int> PatternAt(byte[] source, byte[] pattern)
+        {
+            for (int i = 0; i < source.Length; i++)
+            {
+                if (source.Skip(i).Take(pattern.Length).SequenceEqual(pattern))
+                {
+                    yield return i;
+                }
+            }
+        }
+        public static byte[] ToByteArray(this Stream str)
+        {
+            str.Position = 0;
+            byte[] buffer = new byte[str.Length];
+            str.Read(buffer, 0, (int)str.Length);
+            return buffer;
+        }
     }
 
     public static class PP

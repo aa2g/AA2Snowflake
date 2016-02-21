@@ -149,6 +149,7 @@
             this.trkCardSize = new System.Windows.Forms.TrackBar();
             this.btnBackupAll32 = new System.Windows.Forms.Button();
             this.btnBackupAll33 = new System.Windows.Forms.Button();
+            this.chkPatcherBug = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -1439,6 +1440,7 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.chkPatcherBug);
             this.groupBox6.Controls.Add(this.btnPatch);
             this.groupBox6.Controls.Add(this.btnPatcherLoad);
             this.groupBox6.Controls.Add(this.lblPatcherCurrentRenderMode);
@@ -1458,7 +1460,7 @@
             // 
             // btnPatch
             // 
-            this.btnPatch.Location = new System.Drawing.Point(15, 180);
+            this.btnPatch.Location = new System.Drawing.Point(15, 203);
             this.btnPatch.Name = "btnPatch";
             this.btnPatch.Size = new System.Drawing.Size(75, 23);
             this.btnPatch.TabIndex = 12;
@@ -1594,6 +1596,16 @@
             this.btnBackupAll33.Text = "Backup All";
             this.btnBackupAll33.UseVisualStyleBackColor = true;
             this.btnBackupAll33.Click += new System.EventHandler(this.btnBackupAll33_Click);
+            // 
+            // chkPatcherBug
+            // 
+            this.chkPatcherBug.AutoSize = true;
+            this.chkPatcherBug.Location = new System.Drawing.Point(15, 180);
+            this.chkPatcherBug.Name = "chkPatcherBug";
+            this.chkPatcherBug.Size = new System.Drawing.Size(100, 17);
+            this.chkPatcherBug.TabIndex = 13;
+            this.chkPatcherBug.Text = "Fix browser bug";
+            this.chkPatcherBug.UseVisualStyleBackColor = true;
             // 
             // formMain
             // 
@@ -1801,6 +1813,7 @@
         public System.Windows.Forms.ComboBox cmbPersonality32;
         private System.Windows.Forms.Button btnBackupAll32;
         private System.Windows.Forms.Button btnBackupAll33;
+        private System.Windows.Forms.CheckBox chkPatcherBug;
     }
 }
 

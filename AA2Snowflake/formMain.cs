@@ -964,11 +964,11 @@ namespace AA2Snowflake
                 using (var exe = new FileStream(exefile, FileMode.Open))
                     if (ResPatcher.IsCompatible(exe))
                         if (radio1x.Checked)
-                            ResPatcher.PatchResolution(exe, cardsize, ResPatcher.RenderMode.r1200x800);
+                            ResPatcher.PatchResolution(exe, cardsize, ResPatcher.RenderMode.r1200x800, chkPatcherBug.Checked);
                         else if (radio2x.Checked)
-                            ResPatcher.PatchResolution(exe, cardsize, ResPatcher.RenderMode.r2400x1600);
+                            ResPatcher.PatchResolution(exe, cardsize, ResPatcher.RenderMode.r2400x1600, chkPatcherBug.Checked);
                         else if (radio3x.Checked)
-                            ResPatcher.PatchResolution(exe, cardsize, ResPatcher.RenderMode.r3600x2400);
+                            ResPatcher.PatchResolution(exe, cardsize, ResPatcher.RenderMode.r3600x2400, chkPatcherBug.Checked);
 
                 MessageBox.Show("Finished!");
             }

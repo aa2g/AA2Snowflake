@@ -53,11 +53,27 @@ namespace AA2Snowflake
                 new byte[] {0x00, 0x00, 0xbc, 0x43}
             };
 
-        public static void PatchResolution(Stream stream, Size cardres, RenderMode render)
+        public static readonly byte[] bug = new byte[]
+        {
+            0x68, 0x00, 0x02, 0x00, 0x00, 0x8D, 0x54, 0x24, 0x0C, 0x52, 0x56, 0xFF
+        };
+        public static readonly byte[] bugfix = new byte[]
+        {
+            0x68, 0x00, 0x01, 0x00, 0x00, 0x8D, 0x54, 0x24, 0x0C, 0x52, 0x56, 0xFF
+        };
+
+        public static void PatchResolution(Stream stream, Size cardres, RenderMode render, bool patchBug = false)
         {
             if (!IsCompatible(stream))
                 return;
             int choice = (int)render;
+
+            if (patchBug)
+            {
+                stream.Position = Tools.PatternAt(stream.ToByteArray(), bug).First();
+                stream.Write(bugfix, 0, bugfix.Length);
+            }
+
             switch (GetExeSignature(stream))
             {
                 case ExeSignature.v142FP:
