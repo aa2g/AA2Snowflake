@@ -82,9 +82,7 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.cmbMode33 = new System.Windows.Forms.ComboBox();
             this.btnRestore33 = new System.Windows.Forms.Button();
-            this.txtZoom2 = new System.Windows.Forms.TextBox();
             this.btnSet33 = new System.Windows.Forms.Button();
-            this.label12 = new System.Windows.Forms.Label();
             this.txtZoom1 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
@@ -785,9 +783,7 @@
             this.groupBox5.Controls.Add(this.btnBackupAll33);
             this.groupBox5.Controls.Add(this.cmbMode33);
             this.groupBox5.Controls.Add(this.btnRestore33);
-            this.groupBox5.Controls.Add(this.txtZoom2);
             this.groupBox5.Controls.Add(this.btnSet33);
-            this.groupBox5.Controls.Add(this.label12);
             this.groupBox5.Controls.Add(this.txtZoom1);
             this.groupBox5.Controls.Add(this.label11);
             this.groupBox5.Controls.Add(this.groupBox11);
@@ -825,13 +821,6 @@
             this.btnRestore33.UseVisualStyleBackColor = true;
             this.btnRestore33.Click += new System.EventHandler(this.btnRestore33_Click);
             // 
-            // txtZoom2
-            // 
-            this.txtZoom2.Location = new System.Drawing.Point(65, 178);
-            this.txtZoom2.Name = "txtZoom2";
-            this.txtZoom2.Size = new System.Drawing.Size(149, 20);
-            this.txtZoom2.TabIndex = 12;
-            // 
             // btnSet33
             // 
             this.btnSet33.Location = new System.Drawing.Point(245, 152);
@@ -841,15 +830,6 @@
             this.btnSet33.Text = "Set";
             this.btnSet33.UseVisualStyleBackColor = true;
             this.btnSet33.Click += new System.EventHandler(this.btnSet33_Click);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(13, 181);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(46, 13);
-            this.label12.TabIndex = 13;
-            this.label12.Text = "Zoom 2:";
             // 
             // txtZoom1
             // 
@@ -1800,9 +1780,7 @@
         public System.Windows.Forms.ComboBox cmbPersonality33;
         private System.Windows.Forms.ComboBox cmbHeight33;
         private System.Windows.Forms.Button btnRestore33;
-        private System.Windows.Forms.TextBox txtZoom2;
         private System.Windows.Forms.Button btnSet33;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtZoom1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.GroupBox groupBox11;

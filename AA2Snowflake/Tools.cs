@@ -148,6 +148,17 @@ namespace AA2Snowflake
 
             return -1;
         }
+
+        public const double radian = 180 / Math.PI;
+        public static float RadiansToDegrees(this float radians)
+        {
+            return (float)(radians * radian);
+        }
+
+        public static float DegreesToRadians(this float degrees)
+        {
+            return (float)(degrees / radian);
+        }
     }
 
     public static class PP

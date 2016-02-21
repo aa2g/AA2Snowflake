@@ -678,11 +678,10 @@ namespace AA2Snowflake
             using (MemoryStream mem = Tools.GetStreamFromSubfile(sub))
                 icf = new ICF(mem);
 
-            txtRotX.Text = icf.Rotation.X.ToString();
-            txtRotY.Text = icf.Rotation.Y.ToString();
-            txtRotZ.Text = icf.Rotation.Z.ToString();
+            txtRotX.Text = icf.Rotation.X.RadiansToDegrees().ToString();
+            txtRotY.Text = icf.Rotation.Y.RadiansToDegrees().ToString();
+            txtRotZ.Text = icf.Rotation.Z.RadiansToDegrees().ToString();
             txtZoom1.Text = icf.Zoom1.ToString();
-            txtZoom2.Text = icf.Zoom2.ToString();
             txtPosX.Text = icf.Position.X.ToString();
             txtPosY.Text = icf.Position.Y.ToString();
             txtPosZ.Text = icf.Position.Z.ToString();
@@ -730,11 +729,10 @@ namespace AA2Snowflake
             var icf = new ICF();
             try
             {
-                icf.Rotation.X = float.Parse(txtRotX.Text);
-                icf.Rotation.Y = float.Parse(txtRotY.Text);
-                icf.Rotation.Z = float.Parse(txtRotZ.Text);
+                icf.Rotation.X = float.Parse(txtRotX.Text).DegreesToRadians();
+                icf.Rotation.Y = float.Parse(txtRotY.Text).DegreesToRadians();
+                icf.Rotation.Z = float.Parse(txtRotZ.Text).DegreesToRadians();
                 icf.Zoom1 = float.Parse(txtZoom1.Text);
-                icf.Zoom2 = float.Parse(txtZoom2.Text);
                 icf.Position.X = float.Parse(txtPosX.Text);
                 icf.Position.Y = float.Parse(txtPosY.Text);
                 icf.Position.Z = float.Parse(txtPosZ.Text);
