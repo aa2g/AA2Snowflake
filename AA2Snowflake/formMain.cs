@@ -733,6 +733,7 @@ namespace AA2Snowflake
                 icf.Rotation.Y = float.Parse(txtRotY.Text).DegreesToRadians();
                 icf.Rotation.Z = float.Parse(txtRotZ.Text).DegreesToRadians();
                 icf.Zoom1 = float.Parse(txtZoom1.Text);
+                icf.Zoom2 = 0.5f;
                 icf.Position.X = float.Parse(txtPosX.Text);
                 icf.Position.Y = float.Parse(txtPosY.Text);
                 icf.Position.Z = float.Parse(txtPosZ.Text);
