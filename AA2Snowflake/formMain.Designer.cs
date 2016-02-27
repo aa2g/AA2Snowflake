@@ -32,6 +32,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pluginsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -61,6 +62,7 @@
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.imgBorder = new System.Windows.Forms.PictureBox();
+            this.chkRenderBorder = new System.Windows.Forms.CheckBox();
             this.btnSetBorderBlank = new System.Windows.Forms.Button();
             this.btnRestoreAllBorder = new System.Windows.Forms.Button();
             this.btnRestoreBorder = new System.Windows.Forms.Button();
@@ -80,6 +82,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.txtFOV = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.btnBackupAll33 = new System.Windows.Forms.Button();
             this.cmbMode33 = new System.Windows.Forms.ComboBox();
             this.btnRestore33 = new System.Windows.Forms.Button();
@@ -150,10 +154,8 @@
             this.radio2x = new System.Windows.Forms.RadioButton();
             this.lblPatcherOutputSize = new System.Windows.Forms.Label();
             this.trkCardSize = new System.Windows.Forms.TrackBar();
-            this.txtFOV = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.chkRenderBorder = new System.Windows.Forms.CheckBox();
-            this.pluginsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadedPluginsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -232,9 +234,18 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // pluginsToolStripMenuItem
+            // 
+            this.pluginsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loadedPluginsToolStripMenuItem,
+            this.toolStripSeparator3});
+            this.pluginsToolStripMenuItem.Name = "pluginsToolStripMenuItem";
+            this.pluginsToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.pluginsToolStripMenuItem.Text = "Plugins";
             // 
             // helpToolStripMenuItem
             // 
@@ -322,7 +333,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.cmbBackground);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Size = new System.Drawing.Size(393, 344);
-            this.splitContainer1.SplitterDistance = 189;
+            this.splitContainer1.SplitterDistance = 188;
             this.splitContainer1.TabIndex = 0;
             // 
             // imgBackground
@@ -331,7 +342,7 @@
             this.imgBackground.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgBackground.Location = new System.Drawing.Point(0, 0);
             this.imgBackground.Name = "imgBackground";
-            this.imgBackground.Size = new System.Drawing.Size(189, 344);
+            this.imgBackground.Size = new System.Drawing.Size(188, 344);
             this.imgBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgBackground.TabIndex = 0;
             this.imgBackground.TabStop = false;
@@ -443,7 +454,7 @@
             this.splitContainer5.Panel2.Controls.Add(this.cmbRoster);
             this.splitContainer5.Panel2.Controls.Add(this.label6);
             this.splitContainer5.Size = new System.Drawing.Size(393, 344);
-            this.splitContainer5.SplitterDistance = 189;
+            this.splitContainer5.SplitterDistance = 188;
             this.splitContainer5.TabIndex = 0;
             // 
             // imgRosterBackground
@@ -452,7 +463,7 @@
             this.imgRosterBackground.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgRosterBackground.Location = new System.Drawing.Point(0, 0);
             this.imgRosterBackground.Name = "imgRosterBackground";
-            this.imgRosterBackground.Size = new System.Drawing.Size(189, 344);
+            this.imgRosterBackground.Size = new System.Drawing.Size(188, 344);
             this.imgRosterBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgRosterBackground.TabIndex = 0;
             this.imgRosterBackground.TabStop = false;
@@ -565,7 +576,7 @@
             this.splitContainer4.Panel2.Controls.Add(this.cmbBorder);
             this.splitContainer4.Panel2.Controls.Add(this.label5);
             this.splitContainer4.Size = new System.Drawing.Size(393, 344);
-            this.splitContainer4.SplitterDistance = 189;
+            this.splitContainer4.SplitterDistance = 188;
             this.splitContainer4.TabIndex = 1;
             // 
             // imgBorder
@@ -574,10 +585,21 @@
             this.imgBorder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgBorder.Location = new System.Drawing.Point(0, 0);
             this.imgBorder.Name = "imgBorder";
-            this.imgBorder.Size = new System.Drawing.Size(189, 344);
+            this.imgBorder.Size = new System.Drawing.Size(188, 344);
             this.imgBorder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgBorder.TabIndex = 0;
             this.imgBorder.TabStop = false;
+            // 
+            // chkRenderBorder
+            // 
+            this.chkRenderBorder.AutoSize = true;
+            this.chkRenderBorder.Location = new System.Drawing.Point(110, 28);
+            this.chkRenderBorder.Name = "chkRenderBorder";
+            this.chkRenderBorder.Size = new System.Drawing.Size(61, 17);
+            this.chkRenderBorder.TabIndex = 7;
+            this.chkRenderBorder.Text = "Render";
+            this.chkRenderBorder.UseVisualStyleBackColor = true;
+            this.chkRenderBorder.CheckedChanged += new System.EventHandler(this.chkRenderBorder_CheckedChanged);
             // 
             // btnSetBorderBlank
             // 
@@ -696,7 +718,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.cmbCharacter);
             this.splitContainer2.Panel2.Controls.Add(this.label2);
             this.splitContainer2.Size = new System.Drawing.Size(393, 344);
-            this.splitContainer2.SplitterDistance = 189;
+            this.splitContainer2.SplitterDistance = 188;
             this.splitContainer2.TabIndex = 0;
             // 
             // imgCharacter
@@ -705,7 +727,7 @@
             this.imgCharacter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgCharacter.Location = new System.Drawing.Point(0, 0);
             this.imgCharacter.Name = "imgCharacter";
-            this.imgCharacter.Size = new System.Drawing.Size(189, 344);
+            this.imgCharacter.Size = new System.Drawing.Size(188, 344);
             this.imgCharacter.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgCharacter.TabIndex = 0;
             this.imgCharacter.TabStop = false;
@@ -806,6 +828,22 @@
             this.groupBox5.TabIndex = 2;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Part 3.3: Change camera position";
+            // 
+            // txtFOV
+            // 
+            this.txtFOV.Location = new System.Drawing.Point(306, 91);
+            this.txtFOV.Name = "txtFOV";
+            this.txtFOV.Size = new System.Drawing.Size(83, 20);
+            this.txtFOV.TabIndex = 16;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(268, 94);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(31, 13);
+            this.label12.TabIndex = 17;
+            this.label12.Text = "FOV:";
             // 
             // btnBackupAll33
             // 
@@ -1615,38 +1653,17 @@
             this.trkCardSize.TabIndex = 0;
             this.trkCardSize.Scroll += new System.EventHandler(this.trkCardSize_Scroll);
             // 
-            // txtFOV
+            // loadedPluginsToolStripMenuItem
             // 
-            this.txtFOV.Location = new System.Drawing.Point(306, 91);
-            this.txtFOV.Name = "txtFOV";
-            this.txtFOV.Size = new System.Drawing.Size(83, 20);
-            this.txtFOV.TabIndex = 16;
+            this.loadedPluginsToolStripMenuItem.Name = "loadedPluginsToolStripMenuItem";
+            this.loadedPluginsToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.loadedPluginsToolStripMenuItem.Text = "Loaded Plugins";
+            this.loadedPluginsToolStripMenuItem.Click += new System.EventHandler(this.loadedPluginsToolStripMenuItem_Click);
             // 
-            // label12
+            // toolStripSeparator3
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(268, 94);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(31, 13);
-            this.label12.TabIndex = 17;
-            this.label12.Text = "FOV:";
-            // 
-            // chkRenderBorder
-            // 
-            this.chkRenderBorder.AutoSize = true;
-            this.chkRenderBorder.Location = new System.Drawing.Point(110, 28);
-            this.chkRenderBorder.Name = "chkRenderBorder";
-            this.chkRenderBorder.Size = new System.Drawing.Size(61, 17);
-            this.chkRenderBorder.TabIndex = 7;
-            this.chkRenderBorder.Text = "Render";
-            this.chkRenderBorder.UseVisualStyleBackColor = true;
-            this.chkRenderBorder.CheckedChanged += new System.EventHandler(this.chkRenderBorder_CheckedChanged);
-            // 
-            // pluginsToolStripMenuItem
-            // 
-            this.pluginsToolStripMenuItem.Name = "pluginsToolStripMenuItem";
-            this.pluginsToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
-            this.pluginsToolStripMenuItem.Text = "Plugins";
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(152, 6);
             // 
             // formMain
             // 
@@ -1859,6 +1876,8 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.CheckBox chkRenderBorder;
         private System.Windows.Forms.ToolStripMenuItem pluginsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadedPluginsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }
 

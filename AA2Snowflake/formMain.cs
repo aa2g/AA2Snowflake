@@ -25,6 +25,7 @@ namespace AA2Snowflake
 #warning add blush values
 
         SortedDictionary<int, IPersonality> Personalities = new SortedDictionary<int, IPersonality>(PersonalityFactory.GetAllPersonalities());
+        List<IPlugin> Plugins = new List<IPlugin>();
         #region Form
         public formLoad load = new formLoad();
         public formMain()
@@ -50,7 +51,12 @@ namespace AA2Snowflake
 
         private void formMain_Load(object sender, EventArgs e)
         {
-            foreach (IPlugin plugin in PluginLoader.PluginLoader.LoadAllDLLs(Paths.PLUGINS))
+            if (!Directory.Exists(Paths.PLUGINS))
+                Directory.CreateDirectory(Paths.PLUGINS);
+
+            Plugins.AddRange(PluginLoader.PluginLoader.LoadAllDLLs(Paths.PLUGINS + "\\"));
+
+            foreach (IPlugin plugin in Plugins)
             {
                 switch (plugin.Type)
                 {
@@ -62,7 +68,9 @@ namespace AA2Snowflake
                     case PluginType.MenuStripButton:
                         MenuStripMethod strip = (MenuStripMethod)plugin.Payload;
 
-                        ToolStripDropDownButton button = new ToolStripDropDownButton(strip.Text);
+                        ToolStripMenuItem button = new ToolStripMenuItem();
+                        button.Text = strip.Text;
+                        button.AutoSize = true;
                         button.Click += new EventHandler((s, ev) =>
                         {
                             strip.Method.Invoke();
@@ -116,6 +124,13 @@ namespace AA2Snowflake
         {
             using (formAbout about = new formAbout())
                 about.ShowDialog();
+        }
+
+        private void loadedPluginsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<string> items = Plugins.Select(p => p.Name + " (" + p.Version.ToString() + ")").ToList();
+
+            MessageBox.Show(items.Aggregate((i, j) => i + "\n" + j));
         }
         #endregion
 
@@ -867,8 +882,11 @@ namespace AA2Snowflake
         private void saveToolStripButton_Click(object sender, EventArgs e)
         {
             if (cardpath != null && info.card != null)
-#warning add checker for file being accessed by aa2edit
+            {
                 File.WriteAllBytes(cardpath, info.card.raw);
+                MessageBox.Show("Saved!");
+            }
+#warning add checker for file being accessed by aa2edit
             UpdateWindowState();
         }
 
@@ -882,6 +900,7 @@ namespace AA2Snowflake
                     {
                         File.WriteAllBytes(file.FileName, info.card.raw);
                         cardpath = file.FileName;
+                        MessageBox.Show("Saved!");
                         UpdateWindowState();
                     }
                 }

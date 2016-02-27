@@ -9,6 +9,9 @@
 ++ Custom personality support uses a dynamic loading system which doesn't require .XML files like ReiEdit
 + Patcher now can patch browser-related bug for AA2Edit
 + Crashes when border changes have been temporarily dealt with
++ New plugin system, comes with these base plugins:
+++ Batch .cloth loading for multiple cards at a time
+++ Pose viewer (thanks to whoever made the DIY personality pack)
 
 v1.2
 + Added the ability to edit some character information in the card replacer

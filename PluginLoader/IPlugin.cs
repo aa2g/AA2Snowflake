@@ -16,16 +16,28 @@ namespace PluginLoader
 
     public delegate void Method();
 
-    public struct MenuStripMethod
+    public class MenuStripMethod
     {
         public string Text;
         public Method Method;
+
+        public MenuStripMethod(string text, Method method)
+        {
+            Text = text;
+            Method = method;
+        }
     }
 
-    public struct UserControlMethod
+    public class UserControlMethod
     {
         public string Text;
         public UserControl Method;
+
+        public UserControlMethod(string text, UserControl control)
+        {
+            Text = text;
+            Method = control;
+        }
     }
 
     public interface IPlugin

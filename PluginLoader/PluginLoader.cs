@@ -17,9 +17,13 @@ namespace PluginLoader
             List<IPlugin> plugins = new List<IPlugin>();
 
             Assembly assembly = Assembly.LoadFrom(Filename);
+
+            /*Assembly core = AppDomain.CurrentDomain.GetAssemblies().Single(x => x.GetName().Name.Equals("PluginLoader"));
+            Type itype = core.GetType("PluginLoader.IPlugin");*/
+
             foreach (Type type in assembly.GetTypes())
             {
-                if (type.IsSubclassOf(typeof(IPlugin)) && type.IsAbstract == false)
+                if (typeof(IPlugin).IsAssignableFrom(type) && type.IsAbstract == false)
                 {
                     IPlugin b = type.InvokeMember(null,
                                                BindingFlags.CreateInstance,
