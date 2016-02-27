@@ -215,6 +215,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "formInfo";
             this.Text = "Character Information";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formInfo_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

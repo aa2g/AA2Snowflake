@@ -813,14 +813,15 @@ namespace AA2Snowflake
                     info.updateInformation();
                     info.Show();
                     cardpath = file.FileName;
+                    UpdateWindowState();
                 }
             }
-            UpdateWindowState();
         }
 
         private void saveToolStripButton_Click(object sender, EventArgs e)
         {
             if (cardpath != null && info.card != null)
+#warning add checker for file being accessed by aa2edit
                 File.WriteAllBytes(cardpath, info.card.raw);
             UpdateWindowState();
         }
@@ -835,9 +836,9 @@ namespace AA2Snowflake
                     {
                         File.WriteAllBytes(file.FileName, info.card.raw);
                         cardpath = file.FileName;
+                        UpdateWindowState();
                     }
                 }
-            UpdateWindowState();
         }
 
         private void replaceCardFaceToolStripButton_Click(object sender, EventArgs e)
@@ -858,9 +859,9 @@ namespace AA2Snowflake
                         {
                             info.card.Image = Image.FromFile(file.FileName);
                         }
+                        UpdateWindowState();
                     }
                 }
-            UpdateWindowState();
         }
 
         private void UpdateWindowState()

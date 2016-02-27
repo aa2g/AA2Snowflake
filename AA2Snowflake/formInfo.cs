@@ -96,5 +96,11 @@ namespace AA2Snowflake
                 }
             }
         }
+
+        private void formInfo_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            Hide();
+        }
     }
 }
