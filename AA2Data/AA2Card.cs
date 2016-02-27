@@ -20,7 +20,7 @@ namespace AA2Data
                 using (BinaryWriter bw = new BinaryWriter(mem))
                 {
                     bw.Write(_image);
-                    bw.Write(data);
+                    bw.Write(data.raw);
                     bw.Write(RosterLength);
                     bw.Write(_RosterImage);
                     bw.Write(Offset);

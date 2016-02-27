@@ -18,7 +18,6 @@ namespace AA2Data
 
     public class BaseData
     {
-        public static implicit operator byte[] (BaseData x) => x.raw;
         public virtual int dataLength => -1;
         public byte[] raw { get; set; }
 
@@ -61,7 +60,7 @@ namespace AA2Data
                     break;
                 case AA2DataType.DataBlock:
                     var block = (BaseData)value;
-                    Array.Copy(block, 0, this.raw, offset, block.dataLength);
+                    Array.Copy(block.raw, 0, this.raw, offset, block.dataLength);
                     break;
                 default:
 #warning finish implementation
@@ -104,7 +103,7 @@ namespace AA2Data
     public class AA2Data : BaseData
     {
         public override int dataLength => 3011;
-
+        
         public new byte[] raw
         {
             get
@@ -119,10 +118,11 @@ namespace AA2Data
             set
             {
                 base.raw = value;
-                CLOTH_UNIFORM = new AA2Cloth((BaseData)readValue(0xA57, AA2DataType.DataBlock));
-                CLOTH_SPORT = new AA2Cloth((BaseData)readValue(0xAB2, AA2DataType.DataBlock));
-                CLOTH_SWIM = new AA2Cloth((BaseData)readValue(0xB0D, AA2DataType.DataBlock));
-                CLOTH_CLUB = new AA2Cloth((BaseData)readValue(0xB68, AA2DataType.DataBlock));
+                int length = 91;
+                CLOTH_UNIFORM = new AA2Cloth((BaseData)readValue(0xA57, AA2DataType.DataBlock, length));
+                CLOTH_SPORT = new AA2Cloth((BaseData)readValue(0xAB2, AA2DataType.DataBlock, length));
+                CLOTH_SWIM = new AA2Cloth((BaseData)readValue(0xB0D, AA2DataType.DataBlock, length));
+                CLOTH_CLUB = new AA2Cloth((BaseData)readValue(0xB68, AA2DataType.DataBlock, length));
             }
         }
 
@@ -215,8 +215,16 @@ namespace AA2Data
 
         public AA2Cloth(byte[] data)
         {
-            raw = new byte[dataLength];
-            Array.Copy(data, 1, raw, 0, 91);
+            //for some reason the IS_ONEPIECE, IS_UNDERWEAR, IS_SKIRT flags are switched around
+            byte[] temp = new byte[dataLength];
+            Array.Copy(data, 1, temp, 0, 91);
+
+            byte[] flags = new byte[3];
+            Array.Copy(temp, 8, flags, 0, 3); //copy the flags
+            Array.Copy(temp, 11, temp, 8, 61); //shift the next 40 bytes back up
+            Array.Copy(flags, 0, temp, 72, 3); //put the flags back
+
+            raw = temp;
         }
     }
 
