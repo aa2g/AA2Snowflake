@@ -23,8 +23,8 @@ namespace AA2Data
     public struct ICF
     {
         public Point3F Rotation;
-        public float Zoom1;
-        public float Zoom2;
+        public float Zoom;
+        public float FOV;
         public Point3F Position;
 
         public ICF(Stream icfstream)
@@ -32,8 +32,8 @@ namespace AA2Data
             using (BinaryReader b = new BinaryReader(icfstream))
             {
                 Rotation = new Point3F(b.ReadSingle(), b.ReadSingle(), b.ReadSingle());
-                Zoom1 = b.ReadSingle();
-                Zoom2 = b.ReadSingle();
+                Zoom = b.ReadSingle();
+                FOV = b.ReadSingle();
                 Position = new Point3F(b.ReadSingle(), b.ReadSingle(), b.ReadSingle());
             }
         }
@@ -47,8 +47,8 @@ namespace AA2Data
                 b.Write(Rotation.X);
                 b.Write(Rotation.Y);
                 b.Write(Rotation.Z);
-                b.Write(Zoom1);
-                b.Write(Zoom2);
+                b.Write(Zoom);
+                b.Write(FOV);
                 b.Write(Position.X);
                 b.Write(Position.Y);
                 b.Write(Position.Z);

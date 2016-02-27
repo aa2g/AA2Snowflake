@@ -681,7 +681,8 @@ namespace AA2Snowflake
             txtRotX.Text = icf.Rotation.X.RadiansToDegrees().ToString();
             txtRotY.Text = icf.Rotation.Y.RadiansToDegrees().ToString();
             txtRotZ.Text = icf.Rotation.Z.RadiansToDegrees().ToString();
-            txtZoom1.Text = icf.Zoom1.ToString();
+            txtZoom.Text = icf.Zoom.ToString();
+            txtFOV.Text = icf.FOV.ToString();
             txtPosX.Text = icf.Position.X.ToString();
             txtPosY.Text = icf.Position.Y.ToString();
             txtPosZ.Text = icf.Position.Z.ToString();
@@ -719,7 +720,6 @@ namespace AA2Snowflake
 
         private void btnSet33_Click(object sender, EventArgs e)
         {
-#warning properly test if this works
             IPersonality personality = Personalities.ElementAt(cmbPersonality33.SelectedIndex).Value;
             string name = "e" + cmbMode33.SelectedIndex.ToString("00") + "_" + personality.Slot.ToString("00") + "_" + cmbHeight33.SelectedIndex.ToString("00") + ".ICF";
             ppParser pp = personality.GetIcfPP();
@@ -732,8 +732,8 @@ namespace AA2Snowflake
                 icf.Rotation.X = float.Parse(txtRotX.Text).DegreesToRadians();
                 icf.Rotation.Y = float.Parse(txtRotY.Text).DegreesToRadians();
                 icf.Rotation.Z = float.Parse(txtRotZ.Text).DegreesToRadians();
-                icf.Zoom1 = float.Parse(txtZoom1.Text);
-                icf.Zoom2 = 0.5f;
+                icf.Zoom = float.Parse(txtZoom.Text);
+                icf.FOV = float.Parse(txtFOV.Text);
                 icf.Position.X = float.Parse(txtPosX.Text);
                 icf.Position.Y = float.Parse(txtPosY.Text);
                 icf.Position.Z = float.Parse(txtPosZ.Text);

@@ -80,10 +80,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnBackupAll33 = new System.Windows.Forms.Button();
             this.cmbMode33 = new System.Windows.Forms.ComboBox();
             this.btnRestore33 = new System.Windows.Forms.Button();
             this.btnSet33 = new System.Windows.Forms.Button();
-            this.txtZoom1 = new System.Windows.Forms.TextBox();
+            this.txtZoom = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.txtPosZ = new System.Windows.Forms.TextBox();
@@ -102,6 +103,7 @@
             this.cmbHeight33 = new System.Windows.Forms.ComboBox();
             this.cmbPersonality33 = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnBackupAll32 = new System.Windows.Forms.Button();
             this.cmbPersonality32 = new System.Windows.Forms.ComboBox();
             this.numMouth32 = new System.Windows.Forms.NumericUpDown();
             this.chkMouth32 = new System.Windows.Forms.CheckBox();
@@ -135,6 +137,7 @@
             this.replaceCardRosterFromCardToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.chkPatcherBug = new System.Windows.Forms.CheckBox();
             this.btnPatch = new System.Windows.Forms.Button();
             this.btnPatcherLoad = new System.Windows.Forms.Button();
             this.lblPatcherCurrentRenderMode = new System.Windows.Forms.Label();
@@ -147,9 +150,8 @@
             this.radio2x = new System.Windows.Forms.RadioButton();
             this.lblPatcherOutputSize = new System.Windows.Forms.Label();
             this.trkCardSize = new System.Windows.Forms.TrackBar();
-            this.btnBackupAll32 = new System.Windows.Forms.Button();
-            this.btnBackupAll33 = new System.Windows.Forms.Button();
-            this.chkPatcherBug = new System.Windows.Forms.CheckBox();
+            this.txtFOV = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -212,7 +214,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(439, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(413, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -273,7 +275,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 24);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(439, 420);
+            this.tabControl1.Size = new System.Drawing.Size(413, 395);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -282,7 +284,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(431, 394);
+            this.tabPage1.Size = new System.Drawing.Size(405, 369);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Background";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -293,7 +295,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(425, 388);
+            this.groupBox1.Size = new System.Drawing.Size(399, 363);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Part 1: Custom background";
@@ -316,8 +318,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.btnLoadBG);
             this.splitContainer1.Panel2.Controls.Add(this.cmbBackground);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
-            this.splitContainer1.Size = new System.Drawing.Size(419, 369);
-            this.splitContainer1.SplitterDistance = 202;
+            this.splitContainer1.Size = new System.Drawing.Size(393, 344);
+            this.splitContainer1.SplitterDistance = 189;
             this.splitContainer1.TabIndex = 0;
             // 
             // imgBackground
@@ -326,7 +328,7 @@
             this.imgBackground.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgBackground.Location = new System.Drawing.Point(0, 0);
             this.imgBackground.Name = "imgBackground";
-            this.imgBackground.Size = new System.Drawing.Size(202, 369);
+            this.imgBackground.Size = new System.Drawing.Size(189, 344);
             this.imgBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgBackground.TabIndex = 0;
             this.imgBackground.TabStop = false;
@@ -403,7 +405,7 @@
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(431, 394);
+            this.tabPage7.Size = new System.Drawing.Size(405, 369);
             this.tabPage7.TabIndex = 7;
             this.tabPage7.Text = "Roster";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -414,7 +416,7 @@
             this.groupBox9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox9.Location = new System.Drawing.Point(3, 3);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(425, 388);
+            this.groupBox9.Size = new System.Drawing.Size(399, 363);
             this.groupBox9.TabIndex = 2;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Part 1: Custom roster background";
@@ -437,8 +439,8 @@
             this.splitContainer5.Panel2.Controls.Add(this.btnRosterLoad);
             this.splitContainer5.Panel2.Controls.Add(this.cmbRoster);
             this.splitContainer5.Panel2.Controls.Add(this.label6);
-            this.splitContainer5.Size = new System.Drawing.Size(419, 369);
-            this.splitContainer5.SplitterDistance = 202;
+            this.splitContainer5.Size = new System.Drawing.Size(393, 344);
+            this.splitContainer5.SplitterDistance = 189;
             this.splitContainer5.TabIndex = 0;
             // 
             // imgRosterBackground
@@ -447,7 +449,7 @@
             this.imgRosterBackground.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgRosterBackground.Location = new System.Drawing.Point(0, 0);
             this.imgRosterBackground.Name = "imgRosterBackground";
-            this.imgRosterBackground.Size = new System.Drawing.Size(202, 369);
+            this.imgRosterBackground.Size = new System.Drawing.Size(189, 344);
             this.imgRosterBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgRosterBackground.TabIndex = 0;
             this.imgRosterBackground.TabStop = false;
@@ -523,7 +525,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(431, 394);
+            this.tabPage5.Size = new System.Drawing.Size(405, 369);
             this.tabPage5.TabIndex = 5;
             this.tabPage5.Text = "Border";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -534,7 +536,7 @@
             this.groupBox7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox7.Location = new System.Drawing.Point(3, 3);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(425, 388);
+            this.groupBox7.Size = new System.Drawing.Size(399, 363);
             this.groupBox7.TabIndex = 0;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Part 1: Custom border";
@@ -558,8 +560,8 @@
             this.splitContainer4.Panel2.Controls.Add(this.btnLoadBorder);
             this.splitContainer4.Panel2.Controls.Add(this.cmbBorder);
             this.splitContainer4.Panel2.Controls.Add(this.label5);
-            this.splitContainer4.Size = new System.Drawing.Size(419, 369);
-            this.splitContainer4.SplitterDistance = 202;
+            this.splitContainer4.Size = new System.Drawing.Size(393, 344);
+            this.splitContainer4.SplitterDistance = 189;
             this.splitContainer4.TabIndex = 1;
             // 
             // imgBorder
@@ -568,7 +570,7 @@
             this.imgBorder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgBorder.Location = new System.Drawing.Point(0, 0);
             this.imgBorder.Name = "imgBorder";
-            this.imgBorder.Size = new System.Drawing.Size(202, 369);
+            this.imgBorder.Size = new System.Drawing.Size(189, 344);
             this.imgBorder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgBorder.TabIndex = 0;
             this.imgBorder.TabStop = false;
@@ -655,7 +657,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(431, 394);
+            this.tabPage2.Size = new System.Drawing.Size(405, 369);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Clothes";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -666,7 +668,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(425, 388);
+            this.groupBox2.Size = new System.Drawing.Size(399, 363);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Part 2: Assigning clothes";
@@ -689,8 +691,8 @@
             this.splitContainer2.Panel2.Controls.Add(this.btnLoadCHR);
             this.splitContainer2.Panel2.Controls.Add(this.cmbCharacter);
             this.splitContainer2.Panel2.Controls.Add(this.label2);
-            this.splitContainer2.Size = new System.Drawing.Size(419, 369);
-            this.splitContainer2.SplitterDistance = 202;
+            this.splitContainer2.Size = new System.Drawing.Size(393, 344);
+            this.splitContainer2.SplitterDistance = 189;
             this.splitContainer2.TabIndex = 0;
             // 
             // imgCharacter
@@ -699,7 +701,7 @@
             this.imgCharacter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgCharacter.Location = new System.Drawing.Point(0, 0);
             this.imgCharacter.Name = "imgCharacter";
-            this.imgCharacter.Size = new System.Drawing.Size(202, 369);
+            this.imgCharacter.Size = new System.Drawing.Size(189, 344);
             this.imgCharacter.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgCharacter.TabIndex = 0;
             this.imgCharacter.TabStop = false;
@@ -774,18 +776,20 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(431, 394);
+            this.tabPage3.Size = new System.Drawing.Size(405, 369);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Poses";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.txtFOV);
+            this.groupBox5.Controls.Add(this.label12);
             this.groupBox5.Controls.Add(this.btnBackupAll33);
             this.groupBox5.Controls.Add(this.cmbMode33);
             this.groupBox5.Controls.Add(this.btnRestore33);
             this.groupBox5.Controls.Add(this.btnSet33);
-            this.groupBox5.Controls.Add(this.txtZoom1);
+            this.groupBox5.Controls.Add(this.txtZoom);
             this.groupBox5.Controls.Add(this.label11);
             this.groupBox5.Controls.Add(this.groupBox11);
             this.groupBox5.Controls.Add(this.groupBox10);
@@ -794,10 +798,20 @@
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox5.Location = new System.Drawing.Point(3, 184);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(425, 208);
+            this.groupBox5.Size = new System.Drawing.Size(399, 184);
             this.groupBox5.TabIndex = 2;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Part 3.3: Change camera position";
+            // 
+            // btnBackupAll33
+            // 
+            this.btnBackupAll33.Location = new System.Drawing.Point(175, 152);
+            this.btnBackupAll33.Name = "btnBackupAll33";
+            this.btnBackupAll33.Size = new System.Drawing.Size(75, 23);
+            this.btnBackupAll33.TabIndex = 15;
+            this.btnBackupAll33.Text = "Backup All";
+            this.btnBackupAll33.UseVisualStyleBackColor = true;
+            this.btnBackupAll33.Click += new System.EventHandler(this.btnBackupAll33_Click);
             // 
             // cmbMode33
             // 
@@ -814,7 +828,7 @@
             // 
             // btnRestore33
             // 
-            this.btnRestore33.Location = new System.Drawing.Point(289, 179);
+            this.btnRestore33.Location = new System.Drawing.Point(256, 152);
             this.btnRestore33.Name = "btnRestore33";
             this.btnRestore33.Size = new System.Drawing.Size(75, 23);
             this.btnRestore33.TabIndex = 13;
@@ -824,7 +838,7 @@
             // 
             // btnSet33
             // 
-            this.btnSet33.Location = new System.Drawing.Point(245, 152);
+            this.btnSet33.Location = new System.Drawing.Point(94, 152);
             this.btnSet33.Name = "btnSet33";
             this.btnSet33.Size = new System.Drawing.Size(75, 23);
             this.btnSet33.TabIndex = 12;
@@ -832,21 +846,21 @@
             this.btnSet33.UseVisualStyleBackColor = true;
             this.btnSet33.Click += new System.EventHandler(this.btnSet33_Click);
             // 
-            // txtZoom1
+            // txtZoom
             // 
-            this.txtZoom1.Location = new System.Drawing.Point(65, 152);
-            this.txtZoom1.Name = "txtZoom1";
-            this.txtZoom1.Size = new System.Drawing.Size(149, 20);
-            this.txtZoom1.TabIndex = 6;
+            this.txtZoom.Location = new System.Drawing.Point(306, 65);
+            this.txtZoom.Name = "txtZoom";
+            this.txtZoom.Size = new System.Drawing.Size(83, 20);
+            this.txtZoom.TabIndex = 6;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(13, 155);
+            this.label11.Location = new System.Drawing.Point(268, 68);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(46, 13);
+            this.label11.Size = new System.Drawing.Size(37, 13);
             this.label11.TabIndex = 6;
-            this.label11.Text = "Zoom 1:";
+            this.label11.Text = "Zoom:";
             // 
             // groupBox11
             // 
@@ -856,9 +870,9 @@
             this.groupBox11.Controls.Add(this.label8);
             this.groupBox11.Controls.Add(this.label9);
             this.groupBox11.Controls.Add(this.label10);
-            this.groupBox11.Location = new System.Drawing.Point(210, 46);
+            this.groupBox11.Location = new System.Drawing.Point(142, 46);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(191, 100);
+            this.groupBox11.Size = new System.Drawing.Size(121, 100);
             this.groupBox11.TabIndex = 11;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Position";
@@ -867,21 +881,21 @@
             // 
             this.txtPosZ.Location = new System.Drawing.Point(30, 71);
             this.txtPosZ.Name = "txtPosZ";
-            this.txtPosZ.Size = new System.Drawing.Size(149, 20);
+            this.txtPosZ.Size = new System.Drawing.Size(83, 20);
             this.txtPosZ.TabIndex = 5;
             // 
             // txtPosY
             // 
             this.txtPosY.Location = new System.Drawing.Point(30, 45);
             this.txtPosY.Name = "txtPosY";
-            this.txtPosY.Size = new System.Drawing.Size(149, 20);
+            this.txtPosY.Size = new System.Drawing.Size(83, 20);
             this.txtPosY.TabIndex = 4;
             // 
             // txtPosX
             // 
             this.txtPosX.Location = new System.Drawing.Point(30, 19);
             this.txtPosX.Name = "txtPosX";
-            this.txtPosX.Size = new System.Drawing.Size(149, 20);
+            this.txtPosX.Size = new System.Drawing.Size(83, 20);
             this.txtPosX.TabIndex = 3;
             // 
             // label8
@@ -921,7 +935,7 @@
             this.groupBox10.Controls.Add(this.label3);
             this.groupBox10.Location = new System.Drawing.Point(11, 46);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(191, 100);
+            this.groupBox10.Size = new System.Drawing.Size(125, 100);
             this.groupBox10.TabIndex = 10;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Rotation";
@@ -930,21 +944,21 @@
             // 
             this.txtRotZ.Location = new System.Drawing.Point(30, 71);
             this.txtRotZ.Name = "txtRotZ";
-            this.txtRotZ.Size = new System.Drawing.Size(149, 20);
+            this.txtRotZ.Size = new System.Drawing.Size(83, 20);
             this.txtRotZ.TabIndex = 5;
             // 
             // txtRotY
             // 
             this.txtRotY.Location = new System.Drawing.Point(30, 45);
             this.txtRotY.Name = "txtRotY";
-            this.txtRotY.Size = new System.Drawing.Size(149, 20);
+            this.txtRotY.Size = new System.Drawing.Size(83, 20);
             this.txtRotY.TabIndex = 4;
             // 
             // txtRotX
             // 
             this.txtRotX.Location = new System.Drawing.Point(30, 19);
             this.txtRotX.Name = "txtRotX";
-            this.txtRotX.Size = new System.Drawing.Size(149, 20);
+            this.txtRotX.Size = new System.Drawing.Size(83, 20);
             this.txtRotX.TabIndex = 3;
             // 
             // label7
@@ -1048,10 +1062,20 @@
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox4.Location = new System.Drawing.Point(3, 57);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(425, 127);
+            this.groupBox4.Size = new System.Drawing.Size(399, 127);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Part 3.2: Select pose";
+            // 
+            // btnBackupAll32
+            // 
+            this.btnBackupAll32.Location = new System.Drawing.Point(175, 98);
+            this.btnBackupAll32.Name = "btnBackupAll32";
+            this.btnBackupAll32.Size = new System.Drawing.Size(75, 23);
+            this.btnBackupAll32.TabIndex = 16;
+            this.btnBackupAll32.Text = "Backup All";
+            this.btnBackupAll32.UseVisualStyleBackColor = true;
+            this.btnBackupAll32.Click += new System.EventHandler(this.btnBackupAll32_Click);
             // 
             // cmbPersonality32
             // 
@@ -1242,7 +1266,7 @@
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox3.Location = new System.Drawing.Point(3, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(425, 54);
+            this.groupBox3.Size = new System.Drawing.Size(399, 54);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Part 3.1: Move poses to maker";
@@ -1293,7 +1317,7 @@
             this.tabPage4.Controls.Add(this.toolStrip1);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(431, 394);
+            this.tabPage4.Size = new System.Drawing.Size(405, 369);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Card Replacer";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1311,8 +1335,8 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.imgCard);
-            this.splitContainer3.Size = new System.Drawing.Size(431, 369);
-            this.splitContainer3.SplitterDistance = 143;
+            this.splitContainer3.Size = new System.Drawing.Size(405, 344);
+            this.splitContainer3.SplitterDistance = 134;
             this.splitContainer3.TabIndex = 1;
             // 
             // imgRoster
@@ -1321,7 +1345,7 @@
             this.imgRoster.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgRoster.Location = new System.Drawing.Point(0, 0);
             this.imgRoster.Name = "imgRoster";
-            this.imgRoster.Size = new System.Drawing.Size(143, 369);
+            this.imgRoster.Size = new System.Drawing.Size(134, 344);
             this.imgRoster.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.imgRoster.TabIndex = 3;
             this.imgRoster.TabStop = false;
@@ -1332,7 +1356,7 @@
             this.imgCard.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgCard.Location = new System.Drawing.Point(0, 0);
             this.imgCard.Name = "imgCard";
-            this.imgCard.Size = new System.Drawing.Size(284, 369);
+            this.imgCard.Size = new System.Drawing.Size(267, 344);
             this.imgCard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgCard.TabIndex = 2;
             this.imgCard.TabStop = false;
@@ -1351,7 +1375,7 @@
             this.replaceCardRosterFromCardToolStripButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(431, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(405, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -1433,7 +1457,7 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(431, 394);
+            this.tabPage6.Size = new System.Drawing.Size(405, 369);
             this.tabPage6.TabIndex = 6;
             this.tabPage6.Text = "Patcher";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -1453,10 +1477,20 @@
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox6.Location = new System.Drawing.Point(3, 3);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(425, 388);
+            this.groupBox6.Size = new System.Drawing.Size(399, 363);
             this.groupBox6.TabIndex = 0;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "AA2Edit";
+            // 
+            // chkPatcherBug
+            // 
+            this.chkPatcherBug.AutoSize = true;
+            this.chkPatcherBug.Location = new System.Drawing.Point(15, 180);
+            this.chkPatcherBug.Name = "chkPatcherBug";
+            this.chkPatcherBug.Size = new System.Drawing.Size(100, 17);
+            this.chkPatcherBug.TabIndex = 13;
+            this.chkPatcherBug.Text = "Fix browser bug";
+            this.chkPatcherBug.UseVisualStyleBackColor = true;
             // 
             // btnPatch
             // 
@@ -1577,46 +1611,32 @@
             this.trkCardSize.TabIndex = 0;
             this.trkCardSize.Scroll += new System.EventHandler(this.trkCardSize_Scroll);
             // 
-            // btnBackupAll32
+            // txtFOV
             // 
-            this.btnBackupAll32.Location = new System.Drawing.Point(175, 98);
-            this.btnBackupAll32.Name = "btnBackupAll32";
-            this.btnBackupAll32.Size = new System.Drawing.Size(75, 23);
-            this.btnBackupAll32.TabIndex = 16;
-            this.btnBackupAll32.Text = "Backup All";
-            this.btnBackupAll32.UseVisualStyleBackColor = true;
-            this.btnBackupAll32.Click += new System.EventHandler(this.btnBackupAll32_Click);
+            this.txtFOV.Location = new System.Drawing.Point(306, 91);
+            this.txtFOV.Name = "txtFOV";
+            this.txtFOV.Size = new System.Drawing.Size(83, 20);
+            this.txtFOV.TabIndex = 16;
             // 
-            // btnBackupAll33
+            // label12
             // 
-            this.btnBackupAll33.Location = new System.Drawing.Point(326, 152);
-            this.btnBackupAll33.Name = "btnBackupAll33";
-            this.btnBackupAll33.Size = new System.Drawing.Size(75, 23);
-            this.btnBackupAll33.TabIndex = 15;
-            this.btnBackupAll33.Text = "Backup All";
-            this.btnBackupAll33.UseVisualStyleBackColor = true;
-            this.btnBackupAll33.Click += new System.EventHandler(this.btnBackupAll33_Click);
-            // 
-            // chkPatcherBug
-            // 
-            this.chkPatcherBug.AutoSize = true;
-            this.chkPatcherBug.Location = new System.Drawing.Point(15, 180);
-            this.chkPatcherBug.Name = "chkPatcherBug";
-            this.chkPatcherBug.Size = new System.Drawing.Size(100, 17);
-            this.chkPatcherBug.TabIndex = 13;
-            this.chkPatcherBug.Text = "Fix browser bug";
-            this.chkPatcherBug.UseVisualStyleBackColor = true;
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(268, 94);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(31, 13);
+            this.label12.TabIndex = 17;
+            this.label12.Text = "FOV:";
             // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(439, 444);
+            this.ClientSize = new System.Drawing.Size(413, 419);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(455, 483);
+            this.MinimumSize = new System.Drawing.Size(429, 458);
             this.Name = "formMain";
             this.Text = "AA2Snowflake";
             this.Load += new System.EventHandler(this.formMain_Load);
@@ -1793,7 +1813,7 @@
         private System.Windows.Forms.ComboBox cmbHeight33;
         private System.Windows.Forms.Button btnRestore33;
         private System.Windows.Forms.Button btnSet33;
-        private System.Windows.Forms.TextBox txtZoom1;
+        private System.Windows.Forms.TextBox txtZoom;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.TextBox txtPosZ;
@@ -1814,6 +1834,8 @@
         private System.Windows.Forms.Button btnBackupAll32;
         private System.Windows.Forms.Button btnBackupAll33;
         private System.Windows.Forms.CheckBox chkPatcherBug;
+        private System.Windows.Forms.TextBox txtFOV;
+        private System.Windows.Forms.Label label12;
     }
 }
 
