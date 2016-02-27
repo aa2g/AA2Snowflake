@@ -15,6 +15,7 @@ using System.Drawing.Imaging;
 using Paloma;
 using AA2Snowflake.Personalities;
 using System.Text.RegularExpressions;
+using PluginLoader;
 
 namespace AA2Snowflake
 {
@@ -49,6 +50,38 @@ namespace AA2Snowflake
 
         private void formMain_Load(object sender, EventArgs e)
         {
+            foreach (IPlugin plugin in PluginLoader.PluginLoader.LoadAllDLLs(Paths.PLUGINS))
+            {
+                switch (plugin.Type)
+                {
+                    case PluginType.StartupScript:
+                        Method script = (Method)plugin.Payload;
+
+                        script.Invoke();
+                        break;
+                    case PluginType.MenuStripButton:
+                        MenuStripMethod strip = (MenuStripMethod)plugin.Payload;
+
+                        ToolStripDropDownButton button = new ToolStripDropDownButton(strip.Text);
+                        button.Click += new EventHandler((s, ev) =>
+                        {
+                            strip.Method.Invoke();
+                        });
+
+                        pluginsToolStripMenuItem.DropDownItems.Add(button);
+                        break;
+                    case PluginType.UserControl:
+                        UserControlMethod control = (UserControlMethod)plugin.Payload;
+
+                        TabPage page = new TabPage(control.Text);
+                        page.Controls.Add(control.Method);
+                        page.Controls[0].Dock = DockStyle.Fill;
+
+                        tabControl1.TabPages.Add(page);
+                        break;
+                }
+            }
+
             cmbBackground.SelectedIndex = 0;
             cmbBorder.SelectedIndex = 0;
             cmbCharacter.SelectedIndex = 0;

@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AA2Snowflake", "AA2Snowflake\AA2Snowflake.csproj", "{D0BF1F9F-19D4-4E0A-B7CB-779388D7C91D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SB3UtilityPP", "SB3UtilityPP\SB3UtilityPP.csproj", "{5647B104-8F58-4867-B849-DAC65D5243BD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AA2Data", "AA2Data\AA2Data.csproj", "{2690855A-9A7C-4DF3-A8C9-55CE10F6A05C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginLoader", "PluginLoader\PluginLoader.csproj", "{F98B71C8-20A9-4DDA-A56C-A29F6B75D0A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,14 @@ Global
 		{2690855A-9A7C-4DF3-A8C9-55CE10F6A05C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2690855A-9A7C-4DF3-A8C9-55CE10F6A05C}.Release|x86.ActiveCfg = Release|x86
 		{2690855A-9A7C-4DF3-A8C9-55CE10F6A05C}.Release|x86.Build.0 = Release|x86
+		{F98B71C8-20A9-4DDA-A56C-A29F6B75D0A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F98B71C8-20A9-4DDA-A56C-A29F6B75D0A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F98B71C8-20A9-4DDA-A56C-A29F6B75D0A9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F98B71C8-20A9-4DDA-A56C-A29F6B75D0A9}.Debug|x86.Build.0 = Debug|Any CPU
+		{F98B71C8-20A9-4DDA-A56C-A29F6B75D0A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F98B71C8-20A9-4DDA-A56C-A29F6B75D0A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F98B71C8-20A9-4DDA-A56C-A29F6B75D0A9}.Release|x86.ActiveCfg = Release|Any CPU
+		{F98B71C8-20A9-4DDA-A56C-A29F6B75D0A9}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

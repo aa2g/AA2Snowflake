@@ -153,6 +153,7 @@
             this.txtFOV = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.chkRenderBorder = new System.Windows.Forms.CheckBox();
+            this.pluginsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -212,6 +213,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
+            this.pluginsToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -1640,6 +1642,12 @@
             this.chkRenderBorder.UseVisualStyleBackColor = true;
             this.chkRenderBorder.CheckedChanged += new System.EventHandler(this.chkRenderBorder_CheckedChanged);
             // 
+            // pluginsToolStripMenuItem
+            // 
+            this.pluginsToolStripMenuItem.Name = "pluginsToolStripMenuItem";
+            this.pluginsToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.pluginsToolStripMenuItem.Text = "Plugins";
+            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1850,6 +1858,7 @@
         private System.Windows.Forms.TextBox txtFOV;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.CheckBox chkRenderBorder;
+        private System.Windows.Forms.ToolStripMenuItem pluginsToolStripMenuItem;
     }
 }
 
