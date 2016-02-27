@@ -8,6 +8,7 @@
 + Append/DLC/Custom personalities are fully supported
 ++ Custom personality support uses a dynamic loading system which doesn't require .XML files like ReiEdit
 + Patcher now can patch browser-related bug for AA2Edit
++ Crashes when border changes have been temporarily dealt with
 
 v1.2
 + Added the ability to edit some character information in the card replacer

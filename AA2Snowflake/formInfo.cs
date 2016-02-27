@@ -84,7 +84,6 @@ namespace AA2Snowflake
 
         private void btnCloth_Click(object sender, EventArgs e)
         {
-#warning test this
             using (var file = new OpenFileDialog())
             {
                 file.Filter = "Cloth file (*.cloth)|*.cloth";

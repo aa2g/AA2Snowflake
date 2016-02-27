@@ -284,18 +284,25 @@ namespace AA2Snowflake
         #endregion
         #region Border
         string borderpath;
+        bool render = false;
 
         private void cmbBorder_SelectedIndexChanged(object sender, EventArgs e)
         {
             borderpath = null;
 
-            using (var mem = Tools.GetStreamFromSubfile(PP.jg2e06_00_00.Subfiles.First(pp => pp.Name == "sp_04_02_0" + cmbBorder.SelectedIndex.ToString() + ".tga")))
-            {
-                if (imgBorder.Image != null)
-                    imgBorder.Image.Dispose();
+            if (render)
+                using (var mem = Tools.GetStreamFromSubfile(PP.jg2e06_00_00.Subfiles.First(pp => pp.Name == "sp_04_02_0" + cmbBorder.SelectedIndex.ToString() + ".tga")))
+                {
+                    if (imgBorder.Image != null)
+                        imgBorder.Image.Dispose();
 
-                imgBorder.Image = Tools.LoadTGA(mem);
-            }
+                    imgBorder.Image = Tools.LoadTGA(mem);
+                }
+        }
+
+        private void chkRenderBorder_CheckedChanged(object sender, EventArgs e)
+        {
+            render = chkRenderBorder.Checked;
         }
 
         private void btnLoadBorder_Click(object sender, EventArgs e)
@@ -311,10 +318,13 @@ namespace AA2Snowflake
                 if (file.ShowDialog() != DialogResult.Cancel)
                 {
                     borderpath = file.FileName;
-                    if (imgBorder.Image != null)
-                        imgBorder.Image.Dispose();
+                    if (render)
+                    {
+                        if (imgBorder.Image != null)
+                            imgBorder.Image.Dispose();
 
-                    imgBorder.Image = Tools.LoadTGA(file.FileName);
+                        imgBorder.Image = Tools.LoadTGA(file.FileName);
+                    }
                 }
             }
         }
@@ -322,10 +332,13 @@ namespace AA2Snowflake
         private void btnSetBorderBlank_Click(object sender, EventArgs e)
         {
             borderpath = Paths.BACKUP + @"\border_blank.tga";
-            if (imgBorder.Image != null)
-                imgBorder.Image.Dispose();
+            if (render)
+            {
+                if (imgBorder.Image != null)
+                    imgBorder.Image.Dispose();
 
-            imgBorder.Image = Tools.LoadTGA(borderpath);
+                imgBorder.Image = Tools.LoadTGA(borderpath);
+            }
         }
 
         private void btnSaveBorder_Click(object sender, EventArgs e)

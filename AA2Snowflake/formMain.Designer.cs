@@ -152,6 +152,7 @@
             this.trkCardSize = new System.Windows.Forms.TrackBar();
             this.txtFOV = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.chkRenderBorder = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -229,7 +230,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -553,6 +554,7 @@
             // 
             // splitContainer4.Panel2
             // 
+            this.splitContainer4.Panel2.Controls.Add(this.chkRenderBorder);
             this.splitContainer4.Panel2.Controls.Add(this.btnSetBorderBlank);
             this.splitContainer4.Panel2.Controls.Add(this.btnRestoreAllBorder);
             this.splitContainer4.Panel2.Controls.Add(this.btnRestoreBorder);
@@ -1627,6 +1629,17 @@
             this.label12.TabIndex = 17;
             this.label12.Text = "FOV:";
             // 
+            // chkRenderBorder
+            // 
+            this.chkRenderBorder.AutoSize = true;
+            this.chkRenderBorder.Location = new System.Drawing.Point(110, 28);
+            this.chkRenderBorder.Name = "chkRenderBorder";
+            this.chkRenderBorder.Size = new System.Drawing.Size(61, 17);
+            this.chkRenderBorder.TabIndex = 7;
+            this.chkRenderBorder.Text = "Render";
+            this.chkRenderBorder.UseVisualStyleBackColor = true;
+            this.chkRenderBorder.CheckedChanged += new System.EventHandler(this.chkRenderBorder_CheckedChanged);
+            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1836,6 +1849,7 @@
         private System.Windows.Forms.CheckBox chkPatcherBug;
         private System.Windows.Forms.TextBox txtFOV;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.CheckBox chkRenderBorder;
     }
 }
 
