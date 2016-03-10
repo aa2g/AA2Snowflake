@@ -802,6 +802,7 @@ namespace AA2Snowflake
             catch (Exception ex) when (ex is FormatException || ex is ArgumentNullException)
             {
                 MessageBox.Show("Error: One or more of the values are not valid number(s).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             sub = new MemSubfile(new MemoryStream(icf.Export()), sub.Name);
