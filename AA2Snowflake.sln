@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{3E7F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BatchClothPlugin", "BatchClothPlugin\BatchClothPlugin.csproj", "{E823E25B-7CF8-471D-9F16-FD2CAFACFCE1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoseViewerPlugin", "PoseViewerPlugin\PoseViewerPlugin.csproj", "{66CF33CD-7987-4B0A-958A-C9D7A2B07F8B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
