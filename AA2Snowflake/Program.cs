@@ -43,10 +43,6 @@ namespace AA2Snowflake
 
         static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            /*if (e.IsTerminating)
-            {
-                
-            }*/
             if (saveLog(e.ExceptionObject as Exception))
             {
                 var crash = new formCrash((e.ExceptionObject as Exception).Message + Environment.NewLine + (e.ExceptionObject as Exception).StackTrace, "AA2Install crash " + DateTime.Now.ToString("d-M-yyyy hh-mm-ss") + ".dmp");
@@ -65,13 +61,10 @@ namespace AA2Snowflake
             try
             {
                 SerializableDictionary<string, string> log = new SerializableDictionary<string, string>();
-
-                //log["userdata"] = ((SerializableDictionary<string, string>)ex.Data).SerializeObject();
+                
                 log["message"] = ex.Message;
                 log["stacktrace"] = ex.StackTrace;
-                //log["config"] = System.IO.File.ReadAllText(Paths.CONFIG);
-
-                System.IO.File.WriteAllText(Environment.CurrentDirectory + @"\AA2Install crash " + DateTime.Now.ToString("d-M-yyyy hh-mm-ss") + ".dmp", log.SerializeObject());
+                System.IO.File.WriteAllText(Environment.CurrentDirectory + @"\AA2Snowflake crash " + DateTime.Now.ToString("d-M-yyyy hh-mm-ss") + ".dmp", log.SerializeObject());
                 return true;
             }
             catch
