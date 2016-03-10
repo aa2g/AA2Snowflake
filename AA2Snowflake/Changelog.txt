@@ -1,4 +1,8 @@
 ﻿v2.0
++ Massive amount of bugfixes
+++ Crashes when border changes have been temporarily dealt with
+++ Cards no longer crash when saving whilst being accessed at the same time
++ Now checks for proper AA2 installation
 + Image previews now reload when saving/restoring
 + Can now set blank borders
 + Added an about and crash dialog
@@ -8,7 +12,6 @@
 + Append/DLC/Custom personalities are fully supported
 ++ Custom personality support uses a dynamic loading system which doesn't require .XML files like ReiEdit
 + Patcher now can patch browser-related bug for AA2Edit
-+ Crashes when border changes have been temporarily dealt with
 + New plugin system, comes with these base plugins:
 ++ Batch .cloth loading for multiple cards at a time
 ++ Pose viewer (thanks to whoever made the DIY personality pack)
