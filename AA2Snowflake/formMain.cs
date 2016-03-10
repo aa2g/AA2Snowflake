@@ -883,10 +883,23 @@ namespace AA2Snowflake
         {
             if (cardpath != null && info.card != null)
             {
-                File.WriteAllBytes(cardpath, info.card.raw);
-                MessageBox.Show("Saved!");
+                bool tryAgain = false;
+                do
+                {
+                    tryAgain = false;
+                    try
+                    {
+                        File.WriteAllBytes(cardpath, info.card.raw);
+                        MessageBox.Show("Saved!");
+                    }
+                    catch (IOException)
+                    {
+                        var result = MessageBox.Show("Cannot save the card to it's original position!\nIs the card currently being accessed/viewed by AA2Edit/another program?", "Cannot save", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                        if (result == DialogResult.Retry)
+                            tryAgain = true;
+                    }
+                } while (tryAgain);
             }
-#warning add checker for file being accessed by aa2edit
             UpdateWindowState();
         }
 
