@@ -53,12 +53,14 @@ namespace AA2Snowflake
         {
             if (!Directory.Exists(Paths.PLUGINS))
                 Directory.CreateDirectory(Paths.PLUGINS);
-            
+
+#if RELEASE
             if (!(Directory.Exists(Paths.AA2Play) && Directory.Exists(Paths.AA2Edit)))
             {
                 MessageBox.Show("You don't seem to have AA2Play and/or AA2Edit (properly) installed.\nPlease install it, or use the registry fixer in AA2Install (if you've already installed it).", "AA2 not installed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
+#endif
 
             Plugins.AddRange(PluginLoader.PluginLoader.LoadAllDLLs(Paths.PLUGINS + "\\"));
 
