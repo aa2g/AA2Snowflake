@@ -24,7 +24,7 @@ namespace AA2Snowflake
 #warning use DevIL.NET instead of this shitty tga class
 #warning add blush values
 
-        SortedDictionary<int, IPersonality> Personalities = new SortedDictionary<int, IPersonality>(PersonalityFactory.GetAllPersonalities());
+        SortedDictionary<int, IPersonality> Personalities;
         List<IPlugin> Plugins = new List<IPlugin>();
         #region Form
         public formLoad load = new formLoad();
@@ -61,6 +61,10 @@ namespace AA2Snowflake
                 Application.Exit();
             }
 #endif
+
+            //Initialisers
+            Personalities = new SortedDictionary<int, IPersonality>(PersonalityFactory.GetAllPersonalities());
+            info = new formInfo();
 
             Plugins.AddRange(PluginLoader.PluginLoader.LoadAllDLLs(Paths.PLUGINS + "\\"));
 
@@ -869,7 +873,7 @@ namespace AA2Snowflake
         #endregion
         #endregion
         #region Card Face
-        private formInfo info = new formInfo();
+        private formInfo info;
         private string cardpath;
         private void openToolStripButton_Click(object sender, EventArgs e)
         {
