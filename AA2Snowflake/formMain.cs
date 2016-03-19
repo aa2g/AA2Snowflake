@@ -629,13 +629,17 @@ namespace AA2Snowflake
                 using (MemoryStream ms = new MemoryStream())
                 {
                     personality.GetLstPP().GetLstFromPP(personality).WriteTo(ms);
-                    backup.Add(personality.LSTLocation, ms.ToByteArray());
+                    backup[personality.LSTLocation] = ms.ToByteArray();
                 }
             File.WriteAllText(Paths.BACKUP + "\\lstbackup.xml", backup.SerializeObject());
         }
 
         private void btnSet32_Click(object sender, EventArgs e)
         {
+            if (!File.Exists(Paths.BACKUP + "\\lstbackup.xml"))
+                if (MessageBox.Show("You haven't created a backup, so restoration is not possible.\nAre you sure you want to continue?", "Unable to restore", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) != DialogResult.Yes)
+                    return;
+
             IPersonality personality = Personalities.ElementAt(cmbPersonality32.SelectedIndex).Value; //i've rewritten this to change only 1 personality since you don't want to rewrite 5gb of files everytime you change poses
             ppParser pp = personality.GetLstPP();
             IWriteFile sub = pp.GetLstFromPP(personality);
