@@ -624,10 +624,14 @@ namespace AA2Snowflake
         #region 3.2
         public void GenerateLSTBackups()
         {
+            SerializableDictionary<string, byte[]> backup = new SerializableDictionary<string, byte[]>();
             foreach (IPersonality personality in Personalities.Values)
-                foreach (IWriteFile lst in personality.GetIcfPP().Subfiles.Where(iw => iw.Name == personality.LSTLocation.GetFilename('/')))
-                    using (FileStream fs = new FileStream(Paths.BACKUP + "\\" + personality.LSTLocation.Replace('/', ';'), FileMode.Create))
-                        lst.WriteTo(fs);
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    personality.GetLstPP().GetLstFromPP(personality).WriteTo(ms);
+                    backup.Add(personality.LSTLocation, ms.ToByteArray());
+                }
+            File.WriteAllText(Paths.BACKUP + "\\lstbackup.xml", backup.SerializeObject());
         }
 
         private void btnSet32_Click(object sender, EventArgs e)
@@ -684,11 +688,19 @@ namespace AA2Snowflake
 
         private void btnRestore32_Click(object sender, EventArgs e)
         {
+            if (!File.Exists(Paths.BACKUP + "\\lstbackup.xml"))
+            {
+                MessageBox.Show("You haven't created a backup, so restoration is not possible.", "Unable to restore", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            SerializableDictionary<string, byte[]> backup = File.ReadAllText(Paths.BACKUP + "\\lstbackup.xml").DeserializeObject<SerializableDictionary<string, byte[]>>();
+            
             IPersonality personality = Personalities.ElementAt(cmbPersonality32.SelectedIndex).Value;
             ppParser pp = personality.GetLstPP();
             IWriteFile sub = pp.GetLstFromPP(personality);
             var index = pp.Subfiles.IndexOf(pp.Subfiles.First(iw => iw.Name == sub.Name));
-            sub = new Subfile(Paths.BACKUP + "\\" + personality.LSTLocation.Replace('/', ';'), sub.Name);
+            sub = new MemSubfile(new MemoryStream(backup[personality.LSTLocation]), sub.Name);
             pp.Subfiles[index] = sub;
             var back = pp.WriteArchive(pp.FilePath, false, "bak", true);
             ShowLoadingForm();

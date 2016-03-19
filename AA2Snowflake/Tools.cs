@@ -9,6 +9,7 @@ using AA2Install;
 using Microsoft.VisualBasic.FileIO;
 using System.Drawing;
 using Paloma;
+using System.Xml.Serialization;
 
 namespace AA2Snowflake
 {
@@ -176,6 +177,39 @@ namespace AA2Snowflake
             byte[] buffer = new byte[str.Length];
             str.Read(buffer, 0, (int)str.Length);
             return buffer;
+        }
+
+
+
+        /// <summary>
+        /// Serialize an object.
+        /// </summary>
+        /// <typeparam name="T">Type of object to serialize.</typeparam>
+        /// <param name="toSerialize">Object to serialize.</param>
+        /// <returns>Serialized object.</returns>
+        public static string SerializeObject<T>(this T toSerialize)
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(toSerialize.GetType());
+
+            using (StringWriter textWriter = new StringWriter())
+            {
+                xmlSerializer.Serialize(textWriter, toSerialize);
+                return textWriter.ToString();
+            }
+        }
+        /// <summary>
+        /// Deserialize an object.
+        /// </summary>
+        /// <typeparam name="T">Type of object to deserialize.</typeparam>
+        /// <param name="toDeserialize">String to deserialize.</param>
+        /// <returns>Deserialized object</returns>
+        public static T DeserializeObject<T>(this string toDeserialize)
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
+            using (StringReader textReader = new StringReader(toDeserialize))
+            {
+                return (T)xmlSerializer.Deserialize(textReader);
+            }
         }
     }
 

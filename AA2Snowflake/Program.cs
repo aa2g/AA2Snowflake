@@ -72,21 +72,5 @@ namespace AA2Snowflake
                 return false;
             }
         }
-        /// <summary>
-        /// Serialize an object.
-        /// </summary>
-        /// <typeparam name="T">Type of object to serialize.</typeparam>
-        /// <param name="toSerialize">Object to serialize.</param>
-        /// <returns>Serialized object.</returns>
-        public static string SerializeObject<T>(this T toSerialize)
-        {
-            XmlSerializer xmlSerializer = new XmlSerializer(toSerialize.GetType());
-
-            using (StringWriter textWriter = new StringWriter())
-            {
-                xmlSerializer.Serialize(textWriter, toSerialize);
-                return textWriter.ToString();
-            }
-        }
     }
 }
