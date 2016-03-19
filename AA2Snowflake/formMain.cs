@@ -745,12 +745,17 @@ namespace AA2Snowflake
         #region 3.3
         public void GenerateICFBackups()
         {
+            SerializableDictionary<string, byte[]> backup = new SerializableDictionary<string, byte[]>();
             Regex regex = new Regex(@"e\d{2}_\d{2}_\d{2}\.icf");
             foreach (IPersonality personality in Personalities.Values)
                 foreach (IWriteFile icf in personality.GetIcfPP().Subfiles.Where(iw => iw.Name.EndsWith(".icf")))
                     if (regex.IsMatch(icf.Name))
-                        using (FileStream fs = new FileStream(Paths.BACKUP + "\\" + icf.Name, FileMode.Create))
-                            icf.WriteTo(fs);
+                        using (MemoryStream ms = new MemoryStream())
+                        {
+                            icf.WriteTo(ms);
+                            backup[icf.Name] = ms.ToByteArray();
+                        }
+            File.WriteAllText(Paths.BACKUP + "\\icfbackup.xml", backup.SerializeObject());
         }
 
         public void LoadICF()
@@ -809,6 +814,10 @@ namespace AA2Snowflake
 
         private void btnSet33_Click(object sender, EventArgs e)
         {
+            if (!File.Exists(Paths.BACKUP + "\\lstbackup.xml"))
+                if (MessageBox.Show("You haven't created a backup, so restoration is not possible.\nAre you sure you want to continue?", "Unable to restore", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) != DialogResult.Yes)
+                    return;
+
             IPersonality personality = Personalities.ElementAt(cmbPersonality33.SelectedIndex).Value;
             string name = "e" + cmbMode33.SelectedIndex.ToString("00") + "_" + personality.Slot.ToString("00") + "_" + cmbHeight33.SelectedIndex.ToString("00") + ".ICF";
             ppParser pp = personality.GetIcfPP();
@@ -848,12 +857,20 @@ namespace AA2Snowflake
 
         private void btnRestore33_Click(object sender, EventArgs e)
         {
+            if (!File.Exists(Paths.BACKUP + "\\icfbackup.xml"))
+            {
+                MessageBox.Show("You haven't created a backup, so restoration is not possible.", "Unable to restore", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            SerializableDictionary<string, byte[]> backup = File.ReadAllText(Paths.BACKUP + "\\icfbackup.xml").DeserializeObject<SerializableDictionary<string, byte[]>>();
+
             IPersonality personality = Personalities.ElementAt(cmbPersonality33.SelectedIndex).Value;
             ppParser pp = personality.GetIcfPP();
             string name = "e" + cmbMode33.SelectedIndex.ToString("00") + "_" + personality.Slot.ToString("00") + "_" + cmbHeight33.SelectedIndex.ToString("00") + ".ICF";
             var sub = pp.Subfiles.First(iw => iw.Name.ToLower() == name.ToLower());
             var index = pp.Subfiles.IndexOf(pp.Subfiles.First(iw => iw.Name.ToLower() == name.ToLower()));
-            sub = new Subfile(Paths.BACKUP + "\\" + name, sub.Name);
+            sub = new MemSubfile(new MemoryStream(backup[name]), name);
             pp.Subfiles[index] = sub;
             var back = pp.WriteArchive(pp.FilePath, false, "bak", true);
             ShowLoadingForm();
