@@ -26,16 +26,16 @@ namespace AA2Snowflake
         {
             InitializeComponent();
             card = c;
-            cmbPersonality.Items.Clear();
-            foreach (IPersonality p in Personalities.Values)
-            {
-                cmbPersonality.Items.Add("(" + p.Slot.ToString("00") + ") " + p.Name);
-            }
             updateInformation();
         }
 
         public void updateInformation()
         {
+            cmbPersonality.Items.Clear();
+            foreach (IPersonality p in Personalities.Values)
+            {
+                cmbPersonality.Items.Add("(" + p.Slot.ToString("00") + ") " + p.Name);
+            }
             txtLastName.Text = card.data.PROFILE_FAMILY_NAME;
             txtFirstName.Text = card.data.PROFILE_FIRST_NAME;
             chkRainbow.Checked = card.data.RAINBOW_CARD;
