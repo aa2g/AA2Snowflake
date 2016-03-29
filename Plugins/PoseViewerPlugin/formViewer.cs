@@ -40,7 +40,7 @@ namespace PoseViewerPlugin
             imgPose.Image = Image.FromFile(path);
         }
 
-        private void numIndex_ValueChanged(object sender, EventArgs e)
+        public void UpdateImage()
         {
             switch (cmbCategory.SelectedIndex)
             {
@@ -59,9 +59,15 @@ namespace PoseViewerPlugin
             }
         }
 
+        private void numIndex_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateImage();
+        }
+
         private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
             numIndex.Value = 0;
+            UpdateImage();
         }
 
         private void btnPrevious_Click(object sender, EventArgs e)

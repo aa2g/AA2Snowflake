@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AA2Snowflake", "AA2Snowflake\AA2Snowflake.csproj", "{D0BF1F9F-19D4-4E0A-B7CB-779388D7C91D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E823E25B-7CF8-471D-9F16-FD2CAFACFCE1} = {E823E25B-7CF8-471D-9F16-FD2CAFACFCE1}
+		{66CF33CD-7987-4B0A-958A-C9D7A2B07F8B} = {66CF33CD-7987-4B0A-958A-C9D7A2B07F8B}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SB3UtilityPP", "SB3UtilityPP\SB3UtilityPP.csproj", "{5647B104-8F58-4867-B849-DAC65D5243BD}"
 EndProject

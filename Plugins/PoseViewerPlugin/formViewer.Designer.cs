@@ -43,9 +43,10 @@
             this.btnPrevious.BackColor = System.Drawing.Color.Black;
             this.btnPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrevious.ForeColor = System.Drawing.Color.White;
-            this.btnPrevious.Location = new System.Drawing.Point(9, 268);
+            this.btnPrevious.Location = new System.Drawing.Point(7, 218);
+            this.btnPrevious.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnPrevious.Name = "btnPrevious";
-            this.btnPrevious.Size = new System.Drawing.Size(30, 28);
+            this.btnPrevious.Size = new System.Drawing.Size(22, 23);
             this.btnPrevious.TabIndex = 0;
             this.btnPrevious.Text = "<";
             this.btnPrevious.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -56,8 +57,9 @@
             // 
             this.imgPose.Dock = System.Windows.Forms.DockStyle.Top;
             this.imgPose.Location = new System.Drawing.Point(0, 0);
+            this.imgPose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.imgPose.Name = "imgPose";
-            this.imgPose.Size = new System.Drawing.Size(312, 260);
+            this.imgPose.Size = new System.Drawing.Size(366, 211);
             this.imgPose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgPose.TabIndex = 1;
             this.imgPose.TabStop = false;
@@ -68,9 +70,10 @@
             this.btnNext.BackColor = System.Drawing.Color.Black;
             this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNext.ForeColor = System.Drawing.Color.White;
-            this.btnNext.Location = new System.Drawing.Point(270, 268);
+            this.btnNext.Location = new System.Drawing.Point(332, 218);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(30, 28);
+            this.btnNext.Size = new System.Drawing.Size(22, 23);
             this.btnNext.TabIndex = 2;
             this.btnNext.Text = ">";
             this.btnNext.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -86,34 +89,37 @@
             "Poses",
             "Eye Open/Shut",
             "Eyebrows"});
-            this.cmbCategory.Location = new System.Drawing.Point(60, 270);
+            this.cmbCategory.Location = new System.Drawing.Point(110, 219);
+            this.cmbCategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbCategory.Name = "cmbCategory";
-            this.cmbCategory.Size = new System.Drawing.Size(93, 24);
+            this.cmbCategory.Size = new System.Drawing.Size(71, 21);
             this.cmbCategory.TabIndex = 3;
             this.cmbCategory.SelectedIndexChanged += new System.EventHandler(this.cmbCategory_SelectedIndexChanged);
             // 
             // numIndex
             // 
             this.numIndex.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.numIndex.Location = new System.Drawing.Point(159, 271);
+            this.numIndex.Location = new System.Drawing.Point(184, 220);
+            this.numIndex.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.numIndex.Name = "numIndex";
-            this.numIndex.Size = new System.Drawing.Size(93, 22);
+            this.numIndex.Size = new System.Drawing.Size(70, 20);
             this.numIndex.TabIndex = 4;
             this.numIndex.ValueChanged += new System.EventHandler(this.numIndex_ValueChanged);
             // 
             // formViewer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(312, 304);
+            this.ClientSize = new System.Drawing.Size(366, 254);
             this.Controls.Add(this.numIndex);
             this.Controls.Add(this.cmbCategory);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.imgPose);
             this.Controls.Add(this.btnPrevious);
             this.HelpButton = true;
-            this.MinimumSize = new System.Drawing.Size(330, 351);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MinimumSize = new System.Drawing.Size(252, 293);
             this.Name = "formViewer";
             this.Text = "Pose Viewer";
             this.Load += new System.EventHandler(this.formViewer_Load);
