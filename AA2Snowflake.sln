@@ -13,9 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginLoader", "PluginLoade
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{3E7FACBF-8759-4A01-A450-1AD26B05FAB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BatchClothPlugin", "BatchClothPlugin\BatchClothPlugin.csproj", "{E823E25B-7CF8-471D-9F16-FD2CAFACFCE1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BatchClothPlugin", "Plugins\BatchClothPlugin\BatchClothPlugin.csproj", "{E823E25B-7CF8-471D-9F16-FD2CAFACFCE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoseViewerPlugin", "PoseViewerPlugin\PoseViewerPlugin.csproj", "{66CF33CD-7987-4B0A-958A-C9D7A2B07F8B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoseViewerPlugin", "Plugins\PoseViewerPlugin\PoseViewerPlugin.csproj", "{66CF33CD-7987-4B0A-958A-C9D7A2B07F8B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
