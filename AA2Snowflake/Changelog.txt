@@ -1,4 +1,9 @@
-﻿v2.0
+﻿v2.0.1
++ Fixed some issues
++ Changed crash dialogs to display in english
++ Fixed links in crash dialog
+
+v2.0
 + Massive amount of bugfixes
 ++ Crashes when border changes have been temporarily dealt with
 ++ Cards no longer crash when saving whilst being accessed at the same time

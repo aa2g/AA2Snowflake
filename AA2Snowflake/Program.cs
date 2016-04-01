@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -60,11 +61,14 @@ namespace AA2Snowflake
         {
             try
             {
+                Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.InvariantCulture;
+
                 SerializableDictionary<string, string> log = new SerializableDictionary<string, string>();
                 
                 log["message"] = ex.Message;
                 log["stacktrace"] = ex.StackTrace;
-                System.IO.File.WriteAllText(Environment.CurrentDirectory + @"\AA2Snowflake crash " + DateTime.Now.ToString("d-M-yyyy hh-mm-ss") + ".dmp", log.SerializeObject());
+                File.WriteAllText(Environment.CurrentDirectory + @"\AA2Snowflake crash " + DateTime.Now.ToString("d-M-yyyy hh-mm-ss") + ".dmp", log.SerializeObject());
                 return true;
             }
             catch

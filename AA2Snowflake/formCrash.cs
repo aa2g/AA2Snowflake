@@ -29,7 +29,7 @@ namespace AA2Snowflake
 
         private void linkGithub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            launchLink(@"https://github.com/aa2g/AA2Install/issues/new");
+            launchLink(@"https://github.com/aa2g/AA2Snowflake/issues/new");
         }
 
         private void linkaa2g_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -39,8 +39,7 @@ namespace AA2Snowflake
 
         private void linkHongfire_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //launchLink(@"http://www.hongfire.com/forum/showthread.php/447075-AA2Install-Open-source-mod-installer-Prerelease-5-2-2");
-            //need to make a post first
+            launchLink(@"http://www.hongfire.com/forum/showthread.php/453615-AA2Snowflake-v2-0");
         }
     }
 }

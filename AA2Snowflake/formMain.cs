@@ -746,14 +746,14 @@ namespace AA2Snowflake
         public void GenerateICFBackups()
         {
             SerializableDictionary<string, byte[]> backup = new SerializableDictionary<string, byte[]>();
-            Regex regex = new Regex(@"e\d{2}_\d{2}_\d{2}\.icf");
+            Regex regex = new Regex(@"e\d{2}_\d{2}_\d{2}\.[Ii][Cc][Ff]");
             foreach (IPersonality personality in Personalities.Values)
-                foreach (IWriteFile icf in personality.GetIcfPP().Subfiles.Where(iw => iw.Name.EndsWith(".icf")))
+                foreach (IWriteFile icf in personality.GetIcfPP().Subfiles.Where(iw => iw.Name.ToLower().EndsWith(".icf")))
                     if (regex.IsMatch(icf.Name))
                         using (MemoryStream ms = new MemoryStream())
                         {
                             icf.WriteTo(ms);
-                            backup[icf.Name] = ms.ToByteArray();
+                            backup[icf.Name.ToLower()] = ms.ToByteArray();
                         }
             File.WriteAllText(Paths.BACKUP + "\\icfbackup.xml", backup.SerializeObject());
         }
@@ -814,7 +814,7 @@ namespace AA2Snowflake
 
         private void btnSet33_Click(object sender, EventArgs e)
         {
-            if (!File.Exists(Paths.BACKUP + "\\lstbackup.xml"))
+            if (!File.Exists(Paths.BACKUP + "\\icfbackup.xml"))
                 if (MessageBox.Show("You haven't created a backup, so restoration is not possible.\nAre you sure you want to continue?", "Unable to restore", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) != DialogResult.Yes)
                     return;
 
@@ -870,7 +870,7 @@ namespace AA2Snowflake
             string name = "e" + cmbMode33.SelectedIndex.ToString("00") + "_" + personality.Slot.ToString("00") + "_" + cmbHeight33.SelectedIndex.ToString("00") + ".ICF";
             var sub = pp.Subfiles.First(iw => iw.Name.ToLower() == name.ToLower());
             var index = pp.Subfiles.IndexOf(pp.Subfiles.First(iw => iw.Name.ToLower() == name.ToLower()));
-            sub = new MemSubfile(new MemoryStream(backup[name]), name);
+            sub = new MemSubfile(new MemoryStream(backup[name.ToLower()]), name);
             pp.Subfiles[index] = sub;
             var back = pp.WriteArchive(pp.FilePath, false, "bak", true);
             ShowLoadingForm();

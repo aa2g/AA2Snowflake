@@ -149,7 +149,7 @@ namespace AA2Snowflake.Personalities
                 {
                     CustomPersonality cp = LoadPersonality(new ppParser(path, new ppFormat_AA2()));
                     if (!ReferenceEquals(cp, null)) //is there a better way to check null?
-                        pers.Add(cp.Slot, cp);
+                        pers[cp.Slot] = cp;
                 }
 
             return pers;
