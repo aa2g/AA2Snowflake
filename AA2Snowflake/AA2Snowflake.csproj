@@ -107,6 +107,7 @@
     <Compile Include="formMain.Designer.cs">
       <DependentUpon>formMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Logger.cs" />
     <Compile Include="Paths.cs" />
     <Compile Include="Personality.cs" />
     <Compile Include="Program.cs" />

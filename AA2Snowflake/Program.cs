@@ -68,6 +68,7 @@ namespace AA2Snowflake
                 
                 log["message"] = ex.Message;
                 log["stacktrace"] = ex.StackTrace;
+                log["logger"] = Logger.Export();
                 File.WriteAllText(Environment.CurrentDirectory + @"\AA2Snowflake crash " + DateTime.Now.ToString("d-M-yyyy hh-mm-ss") + ".dmp", log.SerializeObject());
                 return true;
             }

@@ -764,9 +764,15 @@ namespace AA2Snowflake
                 return;
 
             IPersonality personality = Personalities.ElementAt(cmbPersonality33.SelectedIndex).Value;
+            Logger.WriteLine("[LoadICF]");
+            Logger.WriteLine(personality.Name + " : " + personality.ID);
             int height = personality.Gender == Gender.Female ? cmbHeight33.SelectedIndex : cmbHeight33.SelectedIndex + 1;
             string name = "e" + cmbMode33.SelectedIndex.ToString("00") + "_" + personality.Slot.ToString("00") + "_" + height.ToString("00") + ".ICF";
+            Logger.WriteLine(name);
             ppParser pp = personality.GetIcfPP();
+            Logger.WriteLine(pp.FilePath);
+            Logger.WriteLine("Contains " + pp.Subfiles.Count);
+            Logger.WriteLine(string.Join("\r\n", pp.Subfiles.Where(p => p.Name.ToLower().EndsWith("icf"))));
             IWriteFile sub = pp.Subfiles.First(iw => iw.Name.ToLower() == name.ToLower());
             ICF icf;
             using (MemoryStream mem = Tools.GetStreamFromSubfile(sub))
@@ -819,8 +825,15 @@ namespace AA2Snowflake
                     return;
 
             IPersonality personality = Personalities.ElementAt(cmbPersonality33.SelectedIndex).Value;
-            string name = "e" + cmbMode33.SelectedIndex.ToString("00") + "_" + personality.Slot.ToString("00") + "_" + cmbHeight33.SelectedIndex.ToString("00") + ".ICF";
+            Logger.WriteLine("[3.3 Set]");
+            Logger.WriteLine(personality.Name);
+            int height = personality.Gender == Gender.Female ? cmbHeight33.SelectedIndex : cmbHeight33.SelectedIndex + 1;
+            string name = "e" + cmbMode33.SelectedIndex.ToString("00") + "_" + personality.Slot.ToString("00") + "_" + height.ToString("00") + ".ICF";
+            Logger.WriteLine(name);
             ppParser pp = personality.GetIcfPP();
+            Logger.WriteLine(pp.FilePath);
+            Logger.WriteLine("Contains " + pp.Subfiles.Count);
+            Logger.WriteLine(string.Join("\r\n", pp.Subfiles.Where(p => p.Name.ToLower().EndsWith("icf"))));
             IWriteFile sub = pp.Subfiles.First(iw => iw.Name.ToLower() == name.ToLower());
             int index = pp.Subfiles.IndexOf(sub);
 
