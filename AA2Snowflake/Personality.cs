@@ -8,14 +8,10 @@ using System.Diagnostics;
 using AA2Install;
 using System.IO;
 using System.Text.RegularExpressions;
+using AA2Data;
 
 namespace AA2Snowflake.Personalities
 {
-    public enum Gender: byte
-    {
-        Female = 1,
-        Male = 0
-    }
     public interface IPersonality
     {
         string Name { get; }

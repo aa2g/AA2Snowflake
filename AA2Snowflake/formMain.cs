@@ -159,7 +159,7 @@ namespace AA2Snowflake
         {
             backgroundpath = null;
             
-            using (var mem = Tools.GetStreamFromSubfile(PP.jg2e06_00_00.Subfiles.First(pp => pp.Name == "sp_04_01_0" + cmbBackground.SelectedIndex.ToString() + ".bmp")))
+            using (var mem = PP.jg2e06_00_00.Subfiles.First(pp => pp.Name == "sp_04_01_0" + cmbBackground.SelectedIndex.ToString() + ".bmp").ToStream())
             {
                 if (imgBackground.Image != null)
                     imgBackground.Image.Dispose();
@@ -257,7 +257,7 @@ namespace AA2Snowflake
         {
             rosterpath = null;
 
-            using (var mem = Tools.GetStreamFromSubfile(PP.jg2e06_00_00.Subfiles.First(pp => pp.Name == "sp_04_03_0" + cmbRoster.SelectedIndex.ToString() + ".bmp")))
+            using (var mem = PP.jg2e06_00_00.Subfiles.First(pp => pp.Name == "sp_04_03_0" + cmbRoster.SelectedIndex.ToString() + ".bmp").ToStream())
             {
                 if (imgRosterBackground.Image != null)
                     imgRosterBackground.Image.Dispose();
@@ -357,7 +357,7 @@ namespace AA2Snowflake
             borderpath = null;
 
             if (render)
-                using (var mem = Tools.GetStreamFromSubfile(PP.jg2e06_00_00.Subfiles.First(pp => pp.Name == "sp_04_02_0" + cmbBorder.SelectedIndex.ToString() + ".tga")))
+                using (var mem = PP.jg2e06_00_00.Subfiles.First(pp => pp.Name == "sp_04_02_0" + cmbBorder.SelectedIndex.ToString() + ".tga").ToStream())
                 {
                     if (imgBorder.Image != null)
                         imgBorder.Image.Dispose();
@@ -475,7 +475,7 @@ namespace AA2Snowflake
         {
             chrpath = null;
 
-            using (var mem = Tools.GetStreamFromSubfile(PP.jg2e01_00_00.Subfiles.First(pp => pp.Name == "def0" + cmbCharacter.SelectedIndex.ToString() + ".png")))
+            using (var mem = PP.jg2e01_00_00.Subfiles.First(pp => pp.Name == "def0" + cmbCharacter.SelectedIndex.ToString() + ".png").ToStream())
             {
                 if (imgCharacter.Image != null)
                     imgCharacter.Image.Dispose();
