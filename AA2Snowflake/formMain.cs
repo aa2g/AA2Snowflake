@@ -62,6 +62,9 @@ namespace AA2Snowflake
             }
 #endif
 
+            //Version info in window title
+            this.Text = "AA2Snowflake v" + formAbout.AssemblyVersion;
+
             //Initialisers
             Personalities = new SortedDictionary<int, IPersonality>(PersonalityFactory.GetAllPersonalities());
             info = new formInfo();
@@ -111,13 +114,16 @@ namespace AA2Snowflake
             
             cmbPersonality32.Items.Clear();
             cmbPersonality33.Items.Clear();
+            cmbPersonality34.Items.Clear();
             foreach (IPersonality p in Personalities.Values)
             {
                 cmbPersonality32.Items.Add("(" + p.Slot.ToString("00") + ") " + p.Name);
                 cmbPersonality33.Items.Add("(" + p.Slot.ToString("00") + ") " + p.Name);
+                cmbPersonality34.Items.Add("(" + p.Slot.ToString("00") + ") " + p.Name);
             }
             cmbPersonality32.SelectedIndex = 0;
             cmbPersonality33.SelectedIndex = 0;
+            cmbPersonality34.SelectedIndex = 0;
 
             UpdateWindowState();
         }
@@ -907,6 +913,102 @@ namespace AA2Snowflake
             {
                 GenerateICFBackups();
             };
+            ShowLoadingForm();
+            back.RunWorkerAsync();
+            while (back.IsBusy)
+            {
+                Application.DoEvents();
+            }
+            HideLoadingForm();
+            MessageBox.Show("Finished!");
+        }
+        #endregion
+        #region 3.4
+        public void GenerateTGABackups()
+        {
+            Regex regex = new Regex(@"sp_04_00_\d{2}\.[Tt][Gg][Aa]");
+            foreach (IPersonality personality in Personalities.Values)
+                if (personality.Custom)
+                    foreach (IWriteFile tga in personality.GetIcfPP().Subfiles.Where(iw => iw.Name.ToLower().EndsWith(".tga")))
+                        if (regex.IsMatch(tga.Name))
+                            using (MemoryStream ms = new MemoryStream())
+                            {
+                                tga.WriteTo(ms);
+                                File.WriteAllBytes(Paths.NATURE + "\\" + tga.Name, ms.ToByteArray());
+                            }
+        }
+        private void btnBackupAll34_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to do this? You may be overwriting an already existing backup.", "AA2Snowflake", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                return;
+
+            BackgroundWorker back = new BackgroundWorker();
+            back.DoWork += (o, ev) =>
+            {
+                GenerateTGABackups();
+            };
+            ShowLoadingForm();
+            back.RunWorkerAsync();
+            while (back.IsBusy)
+            {
+                Application.DoEvents();
+            }
+            HideLoadingForm();
+            MessageBox.Show("Finished!");
+        }
+
+        private void btnSetBlank34_Click(object sender, EventArgs e)
+        {
+            IPersonality personality = Personalities.ElementAt(cmbPersonality34.SelectedIndex).Value;
+
+            string name = "sp_04_00_" + personality.Slot.ToString("00") + ".tga";
+
+            if (!File.Exists(Paths.NATURE + "\\" + name))
+                if (MessageBox.Show("You haven't created a backup (for this personality), so restoration is not possible.\nAre you sure you want to continue?", "Unable to restore", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) != DialogResult.Yes)
+                    return;
+
+            ppParser pp = personality.GetIcfPP();
+            if (!personality.Custom)
+                pp = PP.jg2e06_00_00;
+
+            IWriteFile sub = pp.Subfiles.First(iw => iw.Name.ToLower() == name.ToLower());
+            int index = pp.Subfiles.IndexOf(sub);
+
+            sub = new Subfile(Paths.BACKUP + "\\personality_blank.tga", sub.Name);
+            pp.Subfiles[index] = sub;
+            var back = pp.WriteArchive(pp.FilePath, false, "bak", true);
+            ShowLoadingForm();
+            back.RunWorkerAsync();
+            while (back.IsBusy)
+            {
+                Application.DoEvents();
+            }
+            HideLoadingForm();
+            MessageBox.Show("Finished!");
+        }
+
+        private void btnRestore34_Click(object sender, EventArgs e)
+        {
+            IPersonality personality = Personalities.ElementAt(cmbPersonality34.SelectedIndex).Value;
+
+            string name = "sp_04_00_" + personality.Slot.ToString("00") + ".tga";
+
+            if (!File.Exists(Paths.NATURE + "\\" + name))
+            {
+                MessageBox.Show("You haven't created a backup (for this personality), so restoration is not possible.", "Unable to restore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            ppParser pp = personality.GetIcfPP();
+            if (!personality.Custom)
+                pp = PP.jg2e06_00_00;
+
+            IWriteFile sub = pp.Subfiles.First(iw => iw.Name.ToLower() == name.ToLower());
+            int index = pp.Subfiles.IndexOf(sub);
+
+            sub = new Subfile(Paths.NATURE + "\\" + name, sub.Name);
+            pp.Subfiles[index] = sub;
+            var back = pp.WriteArchive(pp.FilePath, false, "bak", true);
             ShowLoadingForm();
             back.RunWorkerAsync();
             while (back.IsBusy)

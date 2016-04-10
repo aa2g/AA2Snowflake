@@ -1,5 +1,6 @@
-﻿v2.0.2
+﻿v2.1
 + Fixed setting pose for male personalities
++ Added personality label blanking
 
 v2.0.1
 + Fixed some issues

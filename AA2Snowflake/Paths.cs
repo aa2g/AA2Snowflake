@@ -31,6 +31,7 @@ namespace AA2Install
             }
         }
         public static string BACKUP => Environment.CurrentDirectory + @"\backup";
+        public static string NATURE => Environment.CurrentDirectory + @"\nature";
         public static string PLUGINS => Environment.CurrentDirectory + @"\plugins";
     }
 }
