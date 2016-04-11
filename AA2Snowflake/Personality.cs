@@ -80,23 +80,25 @@ namespace AA2Snowflake.Personalities
 
         public static CustomPersonality LoadPersonality(ppParser pp)
         {
-            if (!pp.Subfiles.Select(iw => iw.Name).Any(n => n.EndsWith(".icf")) || //check if it's a valid personality .pp which contains everything we need
-                !pp.Subfiles.Select(iw => iw.Name).Any(n => n.EndsWith(".lst") && n.StartsWith("jg2p")))
+            if (!pp.Subfiles.Select(x => x.Name).Any(n => n.EndsWith(".icf")) || //check if it's a valid personality .pp which contains everything we need
+                !pp.Subfiles.Select(x => x.Name).Any(n => n.EndsWith(".lst") && n.StartsWith("jg2p")))
                 return null;
 
             string filename = pp.FilePath.Remove(0, pp.FilePath.LastIndexOf('\\') + 1);
-            IWriteFile lst = pp.Subfiles.First(iw => iw.Name.EndsWith(".lst") && iw.Name.StartsWith("jg2p")); //you can thank a certain person for making this difficult (http://pastebin.com/3zkjpM7e)
+            IWriteFile iw = pp.Subfiles.First(x => x.Name.EndsWith(".lst") && x.Name.StartsWith("jg2p")); //you can thank a certain person for making this difficult (http://pastebin.com/3zkjpM7e)
 
-            byte slot = byte.Parse(Tools.GetLstValue(lst, 2));
+            var lst = LSTFactory.LoadLST(iw, LSTMode.Custom);
 
-            Gender gender = (Gender)byte.Parse(Tools.GetLstValue(lst, 6)); //not sure if more accurate than grabbing ID letter, this column is set to 1 for female and 0 for male
+            byte slot = (byte)lst.Slot;
 
-            string ID = Tools.GetLstValue(lst, 7);
+            Gender gender = lst.Gender; //not sure if more accurate than grabbing ID letter, this column is set to 1 for female and 0 for male
 
-            string Name = Tools.GetLstValue(lst, 8);
+            string ID = lst.ID;
+
+            string Name = lst.Name;
             Name = AppendTranslation.GetValueOrDefault(Name, Name);
 
-            return new CustomPersonality(gender, filename, ID, filename + "/" + lst.Name, Name, slot);
+            return new CustomPersonality(gender, filename, ID, filename + "/" + iw.Name, Name, slot);
         }
 
         public static BasePersonality[] BasePersonalities
@@ -159,10 +161,10 @@ namespace AA2Snowflake.Personalities
             return new ppParser(path, new ppFormat_AA2());
         }
 
-        public static IWriteFile GetLstFromPP(this ppParser pp, IPersonality personality)
+        public static IWriteFile GetLst(this IPersonality personality)
         {
             string file = personality.LSTLocation.GetFilename('/');
-            return pp.Subfiles.First(iw => iw.Name == file);
+            return personality.GetLstPP().Subfiles.First(iw => iw.Name == file);
         }
 
         public static ppParser GetIcfPP(this IPersonality personality)

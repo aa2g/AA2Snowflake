@@ -2,6 +2,7 @@
 + Fixed setting pose for male personalities
 + Added personality label blanking
 + Fixed LST editing with custom/append personalities
++ Possibly fixed pose issues after restoring changing pose values
 
 v2.0.1
 + Fixed some issues

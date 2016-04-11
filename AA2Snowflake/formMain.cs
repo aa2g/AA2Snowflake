@@ -605,8 +605,14 @@ namespace AA2Snowflake
             {
                 Application.DoEvents();
             }
-            index = PP.jg2e00_00_00.Subfiles.IndexOf(PP.jg2e00_00_00.Subfiles.First(pp => pp.Name == "jg2e_00_01_00_00.lst"));
-            var sub = Tools.ManipulateLst(PP.jg2e00_00_00.Subfiles[index], 4, "51");
+
+            //This part was indicated as in snowflake guide v2 but I'm starting to question whether or not it's necessary
+
+            /*index = PP.jg2e00_00_00.Subfiles.IndexOf(PP.jg2e00_00_00.Subfiles.First(pp => pp.Name == "jg2e_00_01_00_00.lst"));
+
+            var lst = LSTFactory.LoadLST(PP.jg2e00_00_00.Subfiles[index], LSTMode.Default);
+            lst.AA2EditPose 
+            var sub = Tools.ManipulateLst(, 4, "51");
             sub.Name = "jg2e_00_01_00_00.lst";
             PP.jg2e00_00_00.Subfiles[index] = sub;
             back = PP.jg2e00_00_00.WriteArchive(PP.jg2e00_00_00.FilePath, false, "bak", true);
@@ -614,7 +620,7 @@ namespace AA2Snowflake
             while (back.IsBusy)
             {
                 Application.DoEvents();
-            }
+            }*/
             HideLoadingForm();
             MessageBox.Show("Finished!");
         }
@@ -634,7 +640,7 @@ namespace AA2Snowflake
             foreach (IPersonality personality in Personalities.Values)
                 using (MemoryStream ms = new MemoryStream())
                 {
-                    personality.GetLstPP().GetLstFromPP(personality).WriteTo(ms);
+                    personality.GetLst().WriteTo(ms);
                     backup[personality.LSTLocation] = ms.ToByteArray();
                 }
             File.WriteAllText(Paths.BACKUP + "\\lstbackup.xml", backup.SerializeObject());
@@ -648,23 +654,27 @@ namespace AA2Snowflake
 
             IPersonality personality = Personalities.ElementAt(cmbPersonality32.SelectedIndex).Value; //i've rewritten this to change only 1 personality since you don't want to rewrite 5gb of files everytime you change poses
             ppParser pp = personality.GetLstPP();
-            IWriteFile sub = pp.GetLstFromPP(personality);
-            int index = pp.Subfiles.IndexOf(sub);
+            IWriteFile sub = personality.GetLst();
+            int index = pp.Subfiles.FindIndex(x => x.Name == sub.Name);
+
+            var lst = LSTFactory.LoadLST(personality);
 
             if (chkPose32.Checked)
-                sub = Tools.ManipulateLst(sub, 6, numPose32.Value.ToString());
+                lst.AA2EditPose = (int)numPose32.Value;
             if (chkEyebrow32.Checked)
-                sub = Tools.ManipulateLst(sub, 7, numEyebrow32.Value.ToString());
+                lst.AA2EditEyebrow = (int)numEyebrow32.Value;
             if (chkEyeOS32.Checked)
-                sub = Tools.ManipulateLst(sub, 8, numEyeOS32.Value.ToString());
+                lst.AA2EditEye = (int)numEye32.Value;
             if (chkEye32.Checked)
-                sub = Tools.ManipulateLst(sub, 9, numEye32.Value.ToString());
+                lst.AA2EditEyeOS = (int)numEyeOS32.Value;
             if (chkMouth32.Checked)
-                sub = Tools.ManipulateLst(sub, 10, numMouth32.Value.ToString());
+                lst.AA2EditMouth = (int)numMouth32.Value;
 
-            sub = Tools.ManipulateLst(sub, 4, "51");
+            //lst.WriteValue(1, "1");
+
+            //sub = Tools.ManipulateLst(sub, 4, "51");
             //sub.Name = "jg2e_00_01_00_00.lst";
-            pp.Subfiles[index] = sub;
+            pp.Subfiles[index] = lst.ToSubfile(sub.Name);
             var back = pp.WriteArchive(pp.FilePath, false, "bak", true);
             ShowLoadingForm();
             back.RunWorkerAsync();
@@ -708,7 +718,7 @@ namespace AA2Snowflake
             
             IPersonality personality = Personalities.ElementAt(cmbPersonality32.SelectedIndex).Value;
             ppParser pp = personality.GetLstPP();
-            IWriteFile sub = pp.GetLstFromPP(personality);
+            IWriteFile sub = personality.GetLst();
             var index = pp.Subfiles.IndexOf(pp.Subfiles.First(iw => iw.Name == sub.Name));
             sub = new MemSubfile(new MemoryStream(backup[personality.LSTLocation]), sub.Name);
             pp.Subfiles[index] = sub;
@@ -781,7 +791,7 @@ namespace AA2Snowflake
             Logger.WriteLine(string.Join("\r\n", pp.Subfiles.Where(p => p.Name.ToLower().EndsWith("icf"))));
             IWriteFile sub = pp.Subfiles.First(iw => iw.Name.ToLower() == name.ToLower());
             ICF icf;
-            using (MemoryStream mem = Tools.GetStreamFromSubfile(sub))
+            using (MemoryStream mem = sub.ToStream())
                 icf = new ICF(mem);
 
             txtRotX.Text = icf.Rotation.X.RadiansToDegrees().ToString();

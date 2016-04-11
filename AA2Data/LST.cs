@@ -62,7 +62,7 @@ namespace AA2Data
             }
         }
 
-        public virtual string Name
+        public virtual string ID
         {
             get
             {
@@ -74,7 +74,7 @@ namespace AA2Data
             }
         }
 
-        public virtual string Label
+        public virtual string Name
         {
             get
             {
@@ -227,7 +227,7 @@ namespace AA2Data
             }
         }
 
-        public override string Name
+        public override string ID
         {
             get
             {
@@ -239,7 +239,7 @@ namespace AA2Data
             }
         }
 
-        public override string Label
+        public override string Name
         {
             get
             {
