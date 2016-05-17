@@ -14,6 +14,14 @@ namespace AA2Data
             Array.Copy(array, b, length);
             return b;
         }
+
+        public static string TrimBytes(this string input, int maxLength)
+        {
+            return new string(input
+                .TakeWhile((c, i) =>
+                    ShiftJIS.GetByteCount(input.Substring(0, i + 1)) <= maxLength)
+                .ToArray());
+        }
     }
 
     public class BaseData
@@ -190,11 +198,11 @@ namespace AA2Data
         {
             get
             {
-                return (string)readValue(0x21D, AA2DataType.StringEx, 512);
+                return ((string)readValue(0x21D, AA2DataType.StringEx, 512)).TrimEnd(new char[] { '\0' });
             }
             set
             {
-                writeValue(value, 0x21D, AA2DataType.StringEx);
+                writeValue(value.TrimBytes(512), 0x21D, AA2DataType.StringEx);
             }
         }
 

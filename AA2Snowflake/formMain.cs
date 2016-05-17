@@ -12,7 +12,6 @@ using SB3Utility;
 using AA2Install;
 using AA2Data;
 using System.Drawing.Imaging;
-using Paloma;
 using AA2Snowflake.Personalities;
 using System.Text.RegularExpressions;
 using PluginLoader;
@@ -23,6 +22,7 @@ namespace AA2Snowflake
     {
 #warning use DevIL.NET instead of this shitty tga class
 #warning add blush values
+#warning Add personality name english translations patch
 
         SortedDictionary<int, IPersonality> Personalities;
         List<IPlugin> Plugins = new List<IPlugin>();

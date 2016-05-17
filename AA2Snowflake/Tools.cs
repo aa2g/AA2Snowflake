@@ -8,7 +8,6 @@ using SB3Utility;
 using AA2Install;
 using Microsoft.VisualBasic.FileIO;
 using System.Drawing;
-using Paloma;
 using System.Xml.Serialization;
 
 namespace AA2Snowflake
@@ -56,9 +55,8 @@ namespace AA2Snowflake
         public static Bitmap LoadTGA(Stream stream)
         {
             Bitmap bit;
-            using (TargaImage t = new TargaImage(stream))
-            using (Bitmap b = t.Image)
-                bit = (Bitmap)t.Image.Clone();
+            using (var image = new ImageMagick.MagickImage(stream.ToByteArray()))
+                bit = image.ToBitmap();
 
             return bit;
         }
@@ -66,9 +64,8 @@ namespace AA2Snowflake
         public static Bitmap LoadTGA(string filename)
         {
             Bitmap bit;
-            using (TargaImage t = new TargaImage(filename))
-            using (Bitmap b = t.Image)
-                bit = (Bitmap)t.Image.Clone();
+            using (var image = new ImageMagick.MagickImage(filename))
+                bit = image.ToBitmap();
 
             return bit;
         }

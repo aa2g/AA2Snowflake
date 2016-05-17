@@ -48,7 +48,7 @@ namespace AA2Snowflake
         {
             if (card != null)
                 card.data.PROFILE_BIO = txtBio.Text;
-            lblBio.Text = "Bio: (" + Tools.ShiftJIS.GetByteCount(txtBio.Text.Replace("\0", "")) + " / 480 bytes used)";
+            lblBio.Text = "Bio: (" + Tools.ShiftJIS.GetByteCount(txtBio.Text) + " / 480 bytes used)";
         }
 
         private void txtLastName_TextChanged(object sender, EventArgs e)

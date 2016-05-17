@@ -71,7 +71,7 @@
     <ProjectReference Include="..\..\PluginLoader\PluginLoader.csproj">
       <Project>{f98b71c8-20a9-4dda-a56c-a29f6b75d0a9}</Project>
       <Name>PluginLoader</Name>
-      <Private>True</Private>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

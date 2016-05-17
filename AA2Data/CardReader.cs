@@ -24,9 +24,6 @@ namespace AA2Data
     {
         private BinaryReader br;
 
-        public static implicit operator AA2Reader (byte[] x) => new AA2Reader(x);
-        public static implicit operator AA2Reader (Stream x) => new AA2Reader(x);
-
         public AA2Reader(Stream stream)
         {
             br = new BinaryReader(stream);
