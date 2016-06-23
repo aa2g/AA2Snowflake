@@ -16,6 +16,7 @@ namespace SB3Utility
             path = filepath;
             Name = path.Remove(0, path.LastIndexOf('\\')+1);
         }
+
         public Subfile(string filepath, string name)
         {
             path = filepath;
@@ -25,10 +26,12 @@ namespace SB3Utility
         public void WriteTo(Stream stream)
         {
             using (BinaryReader reader = new BinaryReader(CreateReadStream()))
+            if (reader.BaseStream.Length > 0)
             {
                 BinaryWriter writer = new BinaryWriter(stream);
                 byte[] buf;
-                while ((buf = reader.ReadBytes(Utility.BufSize)).Length == Utility.BufSize)
+                int bufsize = Utility.EstBufSize(reader.BaseStream.Length);
+                while ((buf = reader.ReadBytes(bufsize)).Length == bufsize)
                 {
                     writer.Write(buf);
                 }

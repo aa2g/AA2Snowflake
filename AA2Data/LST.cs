@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AA2Data
 {
-    public abstract partial class BaseLST
+    public class BaseLST
     {
         public byte[] raw { get; set; }
 

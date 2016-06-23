@@ -45,7 +45,7 @@ namespace AA2Snowflake
 
         public static IWriteFile ToSubfile(this BaseLST lst, string name)
         {
-            return new MemSubfile(new MemoryStream(lst.raw), name);
+            return new MemSubfile(lst.raw, name);
         }
     }
 }

@@ -27,10 +27,10 @@ namespace AA2Snowflake
 
         public static void RefreshPPs()
         {
-            PP.jg2e00_00_00 = new ppParser(Paths.AA2Edit + @"\jg2e00_00_00.pp", new ppFormat_AA2());
-            PP.jg2e01_00_00 = new ppParser(Paths.AA2Edit + @"\jg2e01_00_00.pp", new ppFormat_AA2());
-            PP.jg2e06_00_00 = new ppParser(Paths.AA2Edit + @"\jg2e06_00_00.pp", new ppFormat_AA2());
-            PP.jg2p01_00_00 = new ppParser(Paths.AA2Play + @"\jg2p01_00_00.pp", new ppFormat_AA2());
+            PP.jg2e00_00_00 = new ppParser(Paths.AA2Edit + @"\jg2e00_00_00.pp");
+            PP.jg2e01_00_00 = new ppParser(Paths.AA2Edit + @"\jg2e01_00_00.pp");
+            PP.jg2e06_00_00 = new ppParser(Paths.AA2Edit + @"\jg2e06_00_00.pp");
+            PP.jg2p01_00_00 = new ppParser(Paths.AA2Play + @"\jg2p01_00_00.pp");
         }
 
         public static void BackupFile(string file)
@@ -55,7 +55,12 @@ namespace AA2Snowflake
         public static Bitmap LoadTGA(Stream stream)
         {
             Bitmap bit;
-            using (var image = new ImageMagick.MagickImage(stream.ToByteArray()))
+            var sett = new ImageMagick.MagickReadSettings()
+            {
+                Format = ImageMagick.MagickFormat.Tga
+            };
+
+            using (var image = new ImageMagick.MagickImage(stream.ToByteArray(), sett))
                 bit = image.ToBitmap();
 
             return bit;
@@ -95,9 +100,9 @@ namespace AA2Snowflake
 
     public static class PP
     {
-        public static ppParser jg2e00_00_00 = new ppParser(Paths.AA2Edit + @"\jg2e00_00_00.pp", new ppFormat_AA2());
-        public static ppParser jg2e01_00_00 = new ppParser(Paths.AA2Edit + @"\jg2e01_00_00.pp", new ppFormat_AA2());
-        public static ppParser jg2e06_00_00 = new ppParser(Paths.AA2Edit + @"\jg2e06_00_00.pp", new ppFormat_AA2());
-        public static ppParser jg2p01_00_00 = new ppParser(Paths.AA2Play + @"\jg2p01_00_00.pp", new ppFormat_AA2());
+        public static ppParser jg2e00_00_00 = new ppParser(Paths.AA2Edit + @"\jg2e00_00_00.pp");
+        public static ppParser jg2e01_00_00 = new ppParser(Paths.AA2Edit + @"\jg2e01_00_00.pp");
+        public static ppParser jg2e06_00_00 = new ppParser(Paths.AA2Edit + @"\jg2e06_00_00.pp");
+        public static ppParser jg2p01_00_00 = new ppParser(Paths.AA2Play + @"\jg2p01_00_00.pp");
     }
 }

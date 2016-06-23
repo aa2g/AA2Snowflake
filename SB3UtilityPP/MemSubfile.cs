@@ -6,38 +6,41 @@ using System.IO;
 
 namespace SB3Utility
 {
-    public class MemSubfile: IReadFile, IWriteFile
+    public class MemSubfile : IReadFile, IWriteFile, IDisposable
     {
         public string Name { get; set; }
-        public MemoryStream data;
+        public byte[] data;
 
-        public MemSubfile(MemoryStream mem, string name)
+        public MemSubfile(byte[] data, string name)
         {
-            data = mem;
+            this.data = data;
             Name = name;
         }
 
         public void WriteTo(Stream stream)
         {
             using (BinaryReader reader = new BinaryReader(CreateReadStream()))
-            {
-                BinaryWriter writer = new BinaryWriter(stream);
-                byte[] buf;
-                while ((buf = reader.ReadBytes(Utility.BufSize)).Length == Utility.BufSize)
+                if (reader.BaseStream.Length > 0)
                 {
+                    BinaryWriter writer = new BinaryWriter(stream);
+                    byte[] buf;
+                    int bufsize = Utility.EstBufSize(reader.BaseStream.Length);
+                    while ((buf = reader.ReadBytes(bufsize)).Length == bufsize)
+                    {
+                        writer.Write(buf);
+                    }
                     writer.Write(buf);
                 }
-                writer.Write(buf);
-            }
         }
 
         public Stream CreateReadStream()
         {
-            MemoryStream mem = new MemoryStream();
-            data.Position = 0;
-            data.CopyTo(mem);
-            mem.Position = 0;
-            return mem;
+            return new MemoryStream(data);
+        }
+
+        public void Dispose()
+        {
+            data = null;
         }
     }
 }

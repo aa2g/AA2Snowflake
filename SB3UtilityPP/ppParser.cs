@@ -4,50 +4,47 @@ using System.IO;
 using System.Security.Cryptography;
 using System.ComponentModel;
 using SB3Utility;
+using System.Linq;
 
 namespace SB3Utility
 {
 	public class ppParser
 	{
 		public string FilePath { get; protected set; }
-		public ppFormat Format { get; set; }
 		public List<IWriteFile> Subfiles { get; protected set; }
 
 		private string destPath;
 		private bool keepBackup;
-		private string backupExt;
 
-		public ppParser(string path, ppFormat format)
-		{
-			this.Format = format;
-			this.FilePath = path;
-            if (File.Exists(path))
+        public void ReloadSubfiles()
+        {
+            if (File.Exists(this.FilePath))
             {
-			    this.Subfiles = format.ppHeader.ReadHeader(path, format);
+                this.Subfiles = ppHeader.ReadHeader(this.FilePath);
             }
             else
             {
                 this.Subfiles = new List<IWriteFile>();
             }
+            
+        }
+
+		public ppParser(string path)
+		{
+			this.FilePath = path;
+            ReloadSubfiles();
 		}
 
-		public BackgroundWorker WriteArchive(string destPath, bool keepBackup, string backupExtension, bool background)
+		public BackgroundWorker WriteArchive(string destPath, bool keepBackup)
 		{
 			this.destPath = destPath;
 			this.keepBackup = keepBackup;
-			this.backupExt = backupExtension;
 
 			BackgroundWorker worker = new BackgroundWorker();
 			worker.WorkerSupportsCancellation = true;
 			worker.WorkerReportsProgress = true;
 
 			worker.DoWork += new DoWorkEventHandler(writeArchiveWorker_DoWork);
-
-			if (!background)
-			{
-				writeArchiveWorker_DoWork(worker, new DoWorkEventArgs(null));
-			}
-
 			return worker;
 		}
 
@@ -69,30 +66,26 @@ namespace SB3Utility
 
 			if (File.Exists(destPath))
 			{
-				backup = Utility.GetDestFile(dir, Path.GetFileNameWithoutExtension(destPath) + ".bak", backupExt);
+				backup = Utility.GetDestFile(dir, Path.GetFileNameWithoutExtension(destPath), ".bak");
 				File.Move(destPath, backup);
 
 				if (destPath.Equals(this.FilePath, StringComparison.InvariantCultureIgnoreCase))
-				{
-					for (int i = 0; i < Subfiles.Count; i++)
-					{
-						ppSubfile subfile = Subfiles[i] as ppSubfile;
-						if ((subfile != null) && subfile.ppPath.Equals(this.FilePath, StringComparison.InvariantCultureIgnoreCase))
-						{
-							subfile.ppPath = backup;
-						}
-					}
-				}
+					foreach (IWriteFile iw in Subfiles)
+                        if (iw is ppSubfile)
+                        {
+                            ppSubfile subfile = iw as ppSubfile;
+                            if (subfile.ppPath.Equals(this.FilePath, StringComparison.InvariantCultureIgnoreCase))
+                                subfile.ppPath = backup;
+                        }
 			}
 
 			try
 			{
 				using (BinaryWriter writer = new BinaryWriter(File.Create(destPath)))
 				{
-					writer.BaseStream.Seek(Format.ppHeader.HeaderSize(Subfiles.Count), SeekOrigin.Begin);
+					writer.BaseStream.Seek(ppHeader.HeaderSize(Subfiles.Count), SeekOrigin.Begin);
 					long offset = writer.BaseStream.Position;
-					uint[] sizes = new uint[Subfiles.Count];
-					object[] metadata = new object[Subfiles.Count];
+                    var Hashes = new MetaIWriteList();
 
 					for (int i = 0; i < Subfiles.Count; i++)
 					{
@@ -104,49 +97,94 @@ namespace SB3Utility
 
 						worker.ReportProgress(i * 100 / Subfiles.Count);
 
-						ppSubfile subfile = Subfiles[i] as ppSubfile;
-						if ((subfile != null) && (subfile.ppFormat == this.Format))
-						{
-							using (BinaryReader reader = new BinaryReader(File.OpenRead(subfile.ppPath)))
-							{
-								reader.BaseStream.Seek(subfile.offset, SeekOrigin.Begin);
+                        //System.Diagnostics.Trace.WriteLine(Subfiles[i].Name);
 
-								uint readSteps = subfile.size / (uint)Utility.BufSize;
-								for (int j = 0; j < readSteps; j++)
-								{
-									writer.Write(reader.ReadBytes((int)Utility.BufSize));
-								}
-								writer.Write(reader.ReadBytes((int)(subfile.size % Utility.BufSize)));
-							}
-							metadata[i] = subfile.Metadata;
-						}
-						else
-						{
-							Stream stream = Format.WriteStream(writer.BaseStream);
-							Subfiles[i].WriteTo(stream);
-							metadata[i] = Format.FinishWriteTo(stream);
-						}
+                        if (Subfiles[i] is ppSubfile)
+                        {
+                            ppSubfile subfile = Subfiles[i] as ppSubfile;
+                            using (MD5 md5 = MD5.Create())
+                            using (MemoryStream mem = new MemoryStream())
+                            using (BinaryReader reader = new BinaryReader(File.OpenRead(subfile.ppPath)))
+                            {
+                                reader.BaseStream.Seek(subfile.offset, SeekOrigin.Begin);
+                                int bufsize = Utility.EstBufSize(subfile.size);
 
-						long pos = writer.BaseStream.Position;
-						sizes[i] = (uint)(pos - offset);
-						offset = pos;
-					}
+                                uint hash = 0;
+
+                                if (bufsize == 0)
+                                {
+                                    Hashes.AddNew(Subfiles[i], hash, 0, subfile.Metadata);
+                                    continue;
+                                }
+
+                                int readSteps = (int)subfile.size / bufsize;
+
+                                byte[] buf;
+
+                                for (int j = 0; j < readSteps; j++)
+                                {
+                                    buf = reader.ReadBytes(bufsize);
+
+                                    md5.TransformBlock(buf, 0, bufsize, buf, 0);
+
+                                    mem.WriteBytes(buf);
+                                }
+                                int remaining = (int)(subfile.size % bufsize);
+
+                                buf = reader.ReadBytes(remaining);
+                                md5.TransformFinalBlock(buf, 0, remaining);
+                                mem.WriteBytes(buf);
+
+                                hash = BitConverter.ToUInt32(md5.Hash, 0);
+
+                                if (!Hashes.Any(x => x.Hash == hash))
+                                {
+                                    writer.Write(mem.ToArray());
+
+                                    Hashes.AddNew(Subfiles[i], hash, (uint)(writer.BaseStream.Position - offset), subfile.Metadata);
+                                }
+                                else
+                                {
+                                    var first = Hashes.First(x => x.Hash == hash);
+
+                                    Hashes.AddNew(Subfiles[i], hash, first.Size, first.Metadata);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            Stream stream = ppFormat.WriteStream(writer.BaseStream);
+
+                            using (MD5 md5 = MD5.Create())
+                            using (MemoryStream mem = new MemoryStream())
+                            {
+                                Subfiles[i].WriteTo(mem);
+
+                                uint hash = BitConverter.ToUInt32(md5.ComputeHash(mem.ToArray()), 0);
+
+                                if (Hashes.Any(x => x.Hash == hash))
+                                {
+                                    var first = Hashes.First(x => x.Hash == hash);
+                                    Hashes.AddNew(Subfiles[i], hash, first.Size, first.Metadata);
+                                }
+                                else
+                                {
+                                    mem.WriteTo(stream);
+                                    object meta = ppFormat.FinishWriteTo(stream);
+                                    long ppos = writer.BaseStream.Position;
+
+                                    Hashes.AddNew(Subfiles[i], hash, (uint)(ppos - offset), meta);
+                                }
+                            }                            
+                        }
+                        offset = writer.BaseStream.Position;
+                    }
 
 					if (!e.Cancel)
 					{
 						writer.BaseStream.Seek(0, SeekOrigin.Begin);
-						Format.ppHeader.WriteHeader(writer.BaseStream, Subfiles, sizes, metadata);
-						offset = writer.BaseStream.Position;
-						for (int i = 0; i < Subfiles.Count; i++)
-						{
-							ppSubfile subfile = Subfiles[i] as ppSubfile;
-							if (subfile != null)
-							{
-								subfile.offset = offset;
-								subfile.size = sizes[i];
-							}
-							offset += sizes[i];
-						}
+                        
+                        ppHeader.WriteRLEHeader(writer.BaseStream, Hashes);
 					}
 				}
 
@@ -154,34 +192,21 @@ namespace SB3Utility
 				{
 					RestoreBackup(destPath, backup);
 				}
-				else
-				{
-					if (destPath.Equals(this.FilePath, StringComparison.InvariantCultureIgnoreCase))
-					{
-						for (int i = 0; i < Subfiles.Count; i++)
-						{
-							ppSubfile subfile = Subfiles[i] as ppSubfile;
-							if ((subfile != null) && subfile.ppPath.Equals(backup, StringComparison.InvariantCultureIgnoreCase))
-							{
-								subfile.ppPath = this.FilePath;
-							}
-						}
-					}
-					else
-					{
-						this.FilePath = destPath;
-					}
+				else if ((backup != null) && !keepBackup)
+                {
+                    File.Delete(backup);
+                }
 
-					if ((backup != null) && !keepBackup)
-					{
-						File.Delete(backup);
-					}
-				}
-			}
+                foreach (IWriteFile iw in Subfiles)
+                    if (iw is IDisposable)
+                        ((IDisposable)iw).Dispose();
+                
+                //ReloadSubfiles();
+            }
 			catch (Exception ex)
 			{
 				RestoreBackup(destPath, backup);
-				Utility.ReportException(ex);
+                throw new Exception("PP Parser has encountered an error.", ex);
 			}
 		}
 
@@ -194,20 +219,34 @@ namespace SB3Utility
 				if (backup != null)
 				{
 					File.Move(backup, destPath);
-
-					if (destPath.Equals(this.FilePath, StringComparison.InvariantCultureIgnoreCase))
-					{
-						for (int i = 0; i < Subfiles.Count; i++)
-						{
-							ppSubfile subfile = Subfiles[i] as ppSubfile;
-							if ((subfile != null) && subfile.ppPath.Equals(backup, StringComparison.InvariantCultureIgnoreCase))
-							{
-								subfile.ppPath = this.FilePath;
-							}
-						}
-					}
-				}
+                    
+                    ReloadSubfiles();
+                }
 			}
 		}
 	}
+
+    public class MetaIWriteFile
+    {
+        public IWriteFile WriteFile;
+        public uint Hash;
+        public uint Size;
+        public object Metadata;
+
+        public MetaIWriteFile(IWriteFile WriteFile, uint Hash, uint Size, object Metadata)
+        {
+            this.WriteFile = WriteFile;
+            this.Hash = Hash;
+            this.Size = Size;
+            this.Metadata = Metadata;
+        }
+    }
+
+    public class MetaIWriteList : List<MetaIWriteFile>
+    {
+        public void AddNew(IWriteFile WriteFile, uint Hash, uint Size, object Metadata)
+        {
+            this.Add(new MetaIWriteFile(WriteFile, Hash, Size, Metadata));
+        }
+    }
 }

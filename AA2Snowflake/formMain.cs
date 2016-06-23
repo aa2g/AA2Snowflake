@@ -198,7 +198,7 @@ namespace AA2Snowflake
             var sub = new Subfile(backgroundpath);
             sub.Name = "sp_04_01_0" + cmbBackground.SelectedIndex.ToString() + ".bmp";
             PP.jg2e06_00_00.Subfiles[index] = sub;
-            var back = PP.jg2e06_00_00.WriteArchive(PP.jg2e06_00_00.FilePath, false, "bak", true);
+            var back = PP.jg2e06_00_00.WriteArchive(PP.jg2e06_00_00.FilePath, false);
             ShowLoadingForm();
             back.RunWorkerAsync();
             while (back.IsBusy)
@@ -218,7 +218,7 @@ namespace AA2Snowflake
             var index = PP.jg2e06_00_00.Subfiles.IndexOf(PP.jg2e06_00_00.Subfiles.First(pp => pp.Name == "sp_04_01_0" + cmbBackground.SelectedIndex.ToString() + ".bmp"));
             var sub = new Subfile(Paths.BACKUP + @"\sp_04_01_0" + cmbBackground.SelectedIndex.ToString() + ".bmp");
             PP.jg2e06_00_00.Subfiles[index] = sub;
-            var back = PP.jg2e06_00_00.WriteArchive(PP.jg2e06_00_00.FilePath, false, "bak", true);
+            var back = PP.jg2e06_00_00.WriteArchive(PP.jg2e06_00_00.FilePath, false);
             ShowLoadingForm();
             back.RunWorkerAsync();
             while (back.IsBusy)
@@ -238,7 +238,7 @@ namespace AA2Snowflake
                 var sub = new Subfile(Paths.BACKUP + @"\sp_04_01_0" + i.ToString() + ".bmp");
                 PP.jg2e06_00_00.Subfiles[index] = sub;
             }
-            var back = PP.jg2e06_00_00.WriteArchive(PP.jg2e06_00_00.FilePath, false, "bak", true);
+            var back = PP.jg2e06_00_00.WriteArchive(PP.jg2e06_00_00.FilePath, false);
             ShowLoadingForm();
             back.RunWorkerAsync();
             while (back.IsBusy)
@@ -296,7 +296,7 @@ namespace AA2Snowflake
             var sub = new Subfile(rosterpath);
             sub.Name = "sp_04_03_0" + cmbRoster.SelectedIndex.ToString() + ".bmp";
             PP.jg2e06_00_00.Subfiles[index] = sub;
-            var back = PP.jg2e06_00_00.WriteArchive(PP.jg2e06_00_00.FilePath, false, "bak", true);
+            var back = PP.jg2e06_00_00.WriteArchive(PP.jg2e06_00_00.FilePath, false);
             ShowLoadingForm();
             back.RunWorkerAsync();
             while (back.IsBusy)
@@ -316,7 +316,7 @@ namespace AA2Snowflake
             var index = PP.jg2e06_00_00.Subfiles.IndexOf(PP.jg2e06_00_00.Subfiles.First(pp => pp.Name == "sp_04_03_0" + cmbRoster.SelectedIndex.ToString() + ".bmp"));
             var sub = new Subfile(Paths.BACKUP + @"\sp_04_03_0" + cmbRoster.SelectedIndex.ToString() + ".bmp");
             PP.jg2e06_00_00.Subfiles[index] = sub;
-            var back = PP.jg2e06_00_00.WriteArchive(PP.jg2e06_00_00.FilePath, false, "bak", true);
+            var back = PP.jg2e06_00_00.WriteArchive(PP.jg2e06_00_00.FilePath, false);
             ShowLoadingForm();
             back.RunWorkerAsync();
             while (back.IsBusy)
@@ -336,7 +336,7 @@ namespace AA2Snowflake
                 var sub = new Subfile(Paths.BACKUP + @"\sp_04_03_0" + i.ToString() + ".bmp");
                 PP.jg2e06_00_00.Subfiles[index] = sub;
             }
-            var back = PP.jg2e06_00_00.WriteArchive(PP.jg2e06_00_00.FilePath, false, "bak", true);
+            var back = PP.jg2e06_00_00.WriteArchive(PP.jg2e06_00_00.FilePath, false);
             ShowLoadingForm();
             back.RunWorkerAsync();
             while (back.IsBusy)
@@ -416,7 +416,7 @@ namespace AA2Snowflake
             var sub = new Subfile(borderpath);
             sub.Name = "sp_04_02_0" + cmbBorder.SelectedIndex.ToString() + ".tga";
             PP.jg2e06_00_00.Subfiles[index] = sub;
-            var back = PP.jg2e06_00_00.WriteArchive(PP.jg2e06_00_00.FilePath, false, "bak", true);
+            var back = PP.jg2e06_00_00.WriteArchive(PP.jg2e06_00_00.FilePath, false);
             ShowLoadingForm();
             back.RunWorkerAsync();
             while (back.IsBusy)
@@ -436,7 +436,7 @@ namespace AA2Snowflake
             var index = PP.jg2e06_00_00.Subfiles.IndexOf(PP.jg2e06_00_00.Subfiles.First(pp => pp.Name == "sp_04_02_0" + cmbBorder.SelectedIndex.ToString() + ".tga"));
             var sub = new Subfile(Paths.BACKUP + @"\sp_04_02_0" + cmbBorder.SelectedIndex.ToString() + ".tga");
             PP.jg2e06_00_00.Subfiles[index] = sub;
-            var back = PP.jg2e06_00_00.WriteArchive(PP.jg2e06_00_00.FilePath, false, "bak", true);
+            var back = PP.jg2e06_00_00.WriteArchive(PP.jg2e06_00_00.FilePath, false);
             ShowLoadingForm();
             back.RunWorkerAsync();
             while (back.IsBusy)
@@ -456,7 +456,7 @@ namespace AA2Snowflake
                 var sub = new Subfile(Paths.BACKUP + @"\sp_04_02_0" + i.ToString() + ".tga");
                 PP.jg2e06_00_00.Subfiles[index] = sub;
             }
-            var back = PP.jg2e06_00_00.WriteArchive(PP.jg2e06_00_00.FilePath, false, "bak", true);
+            var back = PP.jg2e06_00_00.WriteArchive(PP.jg2e06_00_00.FilePath, false);
             ShowLoadingForm();
             back.RunWorkerAsync();
             while (back.IsBusy)
@@ -514,7 +514,7 @@ namespace AA2Snowflake
             var sub = new Subfile(chrpath);
             sub.Name = "def0" + cmbCharacter.SelectedIndex.ToString() + ".png";
             PP.jg2e01_00_00.Subfiles[index] = sub;
-            var back = PP.jg2e01_00_00.WriteArchive(PP.jg2e01_00_00.FilePath, false, "bak", true);
+            var back = PP.jg2e01_00_00.WriteArchive(PP.jg2e01_00_00.FilePath, false);
             ShowLoadingForm();
             back.RunWorkerAsync();
             while (back.IsBusy)
@@ -534,7 +534,7 @@ namespace AA2Snowflake
             var index = PP.jg2e01_00_00.Subfiles.IndexOf(PP.jg2e01_00_00.Subfiles.First(pp => pp.Name == "def0" + cmbCharacter.SelectedIndex.ToString() + ".png"));
             var sub = new Subfile(Paths.BACKUP + @"\def0" + cmbCharacter.SelectedIndex.ToString() + ".png");
             PP.jg2e01_00_00.Subfiles[index] = sub;
-            var back = PP.jg2e01_00_00.WriteArchive(PP.jg2e01_00_00.FilePath, false, "bak", true);
+            var back = PP.jg2e01_00_00.WriteArchive(PP.jg2e01_00_00.FilePath, false);
             ShowLoadingForm();
             back.RunWorkerAsync();
             while (back.IsBusy)
@@ -554,7 +554,7 @@ namespace AA2Snowflake
                 var sub = new Subfile(Paths.BACKUP + @"\def0" + i.ToString() + ".png");
                 PP.jg2e01_00_00.Subfiles[index] = sub;
             }
-            var back = PP.jg2e01_00_00.WriteArchive(PP.jg2e01_00_00.FilePath, false, "bak", true);
+            var back = PP.jg2e01_00_00.WriteArchive(PP.jg2e01_00_00.FilePath, false);
             ShowLoadingForm();
             back.RunWorkerAsync();
             while (back.IsBusy)
@@ -598,7 +598,7 @@ namespace AA2Snowflake
                     PP.jg2e01_00_00.Subfiles[index] = iw;
             }
 
-            var back = PP.jg2e01_00_00.WriteArchive(PP.jg2e01_00_00.FilePath, false, "bak", true);
+            var back = PP.jg2e01_00_00.WriteArchive(PP.jg2e01_00_00.FilePath, false);
             ShowLoadingForm();
             back.RunWorkerAsync();
             while (back.IsBusy)
@@ -615,7 +615,7 @@ namespace AA2Snowflake
             var sub = Tools.ManipulateLst(, 4, "51");
             sub.Name = "jg2e_00_01_00_00.lst";
             PP.jg2e00_00_00.Subfiles[index] = sub;
-            back = PP.jg2e00_00_00.WriteArchive(PP.jg2e00_00_00.FilePath, false, "bak", true);
+            back = PP.jg2e00_00_00.WriteArchive(PP.jg2e00_00_00.FilePath, false);
             back.RunWorkerAsync();
             while (back.IsBusy)
             {
@@ -675,7 +675,7 @@ namespace AA2Snowflake
             //sub = Tools.ManipulateLst(sub, 4, "51");
             //sub.Name = "jg2e_00_01_00_00.lst";
             pp.Subfiles[index] = lst.ToSubfile(sub.Name);
-            var back = pp.WriteArchive(pp.FilePath, false, "bak", true);
+            var back = pp.WriteArchive(pp.FilePath, false);
             ShowLoadingForm();
             back.RunWorkerAsync();
             while (back.IsBusy)
@@ -720,9 +720,9 @@ namespace AA2Snowflake
             ppParser pp = personality.GetLstPP();
             IWriteFile sub = personality.GetLst();
             var index = pp.Subfiles.IndexOf(pp.Subfiles.First(iw => iw.Name == sub.Name));
-            sub = new MemSubfile(new MemoryStream(backup[personality.LSTLocation]), sub.Name);
+            sub = new MemSubfile(backup[personality.LSTLocation], sub.Name);
             pp.Subfiles[index] = sub;
-            var back = pp.WriteArchive(pp.FilePath, false, "bak", true);
+            var back = pp.WriteArchive(pp.FilePath, false);
             ShowLoadingForm();
             back.RunWorkerAsync();
             while (back.IsBusy)
@@ -871,9 +871,9 @@ namespace AA2Snowflake
                 return;
             }
 
-            sub = new MemSubfile(new MemoryStream(icf.Export()), sub.Name);
+            sub = new MemSubfile(icf.Export(), sub.Name);
             pp.Subfiles[index] = sub;
-            var back = pp.WriteArchive(pp.FilePath, false, "bak", true);
+            var back = pp.WriteArchive(pp.FilePath, false);
             ShowLoadingForm();
             back.RunWorkerAsync();
             while (back.IsBusy)
@@ -899,9 +899,9 @@ namespace AA2Snowflake
             string name = "e" + cmbMode33.SelectedIndex.ToString("00") + "_" + personality.Slot.ToString("00") + "_" + cmbHeight33.SelectedIndex.ToString("00") + ".ICF";
             var sub = pp.Subfiles.First(iw => iw.Name.ToLower() == name.ToLower());
             var index = pp.Subfiles.IndexOf(pp.Subfiles.First(iw => iw.Name.ToLower() == name.ToLower()));
-            sub = new MemSubfile(new MemoryStream(backup[name.ToLower()]), name);
+            sub = new MemSubfile(backup[name.ToLower()], name);
             pp.Subfiles[index] = sub;
-            var back = pp.WriteArchive(pp.FilePath, false, "bak", true);
+            var back = pp.WriteArchive(pp.FilePath, false);
             ShowLoadingForm();
             back.RunWorkerAsync();
             while (back.IsBusy)
@@ -986,7 +986,7 @@ namespace AA2Snowflake
 
             sub = new Subfile(Paths.BACKUP + "\\personality_blank.tga", sub.Name);
             pp.Subfiles[index] = sub;
-            var back = pp.WriteArchive(pp.FilePath, false, "bak", true);
+            var back = pp.WriteArchive(pp.FilePath, false);
             ShowLoadingForm();
             back.RunWorkerAsync();
             while (back.IsBusy)
@@ -1018,7 +1018,7 @@ namespace AA2Snowflake
 
             sub = new Subfile(Paths.NATURE + "\\" + name, sub.Name);
             pp.Subfiles[index] = sub;
-            var back = pp.WriteArchive(pp.FilePath, false, "bak", true);
+            var back = pp.WriteArchive(pp.FilePath, false);
             ShowLoadingForm();
             back.RunWorkerAsync();
             while (back.IsBusy)

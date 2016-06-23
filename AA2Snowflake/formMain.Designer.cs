@@ -83,6 +83,11 @@
             this.cmbCharacter = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.cmbPersonality34 = new System.Windows.Forms.ComboBox();
+            this.btnBackupAll34 = new System.Windows.Forms.Button();
+            this.btnSetBlank34 = new System.Windows.Forms.Button();
+            this.btnRestore34 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.txtFOV = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -156,11 +161,6 @@
             this.radio2x = new System.Windows.Forms.RadioButton();
             this.lblPatcherOutputSize = new System.Windows.Forms.Label();
             this.trkCardSize = new System.Windows.Forms.TrackBar();
-            this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.cmbPersonality34 = new System.Windows.Forms.ComboBox();
-            this.btnSetBlank34 = new System.Windows.Forms.Button();
-            this.btnRestore34 = new System.Windows.Forms.Button();
-            this.btnBackupAll34 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -192,6 +192,7 @@
             this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgCharacter)).BeginInit();
             this.tabPage3.SuspendLayout();
+            this.groupBox12.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -214,7 +215,6 @@
             this.groupBox6.SuspendLayout();
             this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trkCardSize)).BeginInit();
-            this.groupBox12.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -316,7 +316,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(744, 459);
+            this.tabPage1.Size = new System.Drawing.Size(405, 451);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Background";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -327,7 +327,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(738, 453);
+            this.groupBox1.Size = new System.Drawing.Size(399, 445);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Part 1: Custom background";
@@ -350,8 +350,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.btnLoadBG);
             this.splitContainer1.Panel2.Controls.Add(this.cmbBackground);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
-            this.splitContainer1.Size = new System.Drawing.Size(732, 434);
-            this.splitContainer1.SplitterDistance = 350;
+            this.splitContainer1.Size = new System.Drawing.Size(393, 426);
+            this.splitContainer1.SplitterDistance = 187;
             this.splitContainer1.TabIndex = 0;
             // 
             // imgBackground
@@ -360,7 +360,7 @@
             this.imgBackground.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgBackground.Location = new System.Drawing.Point(0, 0);
             this.imgBackground.Name = "imgBackground";
-            this.imgBackground.Size = new System.Drawing.Size(350, 434);
+            this.imgBackground.Size = new System.Drawing.Size(187, 426);
             this.imgBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgBackground.TabIndex = 0;
             this.imgBackground.TabStop = false;
@@ -437,7 +437,7 @@
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(744, 459);
+            this.tabPage7.Size = new System.Drawing.Size(405, 451);
             this.tabPage7.TabIndex = 7;
             this.tabPage7.Text = "Roster";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -448,7 +448,7 @@
             this.groupBox9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox9.Location = new System.Drawing.Point(3, 3);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(738, 453);
+            this.groupBox9.Size = new System.Drawing.Size(399, 445);
             this.groupBox9.TabIndex = 2;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Part 1: Custom roster background";
@@ -471,8 +471,8 @@
             this.splitContainer5.Panel2.Controls.Add(this.btnRosterLoad);
             this.splitContainer5.Panel2.Controls.Add(this.cmbRoster);
             this.splitContainer5.Panel2.Controls.Add(this.label6);
-            this.splitContainer5.Size = new System.Drawing.Size(732, 434);
-            this.splitContainer5.SplitterDistance = 350;
+            this.splitContainer5.Size = new System.Drawing.Size(393, 426);
+            this.splitContainer5.SplitterDistance = 187;
             this.splitContainer5.TabIndex = 0;
             // 
             // imgRosterBackground
@@ -481,7 +481,7 @@
             this.imgRosterBackground.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgRosterBackground.Location = new System.Drawing.Point(0, 0);
             this.imgRosterBackground.Name = "imgRosterBackground";
-            this.imgRosterBackground.Size = new System.Drawing.Size(350, 434);
+            this.imgRosterBackground.Size = new System.Drawing.Size(187, 426);
             this.imgRosterBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgRosterBackground.TabIndex = 0;
             this.imgRosterBackground.TabStop = false;
@@ -557,7 +557,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(744, 459);
+            this.tabPage5.Size = new System.Drawing.Size(405, 451);
             this.tabPage5.TabIndex = 5;
             this.tabPage5.Text = "Border";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -568,7 +568,7 @@
             this.groupBox7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox7.Location = new System.Drawing.Point(3, 3);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(738, 453);
+            this.groupBox7.Size = new System.Drawing.Size(399, 445);
             this.groupBox7.TabIndex = 0;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Part 1: Custom border";
@@ -593,8 +593,8 @@
             this.splitContainer4.Panel2.Controls.Add(this.btnLoadBorder);
             this.splitContainer4.Panel2.Controls.Add(this.cmbBorder);
             this.splitContainer4.Panel2.Controls.Add(this.label5);
-            this.splitContainer4.Size = new System.Drawing.Size(732, 434);
-            this.splitContainer4.SplitterDistance = 350;
+            this.splitContainer4.Size = new System.Drawing.Size(393, 426);
+            this.splitContainer4.SplitterDistance = 187;
             this.splitContainer4.TabIndex = 1;
             // 
             // imgBorder
@@ -603,7 +603,7 @@
             this.imgBorder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgBorder.Location = new System.Drawing.Point(0, 0);
             this.imgBorder.Name = "imgBorder";
-            this.imgBorder.Size = new System.Drawing.Size(350, 434);
+            this.imgBorder.Size = new System.Drawing.Size(187, 426);
             this.imgBorder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgBorder.TabIndex = 0;
             this.imgBorder.TabStop = false;
@@ -701,7 +701,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(744, 459);
+            this.tabPage2.Size = new System.Drawing.Size(405, 451);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Clothes";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -712,7 +712,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(738, 453);
+            this.groupBox2.Size = new System.Drawing.Size(399, 445);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Part 2: Assigning clothes";
@@ -735,8 +735,8 @@
             this.splitContainer2.Panel2.Controls.Add(this.btnLoadCHR);
             this.splitContainer2.Panel2.Controls.Add(this.cmbCharacter);
             this.splitContainer2.Panel2.Controls.Add(this.label2);
-            this.splitContainer2.Size = new System.Drawing.Size(732, 434);
-            this.splitContainer2.SplitterDistance = 350;
+            this.splitContainer2.Size = new System.Drawing.Size(393, 426);
+            this.splitContainer2.SplitterDistance = 187;
             this.splitContainer2.TabIndex = 0;
             // 
             // imgCharacter
@@ -745,7 +745,7 @@
             this.imgCharacter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgCharacter.Location = new System.Drawing.Point(0, 0);
             this.imgCharacter.Name = "imgCharacter";
-            this.imgCharacter.Size = new System.Drawing.Size(350, 434);
+            this.imgCharacter.Size = new System.Drawing.Size(187, 426);
             this.imgCharacter.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgCharacter.TabIndex = 0;
             this.imgCharacter.TabStop = false;
@@ -825,6 +825,91 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Poses";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // groupBox12
+            // 
+            this.groupBox12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox12.Controls.Add(this.cmbPersonality34);
+            this.groupBox12.Controls.Add(this.btnBackupAll34);
+            this.groupBox12.Controls.Add(this.btnSetBlank34);
+            this.groupBox12.Controls.Add(this.btnRestore34);
+            this.groupBox12.Location = new System.Drawing.Point(3, 374);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(399, 77);
+            this.groupBox12.TabIndex = 3;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "Part 3.4 Clearing personality labels";
+            // 
+            // cmbPersonality34
+            // 
+            this.cmbPersonality34.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPersonality34.FormattingEnabled = true;
+            this.cmbPersonality34.Items.AddRange(new object[] {
+            "(00) Lively",
+            "(01) Delicate",
+            "(02) Cheerful",
+            "(03) Quiet",
+            "(04) Playful",
+            "(05) Frisky",
+            "(06) Kind",
+            "(07) Joyful",
+            "(08) Ordinary",
+            "(09) Irritated",
+            "(10) Harsh",
+            "(11) Sweet",
+            "(12) Creepy",
+            "(13) Reserved",
+            "(14) Dignified",
+            "(15) Aloof",
+            "(16) Smart",
+            "(17) Genuine",
+            "(18) Mature",
+            "(19) Lazy",
+            "(20) Manly",
+            "(21) Gentle",
+            "(22) Positive",
+            "(23) Otaku",
+            "(24) Savage",
+            "(25) Cadet",
+            "(26) Caring",
+            "(27) Schemer",
+            "(28) Carefree",
+            "(29) Warm"});
+            this.cmbPersonality34.Location = new System.Drawing.Point(137, 19);
+            this.cmbPersonality34.Name = "cmbPersonality34";
+            this.cmbPersonality34.Size = new System.Drawing.Size(125, 21);
+            this.cmbPersonality34.TabIndex = 18;
+            // 
+            // btnBackupAll34
+            // 
+            this.btnBackupAll34.Location = new System.Drawing.Point(175, 46);
+            this.btnBackupAll34.Name = "btnBackupAll34";
+            this.btnBackupAll34.Size = new System.Drawing.Size(75, 23);
+            this.btnBackupAll34.TabIndex = 15;
+            this.btnBackupAll34.Text = "Backup All";
+            this.btnBackupAll34.UseVisualStyleBackColor = true;
+            this.btnBackupAll34.Click += new System.EventHandler(this.btnBackupAll34_Click);
+            // 
+            // btnSetBlank34
+            // 
+            this.btnSetBlank34.Location = new System.Drawing.Point(94, 46);
+            this.btnSetBlank34.Name = "btnSetBlank34";
+            this.btnSetBlank34.Size = new System.Drawing.Size(75, 23);
+            this.btnSetBlank34.TabIndex = 12;
+            this.btnSetBlank34.Text = "Set Blank";
+            this.btnSetBlank34.UseVisualStyleBackColor = true;
+            this.btnSetBlank34.Click += new System.EventHandler(this.btnSetBlank34_Click);
+            // 
+            // btnRestore34
+            // 
+            this.btnRestore34.Location = new System.Drawing.Point(256, 46);
+            this.btnRestore34.Name = "btnRestore34";
+            this.btnRestore34.Size = new System.Drawing.Size(75, 23);
+            this.btnRestore34.TabIndex = 13;
+            this.btnRestore34.Text = "Restore";
+            this.btnRestore34.UseVisualStyleBackColor = true;
+            this.btnRestore34.Click += new System.EventHandler(this.btnRestore34_Click);
             // 
             // groupBox5
             // 
@@ -1183,7 +1268,7 @@
             this.numMouth32.Enabled = false;
             this.numMouth32.Location = new System.Drawing.Point(316, 69);
             this.numMouth32.Maximum = new decimal(new int[] {
-            9,
+            19,
             0,
             0,
             0});
@@ -1207,7 +1292,7 @@
             this.numEye32.Enabled = false;
             this.numEye32.Location = new System.Drawing.Point(316, 46);
             this.numEye32.Maximum = new decimal(new int[] {
-            9,
+            16,
             0,
             0,
             0});
@@ -1378,7 +1463,7 @@
             this.tabPage4.Controls.Add(this.toolStrip1);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(744, 459);
+            this.tabPage4.Size = new System.Drawing.Size(405, 451);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Card Replacer";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1396,8 +1481,8 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.imgCard);
-            this.splitContainer3.Size = new System.Drawing.Size(744, 434);
-            this.splitContainer3.SplitterDistance = 246;
+            this.splitContainer3.Size = new System.Drawing.Size(405, 426);
+            this.splitContainer3.SplitterDistance = 133;
             this.splitContainer3.TabIndex = 1;
             // 
             // imgRoster
@@ -1406,7 +1491,7 @@
             this.imgRoster.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgRoster.Location = new System.Drawing.Point(0, 0);
             this.imgRoster.Name = "imgRoster";
-            this.imgRoster.Size = new System.Drawing.Size(246, 434);
+            this.imgRoster.Size = new System.Drawing.Size(133, 426);
             this.imgRoster.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.imgRoster.TabIndex = 3;
             this.imgRoster.TabStop = false;
@@ -1417,7 +1502,7 @@
             this.imgCard.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgCard.Location = new System.Drawing.Point(0, 0);
             this.imgCard.Name = "imgCard";
-            this.imgCard.Size = new System.Drawing.Size(494, 434);
+            this.imgCard.Size = new System.Drawing.Size(268, 426);
             this.imgCard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgCard.TabIndex = 2;
             this.imgCard.TabStop = false;
@@ -1436,7 +1521,7 @@
             this.replaceCardRosterFromCardToolStripButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(744, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(405, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -1518,7 +1603,7 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(744, 459);
+            this.tabPage6.Size = new System.Drawing.Size(405, 451);
             this.tabPage6.TabIndex = 6;
             this.tabPage6.Text = "Patcher";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -1538,7 +1623,7 @@
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox6.Location = new System.Drawing.Point(3, 3);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(738, 453);
+            this.groupBox6.Size = new System.Drawing.Size(399, 445);
             this.groupBox6.TabIndex = 0;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "AA2Edit";
@@ -1672,91 +1757,6 @@
             this.trkCardSize.TabIndex = 0;
             this.trkCardSize.Scroll += new System.EventHandler(this.trkCardSize_Scroll);
             // 
-            // groupBox12
-            // 
-            this.groupBox12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox12.Controls.Add(this.cmbPersonality34);
-            this.groupBox12.Controls.Add(this.btnBackupAll34);
-            this.groupBox12.Controls.Add(this.btnSetBlank34);
-            this.groupBox12.Controls.Add(this.btnRestore34);
-            this.groupBox12.Location = new System.Drawing.Point(3, 374);
-            this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(399, 77);
-            this.groupBox12.TabIndex = 3;
-            this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "Part 3.4 Clearing personality labels";
-            // 
-            // cmbPersonality34
-            // 
-            this.cmbPersonality34.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPersonality34.FormattingEnabled = true;
-            this.cmbPersonality34.Items.AddRange(new object[] {
-            "(00) Lively",
-            "(01) Delicate",
-            "(02) Cheerful",
-            "(03) Quiet",
-            "(04) Playful",
-            "(05) Frisky",
-            "(06) Kind",
-            "(07) Joyful",
-            "(08) Ordinary",
-            "(09) Irritated",
-            "(10) Harsh",
-            "(11) Sweet",
-            "(12) Creepy",
-            "(13) Reserved",
-            "(14) Dignified",
-            "(15) Aloof",
-            "(16) Smart",
-            "(17) Genuine",
-            "(18) Mature",
-            "(19) Lazy",
-            "(20) Manly",
-            "(21) Gentle",
-            "(22) Positive",
-            "(23) Otaku",
-            "(24) Savage",
-            "(25) Cadet",
-            "(26) Caring",
-            "(27) Schemer",
-            "(28) Carefree",
-            "(29) Warm"});
-            this.cmbPersonality34.Location = new System.Drawing.Point(137, 19);
-            this.cmbPersonality34.Name = "cmbPersonality34";
-            this.cmbPersonality34.Size = new System.Drawing.Size(125, 21);
-            this.cmbPersonality34.TabIndex = 18;
-            // 
-            // btnSetBlank34
-            // 
-            this.btnSetBlank34.Location = new System.Drawing.Point(94, 46);
-            this.btnSetBlank34.Name = "btnSetBlank34";
-            this.btnSetBlank34.Size = new System.Drawing.Size(75, 23);
-            this.btnSetBlank34.TabIndex = 12;
-            this.btnSetBlank34.Text = "Set Blank";
-            this.btnSetBlank34.UseVisualStyleBackColor = true;
-            this.btnSetBlank34.Click += new System.EventHandler(this.btnSetBlank34_Click);
-            // 
-            // btnRestore34
-            // 
-            this.btnRestore34.Location = new System.Drawing.Point(256, 46);
-            this.btnRestore34.Name = "btnRestore34";
-            this.btnRestore34.Size = new System.Drawing.Size(75, 23);
-            this.btnRestore34.TabIndex = 13;
-            this.btnRestore34.Text = "Restore";
-            this.btnRestore34.UseVisualStyleBackColor = true;
-            this.btnRestore34.Click += new System.EventHandler(this.btnRestore34_Click);
-            // 
-            // btnBackupAll34
-            // 
-            this.btnBackupAll34.Location = new System.Drawing.Point(175, 46);
-            this.btnBackupAll34.Name = "btnBackupAll34";
-            this.btnBackupAll34.Size = new System.Drawing.Size(75, 23);
-            this.btnBackupAll34.TabIndex = 15;
-            this.btnBackupAll34.Text = "Backup All";
-            this.btnBackupAll34.UseVisualStyleBackColor = true;
-            this.btnBackupAll34.Click += new System.EventHandler(this.btnBackupAll34_Click);
-            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1806,6 +1806,7 @@
             this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgCharacter)).EndInit();
             this.tabPage3.ResumeLayout(false);
+            this.groupBox12.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox11.ResumeLayout(false);
@@ -1836,7 +1837,6 @@
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trkCardSize)).EndInit();
-            this.groupBox12.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

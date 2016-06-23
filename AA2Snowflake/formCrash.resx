@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label1.Text" xml:space="preserve">
-    <value>AA2Install has crashed. If you were in the middle of an operation, your game may have become corrupt.
+    <value>AA2Snowflake has crashed. If you were in the middle of an operation, your game may have become corrupt.
 
 Please notify the dev (via a github issue  or directly on /aa2g/ or hongfire ) of this, what you were doing and attach the following files:</value>
   </data>

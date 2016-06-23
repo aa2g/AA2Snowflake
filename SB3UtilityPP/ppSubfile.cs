@@ -14,7 +14,6 @@ namespace SB3Utility
 		public string ppPath;
 		public long offset;
 		public uint size;
-		public ppFormat ppFormat;
 
 		public object Metadata { get; set; }
 
@@ -27,15 +26,21 @@ namespace SB3Utility
 
 		public void WriteTo(Stream stream)
 		{
+            //CreateReadStream().CopyTo(stream);
 			using (BinaryReader reader = new BinaryReader(CreateReadStream()))
 			{
 				BinaryWriter writer = new BinaryWriter(stream);
 				byte[] buf;
-				while ((buf = reader.ReadBytes(Utility.BufSize)).Length == Utility.BufSize)
-				{
-					writer.Write(buf);
-				}
-				writer.Write(buf);
+                int bufsize = Utility.EstBufSize(reader.BaseStream.Length);
+                if (bufsize > 0)
+                {
+                    while ((buf = reader.ReadBytes(bufsize)).Length == bufsize)
+                    {
+					    writer.Write(buf);
+				    }
+				    writer.Write(buf);
+                }
+                
 			}
 		}
 
@@ -48,13 +53,13 @@ namespace SB3Utility
 				fs.Seek(offset, SeekOrigin.Begin);
 				return ppFormat.ReadStream(new PartialStream(fs, size));
 			}
-			catch (Exception e)
+			catch (Exception)
 			{
 				if (fs != null)
 				{
 					fs.Close();
 				}
-				throw e;
+				throw;
 			}
 		}
 

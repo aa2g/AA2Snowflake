@@ -145,7 +145,7 @@ namespace AA2Snowflake.Personalities
             foreach (string path in Directory.EnumerateFiles(Paths.AA2Play))
                 if (regex.IsMatch(path))
                 {
-                    CustomPersonality cp = LoadPersonality(new ppParser(path, new ppFormat_AA2()));
+                    CustomPersonality cp = LoadPersonality(new ppParser(path));
                     if (!ReferenceEquals(cp, null)) //is there a better way to check null?
                         pers[cp.Slot] = cp;
                 }
@@ -158,7 +158,7 @@ namespace AA2Snowflake.Personalities
             string path = Paths.AA2Play + "\\" + personality.LSTLocation.RemoveFilename('/');
             if (!File.Exists(path))
                 path = Paths.AA2Edit + "\\" + personality.LSTLocation.RemoveFilename('/');
-            return new ppParser(path, new ppFormat_AA2());
+            return new ppParser(path);
         }
 
         public static IWriteFile GetLst(this IPersonality personality)
@@ -172,7 +172,7 @@ namespace AA2Snowflake.Personalities
             string path = Paths.AA2Play + "\\" + personality.ICFLocation;
             if (!File.Exists(path))
                 path = Paths.AA2Edit + "\\" + personality.ICFLocation;
-            return new ppParser(path, new ppFormat_AA2());
+            return new ppParser(path);
         }
     }
 

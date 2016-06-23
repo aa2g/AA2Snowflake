@@ -1,6 +1,7 @@
 ﻿v2.2
 + Changed TGA handler to something more stable
 + Increased the limits of pose numbers again
++ Updated SB3U libary
 
 v2.1
 + Fixed setting pose for male personalities
