@@ -1,4 +1,7 @@
-﻿v2.2
+﻿v2.3
++ Added AAUnlimited compatibility
+
+v2.2
 + Changed TGA handler to something more stable
 + Increased the limits of pose numbers again
 + Updated SB3U libary

@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D5CB46E9-E69B-4B45-A15A-C0087833DD4D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PNGNet</RootNamespace>
+    <AssemblyName>PNGNet</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ByteStreamReader.cs" />
+    <Compile Include="Chunk.cs" />
+    <Compile Include="CRC32.cs" />
+    <Compile Include="PNGImage.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChunkAttribute.cs" />
+    <Compile Include="ChunkCollection.cs" />
+    <Compile Include="Chunks\cHRMChunk.cs" />
+    <Compile Include="Chunks\bKGDChunk.cs" />
+    <Compile Include="Chunks\zTXtChunk.cs" />
+    <Compile Include="Chunks\tIMEChunk.cs" />
+    <Compile Include="Chunks\pHYsChunk.cs" />
+    <Compile Include="Chunks\hISTChunk.cs" />
+    <Compile Include="Chunks\tEXtChunk.cs" />
+    <Compile Include="Chunks\sBITChunk.cs" />
+    <Compile Include="Chunks\gAMAChunk.cs" />
+    <Compile Include="Chunks\tRNSChunk.cs" />
+    <Compile Include="Chunks\PLTEChunk.cs" />
+    <Compile Include="Chunks\IENDChunk.cs" />
+    <Compile Include="Chunks\IDATChunk.cs" />
+    <Compile Include="Chunks\IHDRChunk.cs" />
+    <Compile Include="Chunks\sRGBChunk.cs" />
+    <Compile Include="CompressionLevel.cs" />
+    <Compile Include="Compression\Checksums\Adler32.cs" />
+    <Compile Include="Compression\Checksums\CRC32.cs" />
+    <Compile Include="Compression\Checksums\IChecksum.cs" />
+    <Compile Include="Compression\Checksums\StrangeCRC.cs" />
+    <Compile Include="Compression\Deflater.cs" />
+    <Compile Include="Compression\DeflaterConstants.cs" />
+    <Compile Include="Compression\DeflaterEngine.cs" />
+    <Compile Include="Compression\DeflaterHuffman.cs" />
+    <Compile Include="Compression\DeflaterPending.cs" />
+    <Compile Include="Compression\Inflater.cs" />
+    <Compile Include="Compression\InflaterDynHeader.cs" />
+    <Compile Include="Compression\InflaterHuffmanTree.cs" />
+    <Compile Include="Compression\PendingBuffer.cs" />
+    <Compile Include="Compression\Streams\DeflaterOutputStream.cs" />
+    <Compile Include="Compression\Streams\InflaterInputStream.cs" />
+    <Compile Include="Compression\Streams\OutputWindow.cs" />
+    <Compile Include="Compression\Streams\StreamManipulator.cs" />
+    <Compile Include="Compression\ZipException.cs" />
+    <Compile Include="PNGBitmap.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

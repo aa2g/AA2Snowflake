@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("AA2Snowflake")]
-[assembly: AssemblyDescription("Snowflake automation in AA2")]
+[assembly: AssemblyTitle("PNGNet")]
+[assembly: AssemblyDescription("PNG Library for .NET")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("/aa2g/")]
-[assembly: AssemblyProduct("AA2Snowflake")]
-[assembly: AssemblyCopyright("")]
+[assembly: AssemblyCompany("wj32")]
+[assembly: AssemblyProduct("PNGNet")]
+[assembly: AssemblyCopyright("Copyright © wj32 2008. Licensed under the GNU LGPL v3.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("d0bf1f9f-19d4-4e0a-b7cb-779388d7c91d")]
+[assembly: Guid("5680bf06-46e1-414b-b915-f01bf0005429")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.3.0.0")]
-[assembly: AssemblyFileVersion("2.3.0.0")]
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]
